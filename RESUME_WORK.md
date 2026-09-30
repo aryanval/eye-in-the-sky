@@ -1,17 +1,17 @@
 # Resume work — Eye in the Sky
 
-**Resumed from the 2026-09-30 handoff. Phase 1 implementation and validation are
-complete, and PHASE1_REPORT.md is written. Publication is the final remaining
-step. Phase 2 and later phases are not approved.**
+**Phase 1 completed and published on 2026-09-30. Stop here. Phase 2 and later
+phases are not approved. PHASE1_REPORT.md records the results and claim limits.**
 
 ## Workspace and authorization
 
 - Repository: `/Volumes/500GB SSD/Dev/eye-in-the-sky` (renamed from `third-eye`).
 - Remote: `https://github.com/aryanval/eye-in-the-sky.git`, configured as `origin`.
-- GitHub was checked and is currently **private**, initially empty. Nothing has
-  been pushed during this work. The original objective is a public project.
+- GitHub is **public**. The initially empty remote received `main` without force;
+  publication and visibility were verified on 2026-09-30.
 - Local branch: `main`. Initial baseline commit: `8179dc1`.
-- Later implementation changes, reports and documentation remain uncommitted.
+- Phase 1 implementation, reports and documentation were committed as `3a6e5f5`
+  and pushed to `origin/main`. The final documentation update records publication.
 - The workspace and writable root now use `eye-in-the-sky`. Do not recreate the
   old `third-eye` folder.
 - Phase 1 implementation is approved. Phase 2 and later phases are not approved.
@@ -111,7 +111,7 @@ Written: `README.md`, `ARCHITECTURE.md`, `DETECTION_CATALOG.md`, `HUNTS.md`,
 
 Written during closeout: [PHASE1_REPORT.md](PHASE1_REPORT.md), including completion
 gates, exact report hashes, validation commands, measured results and claim limits.
-Publication remains pending. Review documentation links and the staged diff before
+All 38 local Markdown targets resolved and the staged diff passed review before
 publication. Official fixtures retain their AWS documentation license; the
 project's MIT license does not replace it.
 
@@ -132,25 +132,18 @@ project's MIT license does not replace it.
 | Hands-on Azure validation in project | No | None | Professional experience is separate |
 | Hands-on GCP validation | No | None | No personal live events |
 | Built local evidence inspection | Yes | CLI explanation, retained bytes, verified export | No durable case-management UI |
-| Phase 1 fully closed/published | Not yet | Implementation, clean-install validation and final report complete | Publication remains |
+| Phase 1 fully closed/published | Yes | Implementation, clean-install validation, final report and public `main` | AWS scope only |
 | Full project resume-ready | No | Later gates unmet | Requires more providers, detections, hunts and later demo |
 
-## Remaining publication closeout
+## Work boundary
 
-1. Work exclusively in the renamed repository and inspect its Git status; preserve
-   any intervening user changes. Do not re-read employer directories.
-2. Clean-install walkthrough, dependency check, report hashes/metrics and
-   `PHASE1_REPORT.md` are complete. Finish documentation-link/staged-diff review.
-   The 25 tests already passed; rerun only if code changes or a failure merits it.
-3. Preserve all earlier evaluation reports. Runtime and fixture files did not
-   change during this closeout.
-4. Commit only the new project changes; `.venv/`, `work/`, databases, build output
-   and egg-info are ignored. The initial commit used `aryanval` and
-   `aryanval@users.noreply.github.com`, explicitly avoiding a global work identity.
-5. Check the provided remote before pushing; never force-overwrite unexpected
-   remote work. Publish the reviewed Phase 1 project to the supplied repository
-   and set the requested public visibility, unless the user changes that direction.
-   These operations have not happened yet.
-6. Report Phase 1 results and stop. Do not start Phase 2, optional accounts, UI,
-   endpoint support or LLM work automatically. Do not recommend the full target
-   resume claim yet.
+No Phase 1 implementation work remains. Do not start Phase 2, optional accounts,
+UI, endpoint support or LLM work automatically. The full target resume claim is
+not supported yet; use the claim table in [PHASE1_REPORT.md](PHASE1_REPORT.md).
+
+For any later explicitly approved work, preserve intervening user changes and
+earlier evaluation reports. Keep `.venv/`, `work/`, databases, build output and
+egg-info ignored. Use the project commit identity `aryanval` and
+`aryanval@users.noreply.github.com`, avoiding a global work identity. Work only in
+this renamed repository and public/non-employer sources; do not inspect employer
+directories or force-overwrite unexpected remote work.

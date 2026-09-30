@@ -1,7 +1,6 @@
 # Phase 1 completion report
 
-**Validation date: 2026-09-30. Implementation and validation are complete.**
-Publication is the remaining closeout step. The approved scope is AWS CloudTrail
+**Completed and published: 2026-09-30.** The approved scope is AWS CloudTrail
 ingestion, two SQL detections, one hunt, raw evidence inspection, reproducible
 evaluation and a CLI walkthrough. This report does not authorize Phase 2.
 
@@ -19,7 +18,7 @@ evaluation and a CLI walkthrough. This report does not authorize Phase 2.
 | Correctness checks | Passed | 25 tests passed before the resume handoff. No runtime code changed during closeout; the clean installed runtime matches the final workspace byte for byte. |
 | Clean installation and walkthrough | Passed | A non-editable wheel installation ran the complete CLI walkthrough; `pip check` found no broken requirements. Packaged Python, SQL and rule metadata match the workspace. |
 | Documentation and review | Passed | README, architecture, catalog, hunt, evaluation, provenance, optional-lab boundaries and this report; local Markdown targets and the publication diff reviewed. |
-| Public repository | Pending publication | Destination: [aryanval/eye-in-the-sky](https://github.com/aryanval/eye-in-the-sky). Before publication, GitHub reported a private repository with no branches or tags. |
+| Public repository | Passed | [aryanval/eye-in-the-sky](https://github.com/aryanval/eye-in-the-sky), branch `main`; implementation commit `3a6e5f5` pushed without force and GitHub visibility verified public. Baseline commit `8179dc1` remains in history. |
 
 ## Executed validation
 
@@ -107,7 +106,7 @@ benchmark; the first development report also retained full-corpus findings.
 | Hands-on Azure validation in this project | No | None | Professional experience is separate |
 | Hands-on GCP validation | No | No personal live events | Documentation only |
 | Built local evidence inspection | Yes | CLI explanations, retained source bytes and verified export | No durable case-management UI |
-| Phase 1 implementation and validation complete | Yes | Gates and exact replay above | Publication is checked separately |
+| Phase 1 complete and published | Yes | Gates, exact replay and public repository above | AWS scope only |
 | Full project resume-readiness bar met | No | Later gates remain unmet | Requires more providers, at least six detections, at least three hunts and later demo/documentation gates |
 
 ## Remaining boundaries
