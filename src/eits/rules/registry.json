@@ -1,4 +1,15 @@
 {
-  "baseline": ["rules/catalog.json"],
-  "restart-aware": ["rules/catalog.json", "rules/restart-aware.json"]
+  "baseline": [
+    "rules/catalog.json",
+    "rules/azure-activity.json",
+    "rules/entra.json",
+    "rules/gcp.json"
+  ],
+  "restart-aware": [
+    "rules/catalog.json",
+    "rules/restart-aware.json",
+    "rules/azure-activity.json",
+    "rules/entra.json",
+    "rules/gcp.json"
+  ]
 }

@@ -1,0 +1,29 @@
+{
+  "category": "official documentation excerpt",
+  "source_url": "https://docs.cloud.google.com/iam/docs/audit-logging/examples-service-accounts",
+  "retrieved": "2026-09-30",
+  "page_sha256": "ac01d11ca36856fb0c345b490cfd5ee62a7f95aae13688101613b2eb60eabcd3",
+  "license": "Google documentation CC BY 4.0; code samples Apache-2.0, per source footer and https://developers.google.com/terms/site-policies",
+  "attribution": "Google LLC; excerpts reproduced without content edits. Source page explicitly shows only most relevant fields.",
+  "limitations": [
+    "Abbreviated examples, not full official fixtures",
+    "Key-creation example contains a trailing comma and is not valid JSON",
+    "No record repaired or completed; synthetic corpus generated separately"
+  ],
+  "files": [
+    {
+      "path": "project-role-grant-excerpt.json",
+      "sha256": "3482d3ba80a6f3bda74926fbd20bbbef159ca7c32e7461eca6749bf96eaf64fb",
+      "html_pre_index": 2,
+      "extraction": "HTML pre element text decoded by Python HTMLParser; no text edits",
+      "ingestable_dataset": false
+    },
+    {
+      "path": "key-creation-excerpt.txt",
+      "sha256": "9f34adb868d52ff64acf20f8299b002a66de4dfd7c1a4801d5fe86117d8a65bc",
+      "html_pre_index": 5,
+      "extraction": "HTML pre element text decoded by Python HTMLParser; no text edits",
+      "ingestable_dataset": false
+    }
+  ]
+}

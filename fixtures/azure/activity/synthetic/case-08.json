@@ -1,0 +1,194 @@
+{
+  "value": [
+    {
+      "eventDataId": "23aaf3e1-2ac5-549a-8fb3-1b545383d945",
+      "eventTimestamp": "2026-01-08T12:00:00Z",
+      "submissionTimestamp": "2026-01-08T12:00:03Z",
+      "subscriptionId": "10000000-0000-4000-8000-000000000001",
+      "tenantId": "20000000-0000-4000-8000-000000000001",
+      "operationName": {
+        "value": "Microsoft.Insights/diagnosticSettings/delete"
+      },
+      "resourceProviderName": {
+        "value": "Microsoft.Insights"
+      },
+      "status": {
+        "value": "Failed"
+      },
+      "category": {
+        "value": "Administrative"
+      },
+      "eventName": {
+        "value": "EndRequest"
+      },
+      "correlationId": "cbea5b7c-f264-517a-a66e-55e06a6593a2",
+      "operationId": "cbea5b7c-f264-517a-a66e-55e06a6593a2",
+      "resourceId": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export",
+      "caller": "operator@example.invalid",
+      "claims": {
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "3736dad1-d758-50d3-88b3-2dcb1b4a8d68",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "20000000-0000-4000-8000-000000000001"
+      },
+      "httpRequest": {
+        "clientIpAddress": "192.0.2.20",
+        "method": "DELETE"
+      },
+      "authorization": {
+        "action": "Microsoft.Insights/diagnosticSettings/delete",
+        "scope": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export"
+      }
+    },
+    {
+      "eventDataId": "f818b6ac-18fb-56e5-8598-1e94d1a07e6e",
+      "eventTimestamp": "2026-01-08T12:05:00Z",
+      "submissionTimestamp": "2026-01-08T12:05:03Z",
+      "subscriptionId": "10000000-0000-4000-8000-000000000001",
+      "tenantId": "20000000-0000-4000-8000-000000000001",
+      "operationName": {
+        "value": "Microsoft.Authorization/roleAssignments/write"
+      },
+      "resourceProviderName": {
+        "value": "Microsoft.Authorization"
+      },
+      "status": {
+        "value": "Succeeded"
+      },
+      "category": {
+        "value": "Administrative"
+      },
+      "eventName": {
+        "value": "EndRequest"
+      },
+      "correlationId": "00ed68d8-219e-53e4-95df-a67d689daac2",
+      "operationId": "00ed68d8-219e-53e4-95df-a67d689daac2",
+      "resourceId": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/9732c5b2-d1d8-5bf5-b215-c51256745c41",
+      "caller": "operator@example.invalid",
+      "claims": {
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "3736dad1-d758-50d3-88b3-2dcb1b4a8d68",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "20000000-0000-4000-8000-000000000001"
+      },
+      "httpRequest": {
+        "clientIpAddress": "192.0.2.20",
+        "method": "PUT"
+      },
+      "authorization": {
+        "action": "Microsoft.Authorization/roleAssignments/write",
+        "scope": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/9732c5b2-d1d8-5bf5-b215-c51256745c41"
+      }
+    },
+    {
+      "eventDataId": "b8a9ac8d-1c24-58a5-a94d-0916d9234631",
+      "eventTimestamp": "2026-01-08T11:59:00Z",
+      "submissionTimestamp": "2026-01-08T11:59:03Z",
+      "subscriptionId": "10000000-0000-4000-8000-000000000001",
+      "tenantId": "20000000-0000-4000-8000-000000000001",
+      "operationName": {
+        "value": "Microsoft.Network/networkSecurityGroups/write"
+      },
+      "resourceProviderName": {
+        "value": "Microsoft.Network"
+      },
+      "status": {
+        "value": "Succeeded"
+      },
+      "category": {
+        "value": "Administrative"
+      },
+      "eventName": {
+        "value": "EndRequest"
+      },
+      "correlationId": "9c550e34-d4b7-5922-965b-3e368235cc79",
+      "operationId": "9c550e34-d4b7-5922-965b-3e368235cc79",
+      "resourceId": "/subscriptions/10000000-0000-4000-8000-000000000001/resourceGroups/lab/providers/Microsoft.Network/networkSecurityGroups/lab",
+      "caller": "operator@example.invalid",
+      "claims": {
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "75c5eef0-9e41-5825-bfd7-1b07b032dabf",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "20000000-0000-4000-8000-000000000001"
+      },
+      "httpRequest": {
+        "clientIpAddress": "192.0.2.20",
+        "method": "PUT"
+      },
+      "authorization": {
+        "action": "Microsoft.Network/networkSecurityGroups/write",
+        "scope": "/subscriptions/10000000-0000-4000-8000-000000000001/resourceGroups/lab/providers/Microsoft.Network/networkSecurityGroups/lab"
+      }
+    },
+    {
+      "eventDataId": "06dd14fa-5008-5045-b7d7-da92f7c1bb24",
+      "eventTimestamp": "2026-01-08T12:10:00Z",
+      "submissionTimestamp": "2026-01-08T12:10:03Z",
+      "subscriptionId": "10000000-0000-4000-8000-000000000001",
+      "tenantId": "20000000-0000-4000-8000-000000000001",
+      "operationName": {
+        "value": "Microsoft.Authorization/roleAssignments/delete"
+      },
+      "resourceProviderName": {
+        "value": "Microsoft.Authorization"
+      },
+      "status": {
+        "value": "Succeeded"
+      },
+      "category": {
+        "value": "Administrative"
+      },
+      "eventName": {
+        "value": "EndRequest"
+      },
+      "correlationId": "b16b86c7-5a74-53fa-97bf-73f4a24f7541",
+      "operationId": "b16b86c7-5a74-53fa-97bf-73f4a24f7541",
+      "resourceId": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/80b5bfc5-b954-5b9f-b218-a0b5ebbaa0cf",
+      "caller": "operator@example.invalid",
+      "claims": {
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "75c5eef0-9e41-5825-bfd7-1b07b032dabf",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "20000000-0000-4000-8000-000000000001"
+      },
+      "httpRequest": {
+        "clientIpAddress": "192.0.2.20",
+        "method": "DELETE"
+      },
+      "authorization": {
+        "action": "Microsoft.Authorization/roleAssignments/delete",
+        "scope": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/80b5bfc5-b954-5b9f-b218-a0b5ebbaa0cf"
+      }
+    },
+    {
+      "eventDataId": "5e7e477f-9f16-5cd4-abac-a88afeb88811",
+      "eventTimestamp": "2026-01-08T12:40:00Z",
+      "submissionTimestamp": "2026-01-08T12:40:03Z",
+      "subscriptionId": "10000000-0000-4000-8000-000000000001",
+      "tenantId": "20000000-0000-4000-8000-000000000001",
+      "operationName": {
+        "value": "Microsoft.Insights/diagnosticSettings/write"
+      },
+      "resourceProviderName": {
+        "value": "Microsoft.Insights"
+      },
+      "status": {
+        "value": "Succeeded"
+      },
+      "category": {
+        "value": "Administrative"
+      },
+      "eventName": {
+        "value": "EndRequest"
+      },
+      "correlationId": "70e6eb43-64eb-594e-925f-9d09bd69419e",
+      "operationId": "70e6eb43-64eb-594e-925f-9d09bd69419e",
+      "resourceId": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export",
+      "caller": "operator@example.invalid",
+      "claims": {
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "75c5eef0-9e41-5825-bfd7-1b07b032dabf",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "20000000-0000-4000-8000-000000000001"
+      },
+      "httpRequest": {
+        "clientIpAddress": "192.0.2.20",
+        "method": "PUT"
+      },
+      "authorization": {
+        "action": "Microsoft.Insights/diagnosticSettings/write",
+        "scope": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export"
+      }
+    }
+  ]
+}

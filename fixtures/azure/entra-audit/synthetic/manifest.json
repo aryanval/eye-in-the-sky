@@ -1,0 +1,118 @@
+{
+  "dataset_id": "entra-audit-synthetic-v1",
+  "provider": "azure",
+  "source": "azure.entra.audit",
+  "collection_scope": {
+    "scope_type": "azure.tenant",
+    "scope_id": "80d88ef0-c29c-5ada-8739-9196a5a429f1",
+    "tenant_id": "80d88ef0-c29c-5ada-8739-9196a5a429f1"
+  },
+  "category": "synthetic",
+  "source_urls": [
+    "https://learn.microsoft.com/en-us/graph/api/resources/directoryaudit?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/graph/api/resources/targetresource?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/graph/api/resources/signin?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/graph/api/resources/signinstatus?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/reference-audit-activities"
+  ],
+  "license": "MIT",
+  "modified": true,
+  "generation": "scripts/generate_entra.py; independently generated values using public Graph v1.0 resource properties and audit activity names, not repaired vendor examples",
+  "limitations": [
+    "Fictional records, not live tenant telemetry",
+    "Audit target typing and operation-specific payload coverage are schema-based assumptions, not live validation",
+    "No role sensitivity, credential use, or actor authorization is established"
+  ],
+  "files": [
+    {
+      "path": "case-01.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "ccfc54a163892a7bb059d05c9d7793ea8e2add01bebc704de1f0832011cff7b1"
+    },
+    {
+      "path": "case-02.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "e7655876b2d2f0f8b9bed5284fd74113bb296c8294638e789577517096468213"
+    },
+    {
+      "path": "case-03.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "acd3a0db391f2ad288160823b63110b1c84b2e67e290dc228d1bdd977b996bd1"
+    },
+    {
+      "path": "case-04.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "b19a14face5a17319d274d38318eda688c8173b2a2f6aafd32e4d4d6059c4b4b"
+    },
+    {
+      "path": "case-05.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "e9e7c0218fbb8225adda4f1f11c9eb75263e3e1e215627891066f633aacf075a"
+    },
+    {
+      "path": "case-06.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "93275926761ac22e526d7ed68758700743ca54096aaea72169f9fc401b9b8ceb"
+    },
+    {
+      "path": "case-07.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "89f9dcc7f4ac8ec80efbf4b5c7f99a7c885d7c3c87766001dac32884edcd2693"
+    },
+    {
+      "path": "case-08.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "04cee789148b41fec075f662ed072a0fa9bac559a579c602e66a6e5ace53f6c7"
+    },
+    {
+      "path": "case-09.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "7f5be519234c0209ae74ac6c5f2740f3992eac654b9bedc228616a63a09eb99a"
+    },
+    {
+      "path": "case-10.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "c35f2cbfe47473e136165a048602e628bfd3a26c0b1a6149ed763ba2f226368f"
+    },
+    {
+      "path": "case-11.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "634da012147189e967fc5bfe0eba4cc8417b74a77583e0cb9bcf2697459b1c19"
+    },
+    {
+      "path": "case-12.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "535b6a076b0e0b4babf74a75b7612e574d477e11c231544b311e87fe4539a6eb"
+    },
+    {
+      "path": "case-13.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "cdc67b7e04f1d611784af48cb5c84398ad387566c1120a6f90735e9681155529"
+    },
+    {
+      "path": "case-14.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "aab7860aff23d8a538fad9e2f95adee0414a8adda19b5eaf8b08ac03a8180a84"
+    },
+    {
+      "path": "case-15.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "b6a9b7ce3a0651d2e208cd5ad9edd87d14d6b35d803b528b1737aa121f106fc5"
+    },
+    {
+      "path": "case-16.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "cb0f1003d415a28ba04723645d195828c55d7492ce6665609b10c395123713dd"
+    },
+    {
+      "path": "case-17.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "302f829bb30c5b90c860563037123ef3cf8346cc4f216890f3e146c6aca31b25"
+    },
+    {
+      "path": "case-18.json",
+      "format": "graph-directory-audit-json",
+      "sha256": "5f3a5131d009691be8362efdc8284c2a2f2ba5a042611f541f7e0d3d2f94793c"
+    }
+  ]
+}

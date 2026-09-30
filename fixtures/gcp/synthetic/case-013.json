@@ -1,0 +1,68 @@
+{
+  "entries": [
+    {
+      "logName": "projects/eits-lab-013/logs/cloudaudit.googleapis.com%2Factivity",
+      "insertId": "ba54ee6981c35bf69942baab5a1b9b5e",
+      "timestamp": "2025-04-05T12:00:00Z",
+      "resource": {
+        "type": "service_account",
+        "labels": {
+          "project_id": "eits-lab-013"
+        }
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "serviceName": "iam.googleapis.com",
+        "methodName": "google.iam.admin.v1.CreateServiceAccountKey",
+        "status": {
+          "code": 0
+        },
+        "authenticationInfo": {
+          "principalSubject": "user:operator@example.invalid",
+          "principalEmail": "operator@example.invalid"
+        },
+        "requestMetadata": {
+          "callerIp": "192.0.2.30",
+          "callerSuppliedUserAgent": "eits-synthetic/1"
+        },
+        "resourceName": "projects/eits-lab-013",
+        "request": {
+          "name": "projects/eits-lab-013/serviceAccounts/workload@eits-lab-013.iam.gserviceaccount.com"
+        },
+        "response": {
+          "@type": "type.googleapis.com/google.iam.admin.v1.ServiceAccountKey",
+          "name": "projects/eits-lab-013/serviceAccounts/workload@eits-lab-013.iam.gserviceaccount.com/keys/000000000000000000000000000000000000000d",
+          "keyType": "USER_MANAGED"
+        }
+      }
+    },
+    {
+      "logName": "projects/eits-lab-013/logs/cloudaudit.googleapis.com%2Factivity",
+      "insertId": "c8a4958c95df5ce4a004fde7d2e8a90c",
+      "timestamp": "2025-04-05T12:02:00Z",
+      "resource": {
+        "type": "project",
+        "labels": {
+          "project_id": "eits-lab-013"
+        }
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "serviceName": "cloudresourcemanager.googleapis.com",
+        "methodName": "GetIamPolicy",
+        "status": {
+          "code": 0
+        },
+        "authenticationInfo": {
+          "principalSubject": "user:operator@example.invalid",
+          "principalEmail": "operator@example.invalid"
+        },
+        "requestMetadata": {
+          "callerIp": "192.0.2.30",
+          "callerSuppliedUserAgent": "eits-synthetic/1"
+        },
+        "resourceName": "projects/eits-lab-013"
+      }
+    }
+  ]
+}

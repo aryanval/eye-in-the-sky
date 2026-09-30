@@ -1,0 +1,177 @@
+{
+  "dataset_id": "gcp-synthetic-v1",
+  "provider": "gcp",
+  "source": "gcp.audit",
+  "category": "synthetic",
+  "source_urls": [
+    "https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry",
+    "https://docs.cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog",
+    "https://docs.cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts.keys",
+    "https://docs.cloud.google.com/iam/docs/audit-logging/examples-service-accounts",
+    "https://docs.cloud.google.com/resource-manager/docs/audit-logging",
+    "https://docs.cloud.google.com/storage/docs/audit-logging",
+    "https://github.com/googleapis/googleapis/blob/master/google/iam/v1/logging/audit_data.proto",
+    "https://github.com/googleapis/googleapis/blob/master/google/iam/v1/policy.proto"
+  ],
+  "license": "MIT; original independently generated fixtures based on public Google schemas",
+  "modified": true,
+  "limitations": [
+    "Fictional offline scenarios; no live cloud validation",
+    "Not official examples or repaired excerpts",
+    "No operational-rate or representativeness claim",
+    "Policy intent and telemetry-loss labels reside only in separate ground truth",
+    "Explicit success status and key response name are not universal in real logs"
+  ],
+  "files": [
+    {
+      "path": "case-001.json",
+      "sha256": "1f137d1d4216f9a2a846c844a10becc61e53dfe48c1a101e5c109b32d0209020",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-002.json",
+      "sha256": "7c90f68ab4547cf1d1cfc839338005722f2af1c05da8240a8b46ba19e5d97e2f",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-003.json",
+      "sha256": "74e81af11903fa7a807e28e84908e0d77ac731ad26b35a094adc8837a35c7aa5",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-004.json",
+      "sha256": "fe2b144c5f366f73f7b816f42d3a3bb6e31d1d8f6c78d0dc38fc2b066abdcf45",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-005.json",
+      "sha256": "9b1ce891157b170be7c1a3c04e2003642b88767602807c1ed3b9e2bc60e54e32",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-006.json",
+      "sha256": "e2b5140d5a47cc18b5e18877da341b89372cb66bca6ff5efa29fde440286bd8e",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-007.json",
+      "sha256": "a7f49ea6d61787c6bb6a848ad849f05bf8e27471381fceefd169202bf77e890d",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-008.json",
+      "sha256": "a552f31ec289329a9c80c4540a5a331737d1d4f68c9cc24c3eb992d39d431e07",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-009.json",
+      "sha256": "6601d07e86bc6ad103663fe67dd57c1f085f3945f1179c15412309b97de3fd56",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-010.json",
+      "sha256": "8fdcf9f9ed8e76a855dbd1811b1efa60dc2bafc16509115ed081ff59434b2a8d",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-011.json",
+      "sha256": "30c702a80ee0fe7e300924edd2bdcb5d7a79a072381ec4789786d06ca0a0143c",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-012.json",
+      "sha256": "9e72a92edefc1ff9b642906ebec9337259e131b3980e1f30a12778d29a754cf6",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-013.json",
+      "sha256": "e77b92548b1afc018c86aca4b908786cbef1e56e88447e213480702cbd51758b",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-014.json",
+      "sha256": "2b39b163b541f8a07001e74302ec5f7a0d71bbb0cbd6e29ad95f93758084bb59",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-015.json",
+      "sha256": "668d4cdf78dee1b432afc1d2bb7837ac0b90996b79bf5bea22cc918e5aafc308",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-101.json",
+      "sha256": "e0794c4da735c19453f6aac333b0bbf8cbd9bd3bd53dd7c3cb6d641f791f8949",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-102.json",
+      "sha256": "8fa5365312c31637f362d547c17c153e916afcffafb93d1c3c135543dd5e93bb",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-103.json",
+      "sha256": "38a6761ef6850b487d3e36693cd5ee86a702fb35d66223e65fa7c876bd00b14a",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-104.json",
+      "sha256": "8cd74d24a568b049f6b15a7719d7535006b3e006abe6dfb79ddff167cd9311e0",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-105.json",
+      "sha256": "129c794c496276736813325c77ab6c3d97347acfe1247f122b6ad96b709d15d9",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-106.json",
+      "sha256": "041dd40fca5d62d9bd60f91a71f23563ca32e19712c8c061e90fc62427a7d1f8",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-107.json",
+      "sha256": "c87ecc95761391796e7603f0f6dd33be9da3a0a406ec08bfeefe2854611155d0",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-108.json",
+      "sha256": "600b5a58a5bc453e6025df05a1c1c26b0c2d7ba3cbe88455b96ba9f58e0b41e8",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-109.json",
+      "sha256": "ac659357e52627920661d1a9bd37229cd024bca61e342d6ae068795c1b7783a4",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-110.json",
+      "sha256": "2560701cb7bee1ef6a77b49943172980d8ab9998fae0897d5af411ff3466d1e4",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-111.json",
+      "sha256": "3c73093364679a97551fc60f33cf4ffeef0c641d75be566ccbccbd636d494c02",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-112.json",
+      "sha256": "3b2ac262c714746e7f8ce6a9128723a310a3e8229d71662ce788bccccc7c5e14",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-113.json",
+      "sha256": "8f58ca11b0a9c3db10d2e8698b6d2a6a484469799a1f556e55eabdea315df661",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-114.json",
+      "sha256": "cfad06a5d436d147fa87051788f13656c09a07ed9722b0151d756eb9105090d1",
+      "format": "gcp-audit-json"
+    },
+    {
+      "path": "case-115.json",
+      "sha256": "cc08d03c0f988087fb88bedf5e3c95c33656f4a22b4f25e3140894dcce7861da",
+      "format": "gcp-audit-json"
+    }
+  ]
+}

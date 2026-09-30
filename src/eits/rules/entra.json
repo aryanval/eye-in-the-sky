@@ -1,0 +1,19 @@
+{
+  "EITS-ENTRA-001": {
+    "provider": "azure", "source": "azure.entra.audit", "sql_path": "sql/EITS-ENTRA-001.sql",
+    "evidence": {"columns": ["credential_uid", "assignment_uid"]},
+    "version": "1.0.0", "title": "Service principal credential addition followed by app role assignment",
+    "description": "Correlate successful directory administrative operations that mention the same service-principal object and initiating user in one collection tenant within thirty minutes.",
+    "severity": "medium", "attack": ["T1098.001"],
+    "required_telemetry": ["Graph v1.0 directoryAudit", "explicit collection tenant", "activityDateTime", "activityDisplayName", "result", "category", "initiatedBy.user.id", "targetResources[].type/id"],
+    "exact_logic": "sql/EITS-ENTRA-001.sql; Add service principal credentials then Add app role assignment to service principal; both success/ApplicationManagement; same explicit tenant, initiating User object and mentioned ServicePrincipal target; 0 < elapsed <= 1800 seconds",
+    "evidence_fields": ["/id", "/activityDateTime", "/activityDisplayName", "/result", "/category", "/initiatedBy/user/id", "/targetResources"],
+    "why_it_matters": "Credential and application-role changes affecting the same service principal warrant review for persistence or unauthorized application access.",
+    "expected_false_positives": ["Approved application provisioning", "Credential rotation followed by authorized app-role maintenance", "Two changes mentioning the same resource principal without changing the same assignment recipient"],
+    "tuning": "Resolve assignment principal/resource/appRoleId and exact change authorization. Any future exception must specify collection tenant, target object, authorized workflow and expiry. No suppression ships.",
+    "limitations": ["User-initiated activity only", "A mentioned target is not necessarily the app-role recipient", "Exact supported activity names and ServicePrincipal target typing only", "No universal modifiedProperties interpretation", "Missing fields/events, equal timestamps and delays beyond thirty minutes reduce coverage", "Public schema and synthetic validation only; no live tenant validation"],
+    "cannot_establish": ["Malicious intent or actor authorization", "Which mentioned service principal is app-role recipient versus resource", "Role sensitivity or effective application permissions", "Credential material, subsequent credential use or access obtained"],
+    "observed": "Two audit records report successful credential addition and app role assignment, with the same explicit collection tenant, initiating user object ID and mentioned service-principal object ID, in order within thirty minutes.",
+    "inferred": "The administrative sequence warrants investigation for unauthorized application changes; credential use, role direction and effective privileges remain unresolved."
+  }
+}

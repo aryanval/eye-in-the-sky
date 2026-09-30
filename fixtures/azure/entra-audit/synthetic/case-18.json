@@ -1,0 +1,120 @@
+{
+  "value": [
+    {
+      "id": "d81b3162-5a4d-55a1-97be-fe094f19799a",
+      "activityDateTime": "2025-04-01T12:00:00Z",
+      "activityDisplayName": "Add service principal credentials",
+      "category": "ApplicationManagement",
+      "correlationId": "5ce78112-4b89-51c3-911b-fc9cbcc5b10e",
+      "result": "success",
+      "resultReason": null,
+      "loggedByService": "Core Directory",
+      "operationType": "Add",
+      "initiatedBy": {
+        "user": {
+          "id": "a4c0910b-9910-5f21-9fd0-3595f830475c",
+          "displayName": "Synthetic operator",
+          "userPrincipalName": "operator@example.invalid",
+          "ipAddress": "192.0.2.44"
+        },
+        "app": null
+      },
+      "targetResources": [
+        {
+          "id": "8ac0b7d7-5fb9-5cb2-8475-57a2e22bcd00",
+          "type": "ServicePrincipal",
+          "displayName": "Synthetic application",
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": []
+    },
+    {
+      "id": "d9b87d4b-6316-55ad-80a7-69aef6560a51",
+      "activityDateTime": "2025-04-01T12:00:01Z",
+      "activityDisplayName": "Add app role assignment to service principal",
+      "category": "ApplicationManagement",
+      "correlationId": "4b5114bd-3d82-534f-8b40-08cde899d889",
+      "result": "success",
+      "resultReason": null,
+      "loggedByService": "Core Directory",
+      "operationType": "Add",
+      "initiatedBy": {
+        "user": {
+          "id": "a4c0910b-9910-5f21-9fd0-3595f830475c",
+          "displayName": "Synthetic operator",
+          "userPrincipalName": "operator@example.invalid",
+          "ipAddress": "192.0.2.44"
+        },
+        "app": null
+      },
+      "targetResources": [
+        {
+          "id": "8ac0b7d7-5fb9-5cb2-8475-57a2e22bcd00",
+          "type": "ServicePrincipal",
+          "displayName": "Synthetic application",
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": []
+    },
+    {
+      "id": "a69cb85a-2168-5180-aef7-a3d2add5e25a",
+      "activityDateTime": "2025-04-01T12:05:00Z",
+      "activityDisplayName": "Update service principal",
+      "category": "ApplicationManagement",
+      "correlationId": "6b992520-a3b4-54a5-804c-b9afbe9b7067",
+      "result": "success",
+      "resultReason": null,
+      "loggedByService": "Core Directory",
+      "operationType": "Add",
+      "initiatedBy": {
+        "user": {
+          "id": "a4c0910b-9910-5f21-9fd0-3595f830475c",
+          "displayName": "Synthetic operator",
+          "userPrincipalName": "operator@example.invalid",
+          "ipAddress": "192.0.2.44"
+        },
+        "app": null
+      },
+      "targetResources": [
+        {
+          "id": "d53b0e40-1b3d-5095-b4c0-f5e62dfe2e53",
+          "type": "ServicePrincipal",
+          "displayName": "Synthetic application",
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": []
+    },
+    {
+      "id": "3f0a18a5-8bf5-5773-afc8-a298926a2b82",
+      "activityDateTime": "2025-04-01T12:05:00Z",
+      "activityDisplayName": "Add owner to application",
+      "category": "ApplicationManagement",
+      "correlationId": "1e5c3872-3a10-54c0-b54f-3d375b83e8ec",
+      "result": "success",
+      "resultReason": null,
+      "loggedByService": "Core Directory",
+      "operationType": "Add",
+      "initiatedBy": {
+        "user": {
+          "id": "a4c0910b-9910-5f21-9fd0-3595f830475c",
+          "displayName": "Synthetic operator",
+          "userPrincipalName": "operator@example.invalid",
+          "ipAddress": "192.0.2.44"
+        },
+        "app": null
+      },
+      "targetResources": [
+        {
+          "id": "5b414d2c-298e-53d9-acb3-3099002f269d",
+          "type": "ServicePrincipal",
+          "displayName": "Synthetic application",
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": []
+    }
+  ]
+}

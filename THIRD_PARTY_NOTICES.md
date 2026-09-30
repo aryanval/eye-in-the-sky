@@ -16,3 +16,43 @@ selection procedure, source URL and limitations.
 The original Python, SQL, synthetic fixtures and documentation are MIT licensed.
 DuckDB and pytz are installed dependencies, not vendored source. Their package
 distributions retain their own license notices.
+
+## Microsoft Azure REST API example
+
+`fixtures/azure/activity/official/GetActivityLogsFiltered.source.json` retains the
+original [Microsoft REST API specification example](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2015-04-01/examples/GetActivityLogsFiltered.json).
+`sample-01.json` is an exact byte extraction of its response body; event values
+and internal whitespace are unchanged. Copyright Microsoft Corporation.
+The repository's MIT permission/copyright notice is retained in
+`fixtures/azure/activity/official/LICENSE.microsoft.txt`. Its manifest records
+source/retrieval/extraction information and both hashes. See
+[Azure source documentation](docs/sources/azure-activity.md).
+
+## Microsoft Graph documentation excerpts
+
+The `documentation/` directories under `fixtures/azure/entra-signin` and
+`fixtures/azure/entra-audit` retain unmodified response excerpts from public
+Microsoft Graph v1.0 documentation. Copyright Microsoft Corporation and
+contributors. The documentation repository uses
+[CC BY 4.0](https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE)
+with a separate [MIT code license](https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE-CODE).
+Original MIT notices, source URLs, excerpt hashes and extraction details accompany
+the excerpts. Abbreviations and presentation errors remain unchanged; these are
+not executable official fixtures. See [Entra source documentation](docs/sources/entra.md).
+
+## Google documentation excerpts
+
+`fixtures/gcp/documentation` retains unchanged code-block text from
+[Google service-account audit examples](https://docs.cloud.google.com/iam/docs/audit-logging/examples-service-accounts).
+Copyright Google LLC. Google's [site policies](https://developers.google.com/terms/site-policies)
+and page notices identify CC BY 4.0 for documentation and Apache-2.0 for code
+samples, subject to specific notices. The Apache-2.0 text is retained in
+`fixtures/gcp/documentation/LICENSE-APACHE-2.0.txt` from
+[Apache](https://www.apache.org/licenses/LICENSE-2.0.txt). Attribution, source URL, extraction,
+retrieval date, page hash and excerpt hashes are in `provenance.json`. Vendor
+abbreviations and a trailing comma remain unchanged. These are documentation
+evidence, not complete official fixtures. See [GCP source documentation](docs/sources/gcp.md).
+
+No vendor endorsement is implied. Original project Python/SQL and independently
+generated synthetic records retain the project MIT license; it does not relicense
+any retained vendor material.

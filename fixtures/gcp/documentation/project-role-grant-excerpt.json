@@ -1,0 +1,30 @@
+{
+  "logName": "projects/my-project/logs/cloudaudit.googleapis.com%2Factivity",
+  "protoPayload": {
+    "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+    "authenticationInfo": {
+      "principalEmail": "example-user@example.com"
+    },
+    "methodName": "SetIamPolicy",
+    "request": {
+      "@type": "type.googleapis.com/google.iam.v1.SetIamPolicyRequest",
+      "resource": "my-project"
+    },
+    "resourceName": "projects/my-project",
+    "response": {
+      "@type": "type.googleapis.com/google.iam.v1.Policy",
+      "bindings": [
+        {
+          "members": [
+            "serviceAccount:my-service-account@my-project.iam.gserviceaccount.com"
+          ],
+          "role": "roles/resourcemanager.organizationViewer"
+        }
+      ]
+    },
+    "serviceName": "cloudresourcemanager.googleapis.com"
+  },
+  "resource": {
+    "type": "project"
+  }
+}

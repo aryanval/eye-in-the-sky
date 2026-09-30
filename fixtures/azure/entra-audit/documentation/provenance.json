@@ -1,0 +1,24 @@
+{
+  "category": "official documentation excerpt; not an ingest fixture",
+  "copyright": "Microsoft Corporation and Microsoft Graph documentation contributors",
+  "license": "CC-BY-4.0 documentation; MIT code examples",
+  "license_urls": [
+    "https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE",
+    "https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE-CODE"
+  ],
+  "source_urls": [
+    "https://learn.microsoft.com/en-us/graph/api/directoryaudit-list?view=graph-rest-1.0",
+    "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-docs-contrib/main/api-reference/v1.0/api/directoryaudit-list.md"
+  ],
+  "retrieved_date": "2026-09-30",
+  "source_document_sha256": "0229f473a514f6bf3bab8c0c681df8838d610a3e074106a528649443489824a1",
+  "file": "example-01.http",
+  "sha256": "495dbca32c63803152e2912c203543ed450a22ab07f0020ae2f1773c3d6a9de9",
+  "extraction": "First HTTP 200 response fenced block from the public Markdown source; fence removed, original response bytes preserved including terminal newline; no payload repair",
+  "modified": false,
+  "limitations": [
+    "Original source explicitly marks response truncated/shortened",
+    "Presentation evidence, not live telemetry or an executable validated official fixture",
+    "Original uppercase Type differs from lowercase type in targetResource schema"
+  ]
+}

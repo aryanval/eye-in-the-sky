@@ -1,0 +1,107 @@
+{
+  "dataset_id": "azure-activity-synthetic-v1",
+  "provider": "azure",
+  "source": "azure.activity",
+  "category": "synthetic",
+  "source_urls": [
+    "https://learn.microsoft.com/en-us/rest/api/monitor/activity-logs/list?view=rest-monitor-2015-04-01",
+    "https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/monitor",
+    "https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/management-and-governance"
+  ],
+  "license": "MIT",
+  "modified": false,
+  "generation": "Independently generated fictional EventData using scripts/generate_azure_activity.py and the public REST schema; identifiers, times, scopes, actors and operations were authored locally. No official sample values were repaired or relabeled.",
+  "limitations": [
+    "Synthetic labels do not establish production prevalence",
+    "No Azure activity was executed",
+    "Intent and change authorization exist only in separate evaluation labels",
+    "Missing fields and omitted records intentionally measure coverage gaps"
+  ],
+  "files": [
+    {
+      "path": "case-01.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "3b01767eb7330a95cb2f86a27196764cfaae372ef210ea8b0ec3ab9e82d30ec7"
+    },
+    {
+      "path": "case-02.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "3151b55c583bbf2ca524e9a1ef7f2c18fd0eec46e70d19592a0eb3d159ad0bfe"
+    },
+    {
+      "path": "case-03.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "265f8cdc6e0325af140bd92c0d8bc451eb0a9ef97e7f8eebe5dd61b75cad3f59"
+    },
+    {
+      "path": "case-04.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "0d16d168a5eaabdfe3c23825404029fe8f2f3daada38cadb24f52c569e72cff5"
+    },
+    {
+      "path": "case-05.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "390d42cefa76852f3518aca11c5d5c49d3e8eec0522cae78a410df0498cdcf5c"
+    },
+    {
+      "path": "case-06.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "74eb12dd66e539e4fcaa4234c6a1cec0ab4fae3cee298f84e2f5c556e2ae3282"
+    },
+    {
+      "path": "case-07.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "59520d3b59972b714d01bf38ef6bc7592d6e91ac3371abb3fc73a3e3499e3b67"
+    },
+    {
+      "path": "case-08.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "b60b7154fdd099550d3fefaaa29a04a0bfd0e9e900c123f5760f8e3b30109b74"
+    },
+    {
+      "path": "case-09.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "6f93b6f82fa45b531d85ed41d656fabcb1b636c1ae3c58632efeb572171c322b"
+    },
+    {
+      "path": "case-10.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "c09084f1ed5928bc2ac466418747391bc9638abf0a6ff9005fb6af7d84ac45ca"
+    },
+    {
+      "path": "case-11.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "9ff74b55de66fe5726adabd234d6f7c3ce64325cbf60ffadb1bb9ff7ebabb404"
+    },
+    {
+      "path": "case-12.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "e075fcefda5fbb3e60821434e8f780134b58ef34e3ed3a6d922010179438b758"
+    },
+    {
+      "path": "case-13.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "0b1520879f5327c951f21b02bc0beada8243da463e0455cbfaa2841371b7fd24"
+    },
+    {
+      "path": "case-14.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "3686be24d702fb35ce8366b734c41253d145518d2a524e239d93e22588fdf211"
+    },
+    {
+      "path": "case-15.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "0558e7505ce9693c28c40466c697904a17ad28e7301c5966b06b561105b96453"
+    },
+    {
+      "path": "case-16.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "3f71c46cfb285088c5eef4ea6f1193a0d6354bb68a260a6fb132a9eba2ac308b"
+    },
+    {
+      "path": "case-17.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "03b18073e02b7b07df8bdb1d079feb131e453081ee691279c32bbcc96ed2999f"
+    }
+  ]
+}

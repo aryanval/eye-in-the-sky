@@ -1,0 +1,111 @@
+{
+  "entries": [
+    {
+      "logName": "projects/eits-lab-007/logs/cloudaudit.googleapis.com%2Factivity",
+      "insertId": "d4f2918e066d5c3981eec673e918e68d",
+      "timestamp": "2025-04-05T12:00:00Z",
+      "resource": {
+        "type": "service_account",
+        "labels": {
+          "project_id": "eits-lab-007"
+        }
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "serviceName": "iam.googleapis.com",
+        "methodName": "google.iam.admin.v1.CreateServiceAccountKey",
+        "status": {
+          "code": 0
+        },
+        "authenticationInfo": {
+          "principalSubject": "user:operator@example.invalid",
+          "principalEmail": "operator@example.invalid"
+        },
+        "requestMetadata": {
+          "callerIp": "192.0.2.30",
+          "callerSuppliedUserAgent": "eits-synthetic/1"
+        },
+        "resourceName": "projects/eits-lab-007",
+        "request": {
+          "name": "projects/eits-lab-007/serviceAccounts/workload@eits-lab-007.iam.gserviceaccount.com"
+        },
+        "response": {
+          "@type": "type.googleapis.com/google.iam.admin.v1.ServiceAccountKey",
+          "name": "projects/eits-lab-007/serviceAccounts/workload@eits-lab-007.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000007",
+          "keyType": "USER_MANAGED"
+        }
+      }
+    },
+    {
+      "logName": "projects/eits-lab-007/logs/cloudaudit.googleapis.com%2Factivity",
+      "insertId": "1585720ae3b854449f945699755b812f",
+      "timestamp": "2025-04-05T12:05:00Z",
+      "resource": {
+        "type": "project",
+        "labels": {
+          "project_id": "eits-lab-007"
+        }
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "serviceName": "cloudresourcemanager.googleapis.com",
+        "methodName": "SetIamPolicy",
+        "status": {
+          "code": 7,
+          "message": "Permission denied"
+        },
+        "authenticationInfo": {
+          "principalSubject": "serviceAccount:workload@eits-lab-007.iam.gserviceaccount.com",
+          "principalEmail": "workload@eits-lab-007.iam.gserviceaccount.com",
+          "serviceAccountKeyName": "//iam.googleapis.com/projects/eits-lab-007/serviceAccounts/workload@eits-lab-007.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000007"
+        },
+        "requestMetadata": {
+          "callerIp": "192.0.2.30",
+          "callerSuppliedUserAgent": "eits-synthetic/1"
+        },
+        "resourceName": "projects/eits-lab-007",
+        "request": {
+          "resource": "eits-lab-007",
+          "policy": {
+            "bindings": [
+              {
+                "role": "roles/editor",
+                "members": [
+                  "user:recipient@example.invalid"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "logName": "projects/eits-lab-007/logs/cloudaudit.googleapis.com%2Factivity",
+      "insertId": "a72e3bbb5200550db184201544cbb12e",
+      "timestamp": "2025-04-05T12:02:00Z",
+      "resource": {
+        "type": "project",
+        "labels": {
+          "project_id": "eits-lab-007"
+        }
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "serviceName": "cloudresourcemanager.googleapis.com",
+        "methodName": "GetIamPolicy",
+        "status": {
+          "code": 0
+        },
+        "authenticationInfo": {
+          "principalSubject": "user:operator@example.invalid",
+          "principalEmail": "operator@example.invalid"
+        },
+        "requestMetadata": {
+          "callerIp": "192.0.2.30",
+          "callerSuppliedUserAgent": "eits-synthetic/1"
+        },
+        "resourceName": "projects/eits-lab-007"
+      }
+    }
+  ]
+}

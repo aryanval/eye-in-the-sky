@@ -1,0 +1,6 @@
+{
+  "HUNT-002": {
+    "provider": "azure", "source": "azure.entra.signin", "sql_path": "sql/HUNT-002.sql",
+    "min_hours_exclusive": 0, "max_hours_inclusive": 744
+  }
+}

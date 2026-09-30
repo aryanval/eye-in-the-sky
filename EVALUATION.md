@@ -1,11 +1,11 @@
-# Evaluation — observed Phase 1 results
+# Evaluation — observed synthetic-corpus results
 
 Metrics below come from executable SQL against the committed synthetic corpus.
 They are not estimates of production detection performance. No precision/recall
 target was used as a completion criterion; correct execution, defensible scoring
 and visible limitations are the criteria.
 
-## Corpus and independent labels
+## Preserved AWS corpus and independent labels
 
 [ground_truth.json](evaluation/ground_truth.json) contains 24 scenario narratives
 and labels, physically separate from [telemetry](fixtures/aws/synthetic/).
@@ -28,7 +28,7 @@ but retained full-corpus findings; it must not be represented as a blinded trial
 
 The primary unit is a rule/scenario alert opportunity, not an individual log line.
 
-- TP: a malicious scenario has a finding containing its exact expected event pair.
+- TP: a malicious scenario has a finding containing its exact expected event UID set.
 - FN: a malicious scenario has no correctly evidenced finding, including missing
   telemetry, timing-window and unsupported-credential-path misses.
 - FP: a benign scenario alerts. Wrong-evidence findings in malicious scenarios
@@ -44,7 +44,7 @@ Precision = TP / (TP + FP). Recall = TP / (TP + FN). A zero denominator yields
 view, never a replacement for the overall result. It still includes timing and
 credential-chain misses when the scenario's supplied telemetry is complete.
 
-## Baseline and candidate
+## Preserved AWS baseline and candidate
 
 | Rule / revision | TP | FP | FN | TN | Precision | Overall recall | Complete-telemetry recall |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -115,7 +115,7 @@ rule-catalog hash and hashes of all packaged Python/SQL/rule metadata. Current
 code hashes therefore differ from the original Phase 1 report. Historical reports
 are never rewritten to hide this change.
 
-Expected evidence may contain any positive number of events. Future corpora can
+Expected evidence may contain any positive number of events. The Phase 2 corpora
 use `anchor_event_uids`/`available_event_uids`; these identify exact evidence even
 when provider source IDs repeat. The legacy AWS anchor format remains supported
 only when source IDs are unambiguous in the evaluation database. Shared evidence
@@ -133,3 +133,60 @@ The small corpus cannot establish population precision, confidence bounds,
 throughput, complete ATT&CK coverage or production suitability. Repeated noise
 does not create new independent attack trials. Official AWS examples test parsing;
 they are not counted as synthetic malicious/benign evaluation scenarios.
+
+## Phase 2 results
+
+The four new rules have independently authored malicious cases, authorized
+lookalikes, ambiguous cases, deliberate missing telemetry and background activity.
+Labels and exact UID anchor sets remain outside detector input. These diagnostic
+corpora are not blind holdouts and do not establish population performance. No
+Phase 2 rule was tuned to reach a target score; the initial shipped logic and
+its less favorable misses are retained. Precision corrections for types and
+timestamp boundaries enforce the documented predicates without changing scores.
+
+| Rule | TP | FP | FN | TN | Precision | Recall | Complete-telemetry recall | Ambiguous alerts / cases |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| EITS-AZURE-001 | 2 | 2 | 7 | 5 | 50.0% | 22.2% | 40.0% | 1 / 1 |
+| EITS-ENTRA-001 | 3 | 2 | 6 | 5 | 60.0% | 33.3% | 75.0% | 1 / 2 |
+| EITS-GCP-001 | 2 | 1 | 6 | 5 | 66.7% | 25.0% | 40.0% | 1 / 1 |
+| EITS-GCP-002 | 2 | 2 | 5 | 5 | 50.0% | 28.6% | 66.7% | 1 / 1 |
+
+Full machine-readable reports include scenario outcomes, query/code/input hashes,
+all findings and exact-evidence verification:
+
+- [Azure Activity](evaluation/phase2-azure-activity.json) and [truth](evaluation/azure-activity-ground-truth.json).
+- [Entra directory audits](evaluation/phase2-entra.json) and [truth](evaluation/entra-ground-truth.json).
+- [GCP](evaluation/phase2-gcp.json) and [truth](evaluation/gcp-ground-truth.json).
+- [AWS baseline replay](evaluation/phase2-aws-baseline.json) and [preserved candidate replay](evaluation/phase2-aws-restart-aware.json).
+
+Authorized logging maintenance followed by role assignment can match Azure's
+sequence. App provisioning can match Entra's two administrative changes. Key
+rotation followed by IAM administration can match GCP-001; approved public
+publication can match GCP-002. Intent is deliberately unavailable to the SQL.
+Delays, different actors or scopes, missing successful status, absent response
+fields/events and unsupported role or policy representations retain visible FNs.
+Per-case reasons are in the ground truth and linked rule designs.
+
+Complete-telemetry recall uses the corpus's separate completeness labels; it does
+not exclude supported-field sequences merely because a rule misses them. For a
+single-event rule, missing telemetry includes fields omitted from that record
+or an entirely absent expected event. Absent anchors remain FNs. The scorer
+requires the full expected set: a wrong or incomplete evidence set cannot earn TP.
+
+```sh
+.venv/bin/python -m eits evaluate --manifest fixtures/azure/activity/synthetic/manifest.json --truth evaluation/azure-activity-ground-truth.json
+.venv/bin/python -m eits evaluate --manifest fixtures/azure/entra-audit/synthetic/manifest.json --truth evaluation/entra-ground-truth.json
+.venv/bin/python -m eits evaluate --manifest fixtures/gcp/synthetic/manifest.json --truth evaluation/gcp-ground-truth.json
+```
+
+The sign-in corpus validates parsing and HUNT-002 behavior; it has no alert rule
+and therefore no detection FP/FN score. Hunts produce investigative leads, not
+classified alerts. Official AWS and Azure events validate parsing/evidence and
+are excluded from synthetic detection metrics. Abbreviated Graph/GCP excerpts
+are documentation evidence, not complete official-fixture validation.
+
+Phase 2 keeps report schema version 2. Evaluation now selects rules matching the
+manifest provider/source, so AWS reports still contain exactly the two AWS rules.
+Added package resources change runtime/registry hashes; original AWS input hashes,
+authored SQL hashes, event/finding IDs, scenario scores and saved reports remain
+unchanged. No schema migration is introduced.

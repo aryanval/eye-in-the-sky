@@ -1,0 +1,33 @@
+{
+  "dataset_id": "entra-signin-synthetic-v1",
+  "provider": "azure",
+  "source": "azure.entra.signin",
+  "collection_scope": {
+    "scope_type": "azure.tenant",
+    "scope_id": "80d88ef0-c29c-5ada-8739-9196a5a429f1",
+    "tenant_id": "80d88ef0-c29c-5ada-8739-9196a5a429f1"
+  },
+  "category": "synthetic",
+  "source_urls": [
+    "https://learn.microsoft.com/en-us/graph/api/resources/directoryaudit?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/graph/api/resources/targetresource?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/graph/api/resources/signin?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/graph/api/resources/signinstatus?view=graph-rest-1.0",
+    "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/reference-audit-activities"
+  ],
+  "license": "MIT",
+  "modified": true,
+  "generation": "scripts/generate_entra.py; independently generated values using public Graph v1.0 resource properties and audit activity names, not repaired vendor examples",
+  "limitations": [
+    "Fictional records, not live tenant telemetry",
+    "Audit target typing and operation-specific payload coverage are schema-based assumptions, not live validation",
+    "No role sensitivity, credential use, or actor authorization is established"
+  ],
+  "files": [
+    {
+      "path": "signins.json",
+      "format": "graph-signin-json",
+      "sha256": "4ec1672f01ea44bf181dd22931ac996fbc4453ffebc0e38ebbf8db24eb5da4bc"
+    }
+  ]
+}

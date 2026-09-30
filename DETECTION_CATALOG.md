@@ -1,8 +1,8 @@
-# Detection catalog — Phase 1
+# Detection catalog
 
-Both rules are original SQL, not copied employer rules or converted commercial
-content. Machine-readable metadata lives in [catalog.json](src/eits/rules/catalog.json).
-Both use recorded event time: **0 < elapsed <= 1,800 seconds**. Equal timestamps
+Six original SQL detections execute through the same rule registry and evidence
+interface. The two preserved AWS rules below have metadata in
+[catalog.json](src/eits/rules/catalog.json). Their recorded-time window is: **0 < elapsed <= 1,800 seconds**. Equal timestamps
 do not establish ordering. Unknown outcomes do not satisfy success predicates.
 Severity denotes investigation priority, not a proven malicious verdict.
 
@@ -106,3 +106,29 @@ supporting events, verified source references, a context timeline, observed fact
 a marked inference and unresolved questions. `eits event EVENT_ID` opens a raw
 record. Summaries and fixture ground-truth labels are never substituted for source
 evidence.
+
+## Phase 2 detections
+
+These four designs document exact public fields, security relevance, benign
+workflows and unresolved facts before the executable predicates. Three correlate
+ordered events with **0 < elapsed <= 1,800 seconds**; one evaluates a single
+policy-change record. All require explicit successful outcomes.
+
+| Rule | Source | Supporting events | Design, metadata and executable SQL |
+|---|---|---:|---|
+| EITS-AZURE-001 | Azure Activity | 2 | [Diagnostic-setting deletion followed by role assignment](docs/detections/EITS-AZURE-001.md) |
+| EITS-ENTRA-001 | Entra directory audit | 2 | [Service-principal credential addition followed by app-role assignment](docs/detections/EITS-ENTRA-001.md) |
+| EITS-GCP-001 | GCP Audit | 2 | [New service-account key used to set project IAM policy](docs/detections/EITS-GCP-001.md) |
+| EITS-GCP-002 | GCP Audit | 1 | [Public principal added to bucket object-access policy](docs/detections/EITS-GCP-002.md) |
+
+Azure role assignment does not imply an administrator role. The Entra generic
+record does not establish assignment direction, role sensitivity or credential
+use. GCP SetIamPolicy can remove permissions; a public-principal delta does not
+prove effective public access or data exposure. Those limits remain explicit in
+observed facts, inference and unresolved questions. There is no cross-cloud
+identity correlation.
+
+Every rule has malicious, benign, ambiguous, missing-telemetry and background
+fixtures. [EVALUATION.md](EVALUATION.md) reports retained FP/FN behavior. No Phase 2
+rule was tuned against scenario labels; no alternate candidate is hidden. The
+original AWS restart-aware candidate remains available and is not a seventh rule.

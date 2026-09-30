@@ -1,71 +1,80 @@
 # Data sources and provenance
 
-No employer/customer repository, data, prompts, schemas, architecture, detections
-or incident sequences were inspected or reused. No telemetry was sanitized from
-work systems or reconstructed from memory. All scenario details were invented
-for this project using the public references below.
+Implementation and synthetic scenarios are independently authored using public
+vendor schemas and examples. Synthetic identities, times, actions and intent
+labels are fictional. Runtime validation needs no cloud account or credentials.
 
-Every import requires a manifest declaring provider, source format, source URLs,
-license/usage status, modification status, limitations and file hashes. The four
-recognized categories are `official sample`, `synthetic`, `public dataset`, and
-`personally generated live event`. A public URL alone is not an open license.
+Every import requires a manifest declaring provider/source, format, source URLs,
+license/usage, modifications, limitations and file hashes. Categories are
+`official sample`, `synthetic`, `public dataset`, and `personally generated live event`.
+A public URL alone is not an open license. This release includes only the first
+two categories; **live validation remains NO for every source**.
 
-## Included dataset inventory
+## Included source inventory
 
-| Dataset | Provider/source | Category | Source URL | License / usage | Modified? | Limitations |
-|---|---|---|---|---|---|---|
-| `aws-official-examples-v1` | AWS CloudTrail | official sample | [AWS example logs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html) | Documentation excerpts attributed under CC BY-SA 4.0; AWS separately licenses embedded code MIT-0 | No event values changed; HTML code-block text extracted and complete API examples selected | Seven illustrative events; placeholders; not live personal telemetry, production prevalence or comprehensive schema coverage |
-| `aws-synthetic-scenarios-v1` | AWS CloudTrail-shaped JSON | synthetic | [CloudTrail record reference](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html) plus the API references below | Original project content under MIT | Independently generated; not modified employer or vendor event records. Deliberate omissions belong to the scenario design | 24 author-defined scenarios, fictional authorization labels, incomplete cases and repeated background; no actual AWS execution |
+| Source | Supported representation | Official executable fixtures | Independently generated corpus | Exact mappings and public references |
+|---|---|---|---|---|
+| AWS CloudTrail | Event object, `Records` wrapper, JSONL | Seven unchanged selected API examples | 24 scenarios; 240 unique events, 264 deliveries | [CloudTrail record reference](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html), [mapping](ARCHITECTURE.md#normalized-model-and-mapping) |
+| Azure Activity | REST EventData object or `value` collection, API 2015-04-01 | One unchanged event from Microsoft REST API specification | 17 scenarios; 84 events | [Source details](docs/sources/azure-activity.md) |
+| Entra sign-ins | Graph v1.0 signIn object or `value` collection | None; original abbreviated HTTP excerpt retained | 13 records for exploratory hunt validation | [Source details](docs/sources/entra.md) |
+| Entra directory audits | Graph v1.0 directoryAudit object or `value` collection | None; original abbreviated HTTP excerpt retained | 18 scenarios; 69 events | [Source details](docs/sources/entra.md) |
+| GCP Cloud Audit Logs | LogEntry AuditLog object, array or `entries` collection | None; original abbreviated excerpts retained | 30 scenarios across two rules; 73 events | [Source details](docs/sources/gcp.md) |
 
-File-level provenance is in the [official manifest](fixtures/aws/official/manifest.json)
-and [synthetic manifest](fixtures/aws/synthetic/manifest.json). The former records
-the public page retrieval timestamp and page hash. Both enumerate every fixture
-file and SHA-256. Evaluation labels are independently stored in
-[ground_truth.json](evaluation/ground_truth.json), and result files are derived
-evaluation artifacts rather than another telemetry source.
+The executable manifests are under `fixtures/aws/{official,synthetic}`,
+`fixtures/azure/activity/{official,synthetic}`,
+`fixtures/azure/entra-{signin,audit}/synthetic` and `fixtures/gcp/synthetic`.
+They enumerate file hashes and contain full provenance. Scenario truth is
+separately stored under `evaluation/`; result reports are derived artifacts,
+not another telemetry source. Background noise is included in the event totals.
 
-Official samples cover StartInstances, StopInstances, CreateKeyPair, CreateUser,
-AddUserToGroup, CreateRole and a failed UpdateTrail. They validate parser behavior;
-the two detection sequences are explicitly synthetic. Original example values
-remain unchanged, including public placeholder identifiers. See
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [AWS terms](https://aws.amazon.com/terms/).
+## Official examples and incomplete excerpts
 
-The synthetic generator uses these official operation references:
+The [AWS manifest](fixtures/aws/official/manifest.json) records extraction from
+[AWS example logs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html),
+retrieval timestamp, page hash and file hashes. The seven events cover
+StartInstances, StopInstances, CreateKeyPair, CreateUser, AddUserToGroup,
+CreateRole and failed UpdateTrail. Values are unchanged. These illustrate
+parsing; the detection sequences are synthetic.
 
-- [CreateAccessKey](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateAccessKey.html)
-- [AttachUserPolicy](https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachUserPolicy.html)
-- [AttachRolePolicy](https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachRolePolicy.html)
-- [StopLogging](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StopLogging.html)
-- [StartLogging](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html)
-- [AuthorizeSecurityGroupIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeSecurityGroupIngress.html)
+The [Azure manifest](fixtures/azure/activity/official/manifest.json) identifies
+the complete original Microsoft REST API example and the exact byte substring
+extracted as its response body. Both artifacts are retained; no event values or
+placeholder text are edited.
 
-Synthetic IPs use documentation ranges. Account IDs, principals, credentials and
-event UUIDs are invented; key identifiers have no associated secret credentials.
-Source filenames and scenario labels do not participate in detection predicates.
-The scenario time origin is fictional and has no connection to any incident.
+Entra examples are explicitly shortened and one has invalid JSON punctuation;
+the directory-audit excerpt also has presentation/schema casing differences.
+GCP examples explicitly show only relevant fields and the key-creation excerpt
+has invalid JSON punctuation. Files under those sources' `documentation/`
+directories preserve the original excerpts, hashes, URLs, extraction method and
+notices. **They are not silently repaired or imported as complete official fixtures.**
+A GCP test parses the valid partial excerpt only to check missing-value behavior;
+that is not complete official-fixture validation.
 
-## Reproducibility and acquisition
+Vendor material retains its upstream terms. AWS documentation excerpts use
+CC BY-SA 4.0 attribution, with separate MIT-0 code terms. Microsoft's REST API
+specification example is MIT. Microsoft Graph documentation is CC BY 4.0 with
+MIT code terms. Google's documentation uses CC BY 4.0 and its code samples
+Apache-2.0, subject to page-specific notices. See [notices](THIRD_PARTY_NOTICES.md)
+and each source's retained provenance for attribution and exact transformations.
 
-`scripts/generate_synthetic.py` deterministically emits the committed synthetic
-files and separate label manifest. It runs no attack commands or cloud API calls.
-`scripts/source_official.py` fetches only the named public AWS documentation page.
-It is an optional source-maintenance operation, not part of installation, testing,
-evaluation or the walkthrough. Re-fetching requires reviewing changes, notices
-and dataset versioning before accepting new evidence. Existing evaluations are
-never silently updated to match new inputs.
+## Synthetic generation and reproduction
 
-## Researched references reserved for later phases
+The generators run locally with no API calls or attack commands:
 
-These links form the source inventory for the next phase. They are **not imported
-datasets, implemented parsers or validated telemetry** in Phase 1. Keeping a
-source inventory does not establish implemented or validated provider support.
+- `scripts/generate_synthetic.py`: preserved AWS corpus and labels.
+- `scripts/generate_azure_activity.py`: new REST EventData and UID anchors.
+- `scripts/generate_entra.py`: new Graph audit/sign-in objects and audit UID anchors.
+- `scripts/generate_gcp.py`: new AuditLog LogEntry records and UID anchors.
 
-| Planned source | Public schema/example | Usage status and limits |
-|---|---|---|
-| Azure Activity | [REST/portal schema and samples](https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/activity-log-schema) | Export shapes differ. Microsoft documentation repository uses [CC BY 4.0](https://github.com/MicrosoftDocs/azure-monitor-docs/blob/main/LICENSE) with a separate [MIT code license](https://github.com/MicrosoftDocs/azure-monitor-docs/blob/main/LICENSE-CODE). No dataset imported. |
-| Entra sign-ins | [Graph v1.0 schema](https://learn.microsoft.com/en-us/graph/api/resources/signin?view=graph-rest-1.0), [responses](https://learn.microsoft.com/en-us/graph/api/signin-list?view=graph-rest-1.0) | Static references require no tenant. Actual API access has separate permissions/licensing requirements; no API collection planned in Phase 1. |
-| Entra audits | [Graph v1.0 schema](https://learn.microsoft.com/en-us/graph/api/resources/directoryaudit?view=graph-rest-1.0), [responses](https://learn.microsoft.com/en-us/graph/api/directoryaudit-list?view=graph-rest-1.0) | Graph documentation has [CC BY 4.0](https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE) and a separate [MIT code license](https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE-CODE). No dataset imported. |
-| GCP Cloud Audit Logs | [LogEntry](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry), [AuditLog](https://docs.cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog), [service-account examples](https://docs.cloud.google.com/iam/docs/audit-logging/examples-service-accounts) | The examples include abbreviated records and some presentation syntax unsuitable for direct JSON parsing. Any future repair/addition must be disclosed. Documentation states CC BY 4.0 / Apache 2.0 for code samples. No dataset imported. |
+They generate fictional IDs, documentation/example addresses, timestamps,
+operation fields, deliberate omissions and background activity. No actual secret
+credentials are generated. Fields are based on the public schema; operation-specific
+coverage limits are stated in the linked designs. The original vendor excerpts
+are not templates that get repaired into executable fixtures. Source filenames,
+authorization narratives and labels never participate in detection predicates.
 
-There are no openly licensed third-party security datasets or personally generated
-live events in this release. No personal AWS, Azure or GCP account was created.
+Generators reproduce committed fixtures and truth byte for byte in tests. The
+optional AWS `scripts/source_official.py` fetcher is separate from runtime,
+installation, tests and demonstration. Re-fetching any vendor source requires
+reviewing provenance, notices and dataset versioning; existing reports are retained.
+There is no external security dataset or production prevalence estimate.

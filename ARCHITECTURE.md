@@ -2,8 +2,8 @@
 
 One Python process, one local DuckDB database, SQL files and a CLI. Source
 adapters own parsing and normalization; one shared ingestion engine owns
-provenance, transactions, conflicts and storage. AWS CloudTrail is the only
-implemented parser at this architecture milestone.
+provenance, transactions, conflicts and storage. Five source adapters implement
+AWS CloudTrail, Azure Activity, Entra sign-ins/audits and GCP Cloud Audit Logs.
 
 ```mermaid
 flowchart LR
@@ -56,15 +56,15 @@ The registry recognizes these distinct source namespaces:
 | Source | Parser status | Scope namespaces |
 |---|---|---|
 | `aws.cloudtrail` | Implemented | `aws.account` |
-| `azure.activity` | Reserved; not implemented | `azure.subscription`, `azure.tenant` |
-| `azure.entra.signin` | Reserved; not implemented | `azure.tenant` |
-| `azure.entra.audit` | Reserved; not implemented | `azure.tenant` |
-| `gcp.audit` | Reserved; not implemented | `gcp.project`, `gcp.organization`, `gcp.folder` |
+| `azure.activity` | Implemented | `azure.subscription` (this REST representation) |
+| `azure.entra.signin` | Implemented | `azure.tenant` |
+| `azure.entra.audit` | Implemented | `azure.tenant` |
+| `gcp.audit` | Implemented | `gcp.project`, `gcp.organization`, `gcp.folder` |
 
-Reserved adapters fail explicitly before import. Recognition in the registry is
-not parser validation or cloud support. Tests inject small, fictional adapters
-to check the shared contract; these are not Azure/Entra/GCP implementations.
-`eits status` lists registered sources and their implementation status.
+Unsupported formats fail explicitly. See [DATA_SOURCES.md](DATA_SOURCES.md) for
+the exact supported representations and official versus synthetic validation.
+Shared-contract tests also inject fictional adapters independently of the real
+provider tests. `eits status` lists implemented sources and actual local imports.
 
 ## Scope and identity
 
@@ -78,15 +78,29 @@ For the implemented CloudTrail adapter, `scope_type` is `aws.account`, `scope_id
 is `recipientAccountId` falling back to `userIdentity.accountId`, and `tenant_id`
 is NULL. `account_id` retains the same AWS value for existing SQL and callers;
 it is a compatibility field, not a universal cloud scope. Original provider
-values remain in `extensions` and `raw`. Field mappings for reserved adapters
-will be defined with their individual parsers; no Azure/GCP mapping runs today.
+values remain in `extensions` and `raw`.
+
+| Source | `scope_type` / `scope_id` | `tenant_id` |
+|---|---|---|
+| Azure Activity REST | `azure.subscription` / `subscriptionId` or explicit collection subscription | raw `tenantId` or explicit collection tenant; never token tenant |
+| Entra sign-ins/audits | `azure.tenant` / explicit manifest collection tenant | same collection tenant; never guest home tenant |
+| GCP Audit | `gcp.project`, `gcp.organization`, or `gcp.folder` / the corresponding `logName` prefix ID | NULL |
+
+GCP scope is log ownership, not necessarily the affected resource owner. Billing
+account log scopes remain unknown. Missing scopes do not establish a join.
+See the exact [Azure](docs/sources/azure-activity.md), [Entra](docs/sources/entra.md)
+and [GCP](docs/sources/gcp.md) field mappings and limitations. Other providers leave
+the AWS `account_id` compatibility field NULL.
 
 Source-ID conflict checks use the complete tuple `(provider, source, scope_type,
 scope_id, tenant_id, source_event_id)`. Distinct payloads under that tuple are
 rejected. NULL scope values compare conservatively within their source for
 conflict detection; this does not establish identity equivalence. A source ID
 reused in another provider, source, tenant or typed scope cannot conflict solely
-because its text matches.
+because its text matches. For GCP, `source_event_id` is canonical
+`[insertId, original_timestamp_text]`, following the documented timestamp/insert-ID
+identity within a log-owning scope. It is not a globally unique insertId.
+Equivalent timestamp spellings are not collapsed; original fields are retained.
 
 AWS event UIDs retain the published `evt_` plus SHA-256 of canonical raw JSON.
 Other source domains use `evt_v2_` plus SHA-256 of the canonical JSON array
@@ -100,6 +114,9 @@ keys. No component infers equivalence between accounts, tenants or principals
 from those strings.
 
 ## Database migration
+
+Phase 2 introduces **no additional schema migration**; it uses version 2 from
+the reviewed architecture refactor. Provider details reside in existing JSON fields.
 
 Schema version **2** adds nullable `scope_type`, `scope_id` and `tenant_id` to
 `events`. Opening a version-1 database performs the additive migration in one
@@ -117,7 +134,7 @@ uses a fresh database or an original version-1 copy.
 | `event_uid` | Historical AWS `evt_` + SHA-256 of canonical original event JSON |
 | `source_event_id` | `eventID`; may be absent, and is never assumed globally unique |
 | `timestamp` | `eventTime` converted to UTC; missing stays NULL, invalid/naive timestamps reject import |
-| `provider`, `source` | `aws`, `aws.cloudtrail` in this phase |
+| `provider`, `source` | `aws`, `aws.cloudtrail` for CloudTrail |
 | `account_id` | `recipientAccountId`, falling back to `userIdentity.accountId` |
 | `scope_type`, `scope_id`, `tenant_id` | `aws.account`, the same resolved AWS account ID, and NULL |
 | `region` | `awsRegion` |
@@ -178,9 +195,15 @@ timeline uses the supporting events' typed scopes and timestamp bounds, rather
 than requiring start/end columns or an AWS account. Observed facts, inference
 and unresolved facts remain separate; contextual inclusion is not causality.
 
-The current hunt left-joins credential creation to subsequent use over a configurable
-window (24 hours by default), preserving unused and unresolvable creations.
-Its counts describe observed input, not a learned baseline or a malicious verdict.
+There are three [hunts](HUNTS.md): AWS credential use, Entra sign-in investigation,
+and GCP key creation/use. Their 24-hour defaults are observation windows, not
+learned baselines or malicious verdicts. Missing identity and unused/unresolvable
+credentials remain visible where the corresponding query permits.
+
+The common timestamp remains microsecond precision. New source adapters retain
+submicrosecond remainders in extensions; their time-window rules use those
+remainders to respect exact boundaries for up to nine fractional digits. Original
+timestamp text and raw event identity remain intact. See per-source contracts.
 
 ## Evaluation compatibility
 
@@ -192,6 +215,8 @@ scenarios remain unscored. Shared events can support different rules.
 The original AWS corpus retains its `anchor_event_ids`/`available_event_ids`
 format. Corpora with reused source IDs must use `anchor_event_uids` and
 `available_event_uids`, so scope collisions cannot be scored as correct evidence.
+Evaluation filters the rule registry to the imported manifest's provider/source,
+so adding sources does not insert unrelated zero-count rules into AWS reports.
 Saved Phase 1 reports are immutable. Refactor reports reproduce their findings,
 scenario outcomes, metrics, evidence IDs and input/query-file hashes while
 truthfully recording new runtime code, schema and execution metadata.

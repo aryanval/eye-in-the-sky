@@ -9,6 +9,9 @@ Its validation environment and byte-identical replay claims refer to that
 milestone. Subsequent architecture changes preserve these result files and AWS
 behavior while recording their own code hashes and schema version.
 
+Current implementation status is recorded in [PHASE2_REPORT.md](PHASE2_REPORT.md).
+All scope statements below describe the historical Phase 1 milestone.
+
 ## Completion criteria
 
 | Criterion | Result | Evidence and boundary |
@@ -116,7 +119,7 @@ benchmark; the first development report also retained full-corpus findings.
 
 ## Remaining boundaries
 
-No employer/customer material was used. Official samples retain their vendor
+Official samples retain their vendor
 attribution and license terms; original implementation and synthetic fixtures
 use the project's MIT license. Source categories distinguish vendor examples
 from fictional sequences, public datasets and personally generated events.

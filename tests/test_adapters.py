@@ -16,6 +16,7 @@ from eits.adapters.aws import CloudTrailAdapter
 from eits.db import connect, evidence, ingest, rows
 from eits.engine import detect
 from eits.model import Event, canonical, digest, event_uid, normalize
+from eits.registry import RuleRegistry
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -141,19 +142,23 @@ class AdapterTests(unittest.TestCase):
             self.connection, write_manifest(self.path, events, **kwargs), registry=self.registry
         )
 
-    def test_catalog_separates_reserved_sources_from_implemented_parsers(self):
+    def test_catalog_lists_five_implemented_sources(self):
         catalog = source_catalog()
         self.assertEqual(
-            [entry["source"] for entry in catalog if entry["implemented"]], ["aws.cloudtrail"]
+            [entry["source"] for entry in catalog if entry["implemented"]],
+            [
+                "aws.cloudtrail",
+                "azure.activity",
+                "azure.entra.signin",
+                "azure.entra.audit",
+                "gcp.audit",
+            ],
         )
         self.assertEqual(len(catalog), 5)
         registry = AdapterRegistry()
-        for entry in catalog[1:]:
-            with (
-                self.subTest(source=entry["source"]),
-                self.assertRaisesRegex(ValueError, "not implemented"),
-            ):
-                registry.get(entry["provider"], entry["source"])
+        for entry in catalog:
+            with self.subTest(source=entry["source"]):
+                self.assertTrue(registry.get(entry["provider"], entry["source"]).formats)
         with self.assertRaisesRegex(ValueError, "mismatch"):
             registry.get("gcp", "aws.cloudtrail")
         with self.assertRaisesRegex(ValueError, "unknown source"):
@@ -462,7 +467,8 @@ class MigrationTests(unittest.TestCase):
             table: rows(con, f"SELECT * FROM {table}")
             for table in ("events", "artifacts", "datasets", "occurrences")
         }
-        findings = detect(con)
+        # The unmigrated v1 schema can execute only the preserved AWS rules.
+        findings = detect(con, registry=RuleRegistry.packaged().for_source("aws", "aws.cloudtrail"))
         con.close()
         migrated = connect(self.path)
         try:

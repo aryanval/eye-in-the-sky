@@ -1,0 +1,738 @@
+{
+  "report_version": 2,
+  "rule_revision": "baseline",
+  "split": "all",
+  "schema_version": 2,
+  "unit": "One rule/scenario alert opportunity; duplicate findings cannot increase TP. Wrong-evidence or unassigned findings are FP. Ambiguous cases are unscored.",
+  "limitation": "Metrics are specific to original synthetic fixtures. This is not a production-performance estimate or an independently blinded benchmark.",
+  "dataset_id": "azure-activity-synthetic-v1",
+  "manifest_sha256": "1b5354e74da6658538b044f2c0989017739f68b4048b8f3b6cb3c2b358fb3a07",
+  "ground_truth_sha256": "2fc5e45e9ecab0a60a11ded782960e22dfd16947cf7528757ebbd7e2fd265bdb",
+  "ingestion": {
+    "dataset_id": "azure-activity-synthetic-v1",
+    "records_processed": 84,
+    "new_events": 84,
+    "total_events": 84
+  },
+  "python_version": "3.14.6",
+  "duckdb_version": "1.5.6",
+  "code_sha256": {
+    "__init__.py": "2720d571123e8bcc8d6dca7bac5c67841655f677bd1eb14ac32b41a79d5903d0",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "adapters/__init__.py": "7d7e1dd9c12720321d87678896fe59cd447e5cfa9261f897040d8f7c76f8bedf",
+    "adapters/aws.py": "80df907f4bec603653d8b1f7f203e565846801ae89d6e7bb1b12d3a00d7b2662",
+    "adapters/azure_activity.py": "e6c7bf9d8643a8fb12b82f9316cb5e1ddab3aaa48a417660cd51a470ea0c043f",
+    "adapters/entra.py": "c5f6eb73729854b200a3e54c79ff08ecb8cb43078e0b2d805c5ab76a58951857",
+    "adapters/gcp.py": "ed8341d498a7e511f11aa741ddc27b5fb828e6428b861b23c87ef79756d05cb2",
+    "cli.py": "d7c1af275967eb8ce9d0b089ac15fd987251a5678f2b7218a2f597e8cfba2d7a",
+    "db.py": "f2c1e1bc0f5dd15c62089e8d19e2166f969b6c936a859bd85cfbb97bfc745877",
+    "engine.py": "d911306dc4a09bc7e3ae1bfdb50c9a6414bf789e85af016220c2dfeb7d05695e",
+    "evaluation.py": "698d884c16d0a8e33f11de4cc19453c924023f6583307f9f7355a99468b1403d",
+    "model.py": "11717ee6004d2d73603ac05b4513a171f05aefb0bd1bcc38b0f1c634aefe7250",
+    "registry.py": "b0067b253fcccbc11905ca85d7bc28edb37a692d5ea5b061a6cbfdc86691ff11"
+  },
+  "resource_sha256": {
+    "rules/azure-activity.json": "608a8e80cd10f729c39a9c7df76b4fcd904c49113e8b50a1de54e8dedab28c58",
+    "rules/catalog.json": "6809b91f0c2133009a67a902dce466f88ec6ce7625a6b0935a11df06383987bc",
+    "rules/entra.json": "c2ee7d0b09656d237e2d22740ca30a1381cb5c609e1a908436c81a2b39e30dbf",
+    "rules/gcp.json": "5751b7a38ddc05cf9ff042cb746790d831ed58cb1dbb25f4880f85c74758eb62",
+    "rules/hunts-entra.json": "51bf7ca5733f3845c3cd27a287f7ddfb94e083877e7ab4da5c7c055b0d23c5bf",
+    "rules/hunts-gcp.json": "fa7b21e3fe8b3ac304c080bb233075cc949f1d2d02c494b68b2d4992a24c72fa",
+    "rules/hunts.json": "4fcb36a0b542eeca35ea064c50e86550ec5000b155a93c8e9274489b3975990f",
+    "rules/registry.json": "373eaefd2eb89e7bca18db63d88eb614cc2d4ab48539a32d3673058ad6926d74",
+    "rules/restart-aware.json": "011d3b261f7e96b0f97e70c89ce461ae480a5bee912bf69f902ad718d8850867",
+    "sql/EITS-AWS-001.sql": "db4f17fb86c51705755fb8926da0f65447c446733a0e64307a4bcbf655cdbb8e",
+    "sql/EITS-AWS-002-restart-aware.sql": "b6138042c736766cebba3e5f02ea837318cf833e4dc49c8a2970bf66a336d2b7",
+    "sql/EITS-AWS-002.sql": "8d0df93920f60d41e47eb63833a3f86460424ddcc5cb75f56be483882d03b596",
+    "sql/EITS-AZURE-001.sql": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d",
+    "sql/EITS-ENTRA-001.sql": "6356de0b187e336088ff9bf5c9ac80ccd3bbcd838aefedbd23de5a656eb3ce4c",
+    "sql/EITS-GCP-001.sql": "3a4e49b5763f263c1f7df919a9c64ce4e9b7a9783069554b8e77ac8f7f30a2d1",
+    "sql/EITS-GCP-002.sql": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e",
+    "sql/HUNT-001.sql": "2b108aab3a31d0accf4beb30b8d029e197f4dd27e65972e98b57187cb462cc6a",
+    "sql/HUNT-002.sql": "58da71ddefe6bd03d4954ae9cf1ab4753ffc261f2773ac2480dc5fb534636292",
+    "sql/HUNT-003.sql": "68e8632921a990d0f2baae97294c06305f6174d0c928891e80df75b723fa7e66",
+    "sql/schema-v1-to-v2.sql": "ee0976eeebf8dfa77ce862f6a92f67d8eb08a613e76d75a8486e2042bf379847",
+    "sql/schema.sql": "e0e3654f11d92db66dc840733afca47903bb53a5a1e4678a9a9b2e5b5a8c4c88"
+  },
+  "rule_catalog_sha256": "ab7365f6e4fbe55879d48695821164fb55b2b12690b6614879e337e14d56a253",
+  "sql_sha256": {
+    "EITS-AZURE-001": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d"
+  },
+  "executed_query_sha256": {
+    "EITS-AZURE-001": "2c789a35eacaa9b78e1927ec5749e1d97a240e7eee1d052afa5f86236eb410bb"
+  },
+  "execution_scope": {
+    "EITS-AZURE-001": {
+      "provider": "azure",
+      "source": "azure.activity"
+    }
+  },
+  "evidence_events_verified": 10,
+  "rules": {
+    "EITS-AZURE-001": {
+      "metrics": {
+        "tp": 2,
+        "fp": 2,
+        "fn": 7,
+        "tn": 5,
+        "ambiguous": 1,
+        "ambiguous_alerted": 1,
+        "complete_telemetry_tp": 2,
+        "complete_telemetry_fn": 3,
+        "duplicate_findings": 0,
+        "precision": 0.5,
+        "recall": 0.222222,
+        "complete_telemetry_recall": 0.4
+      },
+      "scenario_coverage": {
+        "evaluated": 17,
+        "malicious_detected": 2,
+        "malicious_total": 9,
+        "ambiguous_excluded_from_precision_recall": 1
+      },
+      "scenarios": [
+        {
+          "scenario_id": "azure-activity-01",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "malicious",
+          "telemetry_complete": true,
+          "narrative": "Unauthorized diagnostic-setting deletion followed by an access assignment.",
+          "anchor_event_uids": [
+            "evt_v2_833148ab731cc32b9e680eb69d899191fb04eba1c8aa368998eeeb1181f0dae2",
+            "evt_v2_6f1cdfd6d2157e951d44b3df7d28deb3ee8445f4d350375fb53a2f87b894c751"
+          ],
+          "available_event_uids": [
+            "evt_v2_833148ab731cc32b9e680eb69d899191fb04eba1c8aa368998eeeb1181f0dae2",
+            "evt_v2_6f1cdfd6d2157e951d44b3df7d28deb3ee8445f4d350375fb53a2f87b894c751",
+            "evt_v2_44585b7eaa56c61f23ae5b987bcebe33d32572180037fb36f095d2d061225ee6",
+            "evt_v2_a35195bf435135f8e478e225993613e8f8388ae6d608019a1563863e705678fa",
+            "evt_v2_36aa8dea5bb4d4e3a91f7703b81d58e6a26719cb1c7edddcdde788e3afd5e3a3"
+          ],
+          "result": "tp",
+          "finding_ids": [
+            "finding_922d9068c7f5c3a2be21ce28"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "azure-activity-02",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "malicious",
+          "telemetry_complete": true,
+          "narrative": "Unauthorized sequence exactly 30 minutes apart; inclusive upper boundary.",
+          "anchor_event_uids": [
+            "evt_v2_0a4ecabfa365d11c0e359baeabd3d468415bb380b9ea48c316ee34fe671c2864",
+            "evt_v2_2f56436ee82c0cb7a79335493f666d66d9ba465a6079f00117809dd3e3534822"
+          ],
+          "available_event_uids": [
+            "evt_v2_0a4ecabfa365d11c0e359baeabd3d468415bb380b9ea48c316ee34fe671c2864",
+            "evt_v2_2f56436ee82c0cb7a79335493f666d66d9ba465a6079f00117809dd3e3534822",
+            "evt_v2_314752f7c49697ef573da8553577bdce7defb92e8ac4f320c42e396f80d833a7",
+            "evt_v2_6ecc835bf3318a34d3072f944071abf127ebfa04bdeb76f6e765dec73d9b6acf",
+            "evt_v2_980c64330b89f1c50a799b668288e83ca5138ed86e591e0a9b149a0ab2644350"
+          ],
+          "result": "tp",
+          "finding_ids": [
+            "finding_a9de05f11eace0182c0ea3eb"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "azure-activity-03",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "malicious",
+          "telemetry_complete": true,
+          "narrative": "Unauthorized access assignment delayed beyond the 30-minute window.",
+          "anchor_event_uids": [
+            "evt_v2_124df9eabb7de0c9766054057b03ea3242f212259acdaba4035c3ee37bf3b985",
+            "evt_v2_a0740cbddcd4db27bebbbde789fc3f490ebd841afd899799ff6cd59f7c2f9b73"
+          ],
+          "available_event_uids": [
+            "evt_v2_124df9eabb7de0c9766054057b03ea3242f212259acdaba4035c3ee37bf3b985",
+            "evt_v2_a0740cbddcd4db27bebbbde789fc3f490ebd841afd899799ff6cd59f7c2f9b73",
+            "evt_v2_ec895dd8a7807b149c57dbdecd0085656f01ec31c4e7488bcbf26225872069fe",
+            "evt_v2_cfb6cec78d47e865f981362cbf60e53b0d8939698a8a87c1b026499400062ea4",
+            "evt_v2_d16f8cf7b268f3904d0d8d733f321f7f2b4e8229c4882d012f9967ac354e42ef"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-04",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "malicious",
+          "telemetry_complete": false,
+          "narrative": "Role assignment occurred but its completed source record was not collected.",
+          "anchor_event_uids": [
+            "evt_v2_512f61f19184ed5edb18daa036cf4d06ea671c0f1c5080be065e67331dae24df",
+            "evt_v2_eeaceeb7246620af597a604aaa95fc9b602205e7e4899f60ff2313b15cca79d8"
+          ],
+          "available_event_uids": [
+            "evt_v2_512f61f19184ed5edb18daa036cf4d06ea671c0f1c5080be065e67331dae24df",
+            "evt_v2_6cacac59830c90cc712cd70ac723fcfd10e386c73c443cd829e116f4f8292b99",
+            "evt_v2_763fa5c8d0955d2d4071a94e35615e55edfd00a03de3925b75fa669ef9595ced",
+            "evt_v2_44b253ea34bccb4450c25479d4ee33ac4b227cd9643e6f8f936efbc679ac40e3"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-05",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "malicious",
+          "telemetry_complete": false,
+          "narrative": "Deletion record lacks the actor object claim needed for a defensible join.",
+          "anchor_event_uids": [
+            "evt_v2_e9f8bb418272071ae0594998e32d5d772355863202b5ca4270f202215096725d",
+            "evt_v2_1a508c15fe1c394fd10ef50ca7f8b23a88c6cd66748dc7918f0d965f211871ed"
+          ],
+          "available_event_uids": [
+            "evt_v2_e9f8bb418272071ae0594998e32d5d772355863202b5ca4270f202215096725d",
+            "evt_v2_1a508c15fe1c394fd10ef50ca7f8b23a88c6cd66748dc7918f0d965f211871ed",
+            "evt_v2_b051a7e342a76ed09872b41fffe66c48d37f2cf10e5f11346f5f89a2e1ff10b0",
+            "evt_v2_a2b0c0162a1add83e23400f69ab8fa60ee5c1c49b592e279068a5f18c8905e91",
+            "evt_v2_c35b75d4b6bc3a7d5c3ed8404faaba5d85c7089ba3409ed9b2141eb136bcaba8"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-06",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "benign",
+          "telemetry_complete": true,
+          "narrative": "Approved monitoring migration followed by approved access provisioning; identical visible predicate.",
+          "anchor_event_uids": [
+            "evt_v2_ae9250e8480f002dc8404de9ad548f800ce79983bf050776b3fc0ab6bdf05e58",
+            "evt_v2_ab556ea18c014184ef9145298242571255293145711f0bd761ed502934664208"
+          ],
+          "available_event_uids": [
+            "evt_v2_ae9250e8480f002dc8404de9ad548f800ce79983bf050776b3fc0ab6bdf05e58",
+            "evt_v2_ab556ea18c014184ef9145298242571255293145711f0bd761ed502934664208",
+            "evt_v2_10501a1c9595b10bef53e0360196151648e4a41178f5df7bc6613307926e33dc",
+            "evt_v2_28a5d4282aeb4e84b1a4b7a1359ad4b00feb4a1ab2613c5b00f49d6662ed0955",
+            "evt_v2_fa7053cdea5b58ec540d5fd4b3fc9457212c883f31bb88d73c1f728465647f21"
+          ],
+          "result": "fp",
+          "finding_ids": [
+            "finding_e1902a23426319a9b8f552d9"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "azure-activity-07",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "ambiguous",
+          "telemetry_complete": true,
+          "narrative": "Both operations succeeded but authorization and impact are unresolved.",
+          "anchor_event_uids": [
+            "evt_v2_17129c4790231c1df02eb065400c5a8f937bc782bd5f274514b8bb2696c38743",
+            "evt_v2_feaa01b43943158f970695a35d41a4185523df4437ebd1dbde9bacb2e1ba9dcb"
+          ],
+          "available_event_uids": [
+            "evt_v2_17129c4790231c1df02eb065400c5a8f937bc782bd5f274514b8bb2696c38743",
+            "evt_v2_feaa01b43943158f970695a35d41a4185523df4437ebd1dbde9bacb2e1ba9dcb",
+            "evt_v2_77deba7c613a07db8cd2b5011c6795a7bbb7d69036815810fd80412e9447574e",
+            "evt_v2_933974fe27a747e010b60f97782852a3687a2f4cfc1d2069a62f4cc359904532",
+            "evt_v2_910c4e88c520c291a97516c87759bf0d0ec056afc6b6f83b71270df4b9dc3160"
+          ],
+          "result": "unscored_alert",
+          "finding_ids": [
+            "finding_201c8af396727342579171b2"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "azure-activity-08",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "benign",
+          "telemetry_complete": true,
+          "narrative": "Diagnostic-setting deletion was denied; later role assignment was authorized.",
+          "anchor_event_uids": [
+            "evt_v2_06403ffceef620cdd0bbda50a627f32e24c4e758c4b30e874a2b5965260306bb",
+            "evt_v2_aa80a552761972fb9297fb9cc0f3afabc9a47f8caf37e4b8008e56ca96be6bee"
+          ],
+          "available_event_uids": [
+            "evt_v2_06403ffceef620cdd0bbda50a627f32e24c4e758c4b30e874a2b5965260306bb",
+            "evt_v2_aa80a552761972fb9297fb9cc0f3afabc9a47f8caf37e4b8008e56ca96be6bee",
+            "evt_v2_329f2c749f08243d993bb807e379459e0b083e3f1540a1e4a506706947f8a807",
+            "evt_v2_0f99669f991fe5eae12ab075050ab4709beef41ee4a48afc9edea6263f1f0cf7",
+            "evt_v2_63771b76874c561066072811ec87ad99dac27ec81758bef48eaf78209b19d266"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-09",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "malicious",
+          "telemetry_complete": true,
+          "narrative": "Two different actors coordinate the deletion and permission change; exact actor join misses it.",
+          "anchor_event_uids": [
+            "evt_v2_4008aa6dd942e662bd76161b83fc9dc5a758521a54532d442132dbdd6e29a03c",
+            "evt_v2_7b186d8332f8bb5476253a08c02e13a12f8ae53676f0e7d6eb815ad5820a4cbe"
+          ],
+          "available_event_uids": [
+            "evt_v2_4008aa6dd942e662bd76161b83fc9dc5a758521a54532d442132dbdd6e29a03c",
+            "evt_v2_7b186d8332f8bb5476253a08c02e13a12f8ae53676f0e7d6eb815ad5820a4cbe",
+            "evt_v2_af3884eabec2bf6eaf26a13086ca835f5111f9d29ac6cbbd353b18ec875c1251",
+            "evt_v2_cf1b24c3d660bced688825d955d2f41102ba859b29b058bfd86b9cf68cc8aa6f",
+            "evt_v2_11b8aae56419eb12fab4391fd074e6d4124c4f27a4ea80da3b0ec9a081b279d8"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-10",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "benign",
+          "telemetry_complete": true,
+          "narrative": "Independent approved operations in different subscriptions share an actor.",
+          "anchor_event_uids": [
+            "evt_v2_c4237924368b5549c7e40f9c625083e8b71223587c1a7d5252822950a0772940",
+            "evt_v2_20212727b8e6fda9f9eb6464d2ca0b4b6d2c6155270e1b3c60c9582d78af8876"
+          ],
+          "available_event_uids": [
+            "evt_v2_c4237924368b5549c7e40f9c625083e8b71223587c1a7d5252822950a0772940",
+            "evt_v2_20212727b8e6fda9f9eb6464d2ca0b4b6d2c6155270e1b3c60c9582d78af8876",
+            "evt_v2_16fd1ac15f387c6bf779e08cf191f8033e370a92cce926478a73fe9da6a57a98",
+            "evt_v2_9602e06e65ef0200abf447b569dbd6f51c65c6ffb0a79553dc1f2156749d8343",
+            "evt_v2_d807496af97acd65b6fc5b81605ecb2361fc51f50018ade660cdd9de4e09e0dd"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-11",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "malicious",
+          "telemetry_complete": true,
+          "narrative": "Unauthorized sequence has equal recorded timestamps; source cannot establish ordering.",
+          "anchor_event_uids": [
+            "evt_v2_671ebcefe4336c3347c7732d2f0b47b81d2a1dd3e01afb9616ef63c8632b0655",
+            "evt_v2_9fe40378916566be675df0d204f477dd91096e1eb1efb3ba38fbfa16463a610d"
+          ],
+          "available_event_uids": [
+            "evt_v2_671ebcefe4336c3347c7732d2f0b47b81d2a1dd3e01afb9616ef63c8632b0655",
+            "evt_v2_9fe40378916566be675df0d204f477dd91096e1eb1efb3ba38fbfa16463a610d",
+            "evt_v2_2945c1fa993198c0064dbb4d54859e2a8a826c709d4d3ca4f2f168cc37a0a5fc",
+            "evt_v2_8ab3c67e3a950bf69d09e156dbdaccf99bf001090b20b132f5943e8b8a85c842",
+            "evt_v2_c8bb03e17ce480d36836ebf36484922f8f50348aec2954969c918c9923c00730"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-12",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "malicious",
+          "telemetry_complete": false,
+          "narrative": "Role assignment lacks an event timestamp.",
+          "anchor_event_uids": [
+            "evt_v2_dd9692324a5daac274fe0a8c04904e876b0961ed652f9888d20d79fa0eddaf30",
+            "evt_v2_16f98a09e8caafc58d28238d1fa9bca9d4696ae98c372fa75fd69de68743c456"
+          ],
+          "available_event_uids": [
+            "evt_v2_dd9692324a5daac274fe0a8c04904e876b0961ed652f9888d20d79fa0eddaf30",
+            "evt_v2_16f98a09e8caafc58d28238d1fa9bca9d4696ae98c372fa75fd69de68743c456",
+            "evt_v2_3ac5e2f0876e6b84c8f6aa57d5722e8dee9c70c9128f941bea1661b001fe9f20",
+            "evt_v2_ea3fc4e6b3b3652a9f1847dea1897b9c6ad4c18ed3f6ecccad5c349f8c81399f",
+            "evt_v2_690c5bef9469573fbbae5c85a2f09825e79284bc684c60550b22f835f0f1d23a"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-13",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "benign",
+          "telemetry_complete": true,
+          "narrative": "Approved export replacement precedes approved provisioning; baseline still alerts.",
+          "anchor_event_uids": [
+            "evt_v2_42bdd2e18037eef05a89f483734b1f77dae6da0c5ee90d11afc6e10ed389e55c",
+            "evt_v2_b218c445efeed88cf5c5f9ea7a686f1993934d53291593e8ecfea2cb8b3beca3"
+          ],
+          "available_event_uids": [
+            "evt_v2_42bdd2e18037eef05a89f483734b1f77dae6da0c5ee90d11afc6e10ed389e55c",
+            "evt_v2_b218c445efeed88cf5c5f9ea7a686f1993934d53291593e8ecfea2cb8b3beca3",
+            "evt_v2_1d2b5fa853d4eaf9beb0f8e613ee0b1eaec5ed08cc1b637430c0111cb28c91a3",
+            "evt_v2_56caa6bdc235b5cff595c212d01396f26eb25d3433766d1ea7a940284e00d758",
+            "evt_v2_4e100ffbc74e3ad86b64bc19e129688a52b5c7afaf92620b95e59637a57c2288"
+          ],
+          "result": "fp",
+          "finding_ids": [
+            "finding_4491cca419d7f7b582f50673"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "azure-activity-14",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "benign",
+          "telemetry_complete": true,
+          "narrative": "Same object-ID text is in different token-tenant namespaces; operations are independent.",
+          "anchor_event_uids": [
+            "evt_v2_c9466c2f5408c57672e160f099d2953af184a90a489ca0414c1821f301b43404",
+            "evt_v2_18736c3e4df464f422c16f7df0b99d300671787753d84996674eb08153a898bc"
+          ],
+          "available_event_uids": [
+            "evt_v2_c9466c2f5408c57672e160f099d2953af184a90a489ca0414c1821f301b43404",
+            "evt_v2_18736c3e4df464f422c16f7df0b99d300671787753d84996674eb08153a898bc",
+            "evt_v2_4b0531fa0181e89823779e9b3425143eb573ae72043128b0d9a909c8161a6bc5",
+            "evt_v2_dece113ef65bddaf5fb2be3dcfca4193a4944fc70e895ca9ceadde0190752aca",
+            "evt_v2_6113bd5317098d11cc204f6285c1825a01894b94d35e5df36a17ffbac6bec6ae"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-15",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "malicious",
+          "telemetry_complete": false,
+          "narrative": "Resource tenant context is absent from both records; token tenant alone is insufficient.",
+          "anchor_event_uids": [
+            "evt_v2_d9dc653985d2bd9f21a4a359c105b200d88491af50a699bf18bcc845eae2c0c4",
+            "evt_v2_cf0b079a17b14ce95752cbb6f4d8519a379fb8973d5a57b1b3fa0697adb90c37"
+          ],
+          "available_event_uids": [
+            "evt_v2_d9dc653985d2bd9f21a4a359c105b200d88491af50a699bf18bcc845eae2c0c4",
+            "evt_v2_cf0b079a17b14ce95752cbb6f4d8519a379fb8973d5a57b1b3fa0697adb90c37",
+            "evt_v2_2a2342693588f132ba5db1a0e2e4106d3fd7abbbb3b2b8b836a379a56202d51e",
+            "evt_v2_306e790fe6b44ca7b3afa48ee3edd0c71ff667879f38a417039ea14d4de29df9",
+            "evt_v2_a43638a26873df0b48a64d25c2fc1b7f74ef6c4d491afd3148640d4ec7919ad3"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-16",
+          "rule_id": "EITS-AZURE-001",
+          "split": "holdout",
+          "label": "benign",
+          "telemetry_complete": true,
+          "narrative": "Approved role assignment precedes diagnostic-setting retirement.",
+          "anchor_event_uids": [
+            "evt_v2_3a38b0e27e9bd13664793f083b374325305f3154290fc710a32ec6df8662e9d4",
+            "evt_v2_d856e78af8c926acadfe1b2d34f899e4b55ce5288b4af953c36d62d9e1bacbbc"
+          ],
+          "available_event_uids": [
+            "evt_v2_3a38b0e27e9bd13664793f083b374325305f3154290fc710a32ec6df8662e9d4",
+            "evt_v2_d856e78af8c926acadfe1b2d34f899e4b55ce5288b4af953c36d62d9e1bacbbc",
+            "evt_v2_363f654239f6b37da90adb7cec06e8a4d46a080ee910251d2810a072650fabc1",
+            "evt_v2_b7558f9acf7140d742d1a8383a3ef4866ab707b018866d288e25d5a715a62244",
+            "evt_v2_5f05a4105f44669212839014bfea27b20db5433094fe34727a85ca9219082d47"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "azure-activity-17",
+          "rule_id": "EITS-AZURE-001",
+          "split": "development",
+          "label": "benign",
+          "telemetry_complete": true,
+          "narrative": "Reused object-ID and subscription text in independently supplied resource-tenant scopes do not join.",
+          "anchor_event_uids": [
+            "evt_v2_b869e206a7894dbf234dee64d3a403d65dfaae4af35bcf834e973623bc9bf0ae",
+            "evt_v2_b5a2270a3f713729ae22846b1887697fd74cfc4f928e9581ac54fc6eae7c7e5e"
+          ],
+          "available_event_uids": [
+            "evt_v2_b869e206a7894dbf234dee64d3a403d65dfaae4af35bcf834e973623bc9bf0ae",
+            "evt_v2_b5a2270a3f713729ae22846b1887697fd74cfc4f928e9581ac54fc6eae7c7e5e",
+            "evt_v2_cd1b061ad1552e14bc635566635e02ec7d36bbc35073dd895a5a79d0089f7dea",
+            "evt_v2_c7c65fad5ccaf9c76f2fc629d97c245df1b54c946883512be6a1b9b4ab4c561d",
+            "evt_v2_4ac3ef8a55b09e1287b94a4e2ddc9b47d05eecd253307f956a6f4368909b44d8"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        }
+      ],
+      "unexpected_findings": []
+    }
+  },
+  "findings": [
+    {
+      "finding_id": "finding_201c8af396727342579171b2",
+      "rule_id": "EITS-AZURE-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d",
+      "title": "Diagnostic setting deletion followed by role assignment",
+      "severity": "high",
+      "provider": "azure",
+      "source": "azure.activity",
+      "attack": [
+        "T1685.002",
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_17129c4790231c1df02eb065400c5a8f937bc782bd5f274514b8bb2696c38743",
+        "evt_v2_feaa01b43943158f970695a35d41a4185523df4437ebd1dbde9bacb2e1ba9dcb"
+      ],
+      "source_event_ids": [
+        "1bd07964-5394-5c9d-88a2-d9f8f1f29c03",
+        "61a660c7-9274-5b22-8858-d06a7aaf0d74"
+      ],
+      "observed": "Two Activity Log records report Succeeded: deletion of a diagnostic setting and subsequent creation of a role assignment, with equal known subscription/resource tenant and exact actor object/actor-tenant claims within 30 minutes.",
+      "inferred": "The sequence warrants investigation for possible visibility reduction around access-control changes; intent and impact are unresolved.",
+      "unresolved": [
+        "Malicious intent or absence of authorization",
+        "All logging or export delivery stopped",
+        "The deleted setting covered the later action",
+        "The assigned role is privileged or grants effective access",
+        "The role assignment recipient or follow-on use when request details are absent"
+      ],
+      "predicate_evidence": [
+        {
+          "start_uid": "evt_v2_17129c4790231c1df02eb065400c5a8f937bc782bd5f274514b8bb2696c38743",
+          "end_uid": "evt_v2_feaa01b43943158f970695a35d41a4185523df4437ebd1dbde9bacb2e1ba9dcb",
+          "start_event_id": "1bd07964-5394-5c9d-88a2-d9f8f1f29c03",
+          "end_event_id": "61a660c7-9274-5b22-8858-d06a7aaf0d74",
+          "started_at": "2026-01-07T12:00:00+00:00",
+          "ended_at": "2026-01-07T12:05:00+00:00",
+          "elapsed_seconds": 300.0,
+          "scope_type": "azure.subscription",
+          "scope_id": "10000000-0000-4000-8000-000000000001",
+          "tenant_id": "20000000-0000-4000-8000-000000000001",
+          "actor_id": "a0fdacb0-3789-502a-9ac9-aac13d676616",
+          "actor_tenant_id": "20000000-0000-4000-8000-000000000001",
+          "diagnostic_setting": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export",
+          "role_assignment": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/61648916-0dbc-5ad0-bb3d-f6097a6e1083",
+          "logging_action": "Microsoft.Insights/diagnosticSettings/delete",
+          "access_action": "Microsoft.Authorization/roleAssignments/write"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_4491cca419d7f7b582f50673",
+      "rule_id": "EITS-AZURE-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d",
+      "title": "Diagnostic setting deletion followed by role assignment",
+      "severity": "high",
+      "provider": "azure",
+      "source": "azure.activity",
+      "attack": [
+        "T1685.002",
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_42bdd2e18037eef05a89f483734b1f77dae6da0c5ee90d11afc6e10ed389e55c",
+        "evt_v2_b218c445efeed88cf5c5f9ea7a686f1993934d53291593e8ecfea2cb8b3beca3"
+      ],
+      "source_event_ids": [
+        "949196b2-d9e4-59a5-8a6b-b79738b9cf20",
+        "8f677262-ac28-57ae-8939-376dc72d5a35"
+      ],
+      "observed": "Two Activity Log records report Succeeded: deletion of a diagnostic setting and subsequent creation of a role assignment, with equal known subscription/resource tenant and exact actor object/actor-tenant claims within 30 minutes.",
+      "inferred": "The sequence warrants investigation for possible visibility reduction around access-control changes; intent and impact are unresolved.",
+      "unresolved": [
+        "Malicious intent or absence of authorization",
+        "All logging or export delivery stopped",
+        "The deleted setting covered the later action",
+        "The assigned role is privileged or grants effective access",
+        "The role assignment recipient or follow-on use when request details are absent"
+      ],
+      "predicate_evidence": [
+        {
+          "start_uid": "evt_v2_42bdd2e18037eef05a89f483734b1f77dae6da0c5ee90d11afc6e10ed389e55c",
+          "end_uid": "evt_v2_b218c445efeed88cf5c5f9ea7a686f1993934d53291593e8ecfea2cb8b3beca3",
+          "start_event_id": "949196b2-d9e4-59a5-8a6b-b79738b9cf20",
+          "end_event_id": "8f677262-ac28-57ae-8939-376dc72d5a35",
+          "started_at": "2026-01-13T12:00:00+00:00",
+          "ended_at": "2026-01-13T12:05:00+00:00",
+          "elapsed_seconds": 300.0,
+          "scope_type": "azure.subscription",
+          "scope_id": "10000000-0000-4000-8000-000000000001",
+          "tenant_id": "20000000-0000-4000-8000-000000000001",
+          "actor_id": "5e938aa4-1aa3-5bdc-b517-b2dd76f7077d",
+          "actor_tenant_id": "20000000-0000-4000-8000-000000000001",
+          "diagnostic_setting": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export",
+          "role_assignment": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/55892685-8e89-5b3c-884c-8829cc2ebf43",
+          "logging_action": "Microsoft.Insights/diagnosticSettings/delete",
+          "access_action": "Microsoft.Authorization/roleAssignments/write"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_922d9068c7f5c3a2be21ce28",
+      "rule_id": "EITS-AZURE-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d",
+      "title": "Diagnostic setting deletion followed by role assignment",
+      "severity": "high",
+      "provider": "azure",
+      "source": "azure.activity",
+      "attack": [
+        "T1685.002",
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_833148ab731cc32b9e680eb69d899191fb04eba1c8aa368998eeeb1181f0dae2",
+        "evt_v2_6f1cdfd6d2157e951d44b3df7d28deb3ee8445f4d350375fb53a2f87b894c751"
+      ],
+      "source_event_ids": [
+        "85c8f281-547c-576d-83a6-e7faa77c35be",
+        "ce12df88-5dd3-5a32-a1ed-e60da941b49f"
+      ],
+      "observed": "Two Activity Log records report Succeeded: deletion of a diagnostic setting and subsequent creation of a role assignment, with equal known subscription/resource tenant and exact actor object/actor-tenant claims within 30 minutes.",
+      "inferred": "The sequence warrants investigation for possible visibility reduction around access-control changes; intent and impact are unresolved.",
+      "unresolved": [
+        "Malicious intent or absence of authorization",
+        "All logging or export delivery stopped",
+        "The deleted setting covered the later action",
+        "The assigned role is privileged or grants effective access",
+        "The role assignment recipient or follow-on use when request details are absent"
+      ],
+      "predicate_evidence": [
+        {
+          "start_uid": "evt_v2_833148ab731cc32b9e680eb69d899191fb04eba1c8aa368998eeeb1181f0dae2",
+          "end_uid": "evt_v2_6f1cdfd6d2157e951d44b3df7d28deb3ee8445f4d350375fb53a2f87b894c751",
+          "start_event_id": "85c8f281-547c-576d-83a6-e7faa77c35be",
+          "end_event_id": "ce12df88-5dd3-5a32-a1ed-e60da941b49f",
+          "started_at": "2026-01-01T12:00:00+00:00",
+          "ended_at": "2026-01-01T12:05:00+00:00",
+          "elapsed_seconds": 300.0,
+          "scope_type": "azure.subscription",
+          "scope_id": "10000000-0000-4000-8000-000000000001",
+          "tenant_id": "20000000-0000-4000-8000-000000000001",
+          "actor_id": "845d0455-4167-5ecd-b6bc-4456e2e8b7b3",
+          "actor_tenant_id": "20000000-0000-4000-8000-000000000001",
+          "diagnostic_setting": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export",
+          "role_assignment": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/a68fecd6-5d0e-5132-847f-793366065ea4",
+          "logging_action": "Microsoft.Insights/diagnosticSettings/delete",
+          "access_action": "Microsoft.Authorization/roleAssignments/write"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_a9de05f11eace0182c0ea3eb",
+      "rule_id": "EITS-AZURE-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d",
+      "title": "Diagnostic setting deletion followed by role assignment",
+      "severity": "high",
+      "provider": "azure",
+      "source": "azure.activity",
+      "attack": [
+        "T1685.002",
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_0a4ecabfa365d11c0e359baeabd3d468415bb380b9ea48c316ee34fe671c2864",
+        "evt_v2_2f56436ee82c0cb7a79335493f666d66d9ba465a6079f00117809dd3e3534822"
+      ],
+      "source_event_ids": [
+        "ac52293d-bb91-58ff-8674-837c3adb7243",
+        "101ce424-bb68-5508-bb3a-d3f0e2bb2fd2"
+      ],
+      "observed": "Two Activity Log records report Succeeded: deletion of a diagnostic setting and subsequent creation of a role assignment, with equal known subscription/resource tenant and exact actor object/actor-tenant claims within 30 minutes.",
+      "inferred": "The sequence warrants investigation for possible visibility reduction around access-control changes; intent and impact are unresolved.",
+      "unresolved": [
+        "Malicious intent or absence of authorization",
+        "All logging or export delivery stopped",
+        "The deleted setting covered the later action",
+        "The assigned role is privileged or grants effective access",
+        "The role assignment recipient or follow-on use when request details are absent"
+      ],
+      "predicate_evidence": [
+        {
+          "start_uid": "evt_v2_0a4ecabfa365d11c0e359baeabd3d468415bb380b9ea48c316ee34fe671c2864",
+          "end_uid": "evt_v2_2f56436ee82c0cb7a79335493f666d66d9ba465a6079f00117809dd3e3534822",
+          "start_event_id": "ac52293d-bb91-58ff-8674-837c3adb7243",
+          "end_event_id": "101ce424-bb68-5508-bb3a-d3f0e2bb2fd2",
+          "started_at": "2026-01-02T12:00:00+00:00",
+          "ended_at": "2026-01-02T12:30:00+00:00",
+          "elapsed_seconds": 1800.0,
+          "scope_type": "azure.subscription",
+          "scope_id": "10000000-0000-4000-8000-000000000001",
+          "tenant_id": "20000000-0000-4000-8000-000000000001",
+          "actor_id": "b046a621-1f0e-5351-8274-ca11d9c21259",
+          "actor_tenant_id": "20000000-0000-4000-8000-000000000001",
+          "diagnostic_setting": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export",
+          "role_assignment": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/a69a2316-8e28-5f08-9de7-e8f6ffe0012a",
+          "logging_action": "Microsoft.Insights/diagnosticSettings/delete",
+          "access_action": "MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/WRITE"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_e1902a23426319a9b8f552d9",
+      "rule_id": "EITS-AZURE-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d",
+      "title": "Diagnostic setting deletion followed by role assignment",
+      "severity": "high",
+      "provider": "azure",
+      "source": "azure.activity",
+      "attack": [
+        "T1685.002",
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_ae9250e8480f002dc8404de9ad548f800ce79983bf050776b3fc0ab6bdf05e58",
+        "evt_v2_ab556ea18c014184ef9145298242571255293145711f0bd761ed502934664208"
+      ],
+      "source_event_ids": [
+        "d9179d73-8d14-5499-a3bb-f3a63ec35418",
+        "08080bd5-9f4e-5eb8-9ac7-6499b276b950"
+      ],
+      "observed": "Two Activity Log records report Succeeded: deletion of a diagnostic setting and subsequent creation of a role assignment, with equal known subscription/resource tenant and exact actor object/actor-tenant claims within 30 minutes.",
+      "inferred": "The sequence warrants investigation for possible visibility reduction around access-control changes; intent and impact are unresolved.",
+      "unresolved": [
+        "Malicious intent or absence of authorization",
+        "All logging or export delivery stopped",
+        "The deleted setting covered the later action",
+        "The assigned role is privileged or grants effective access",
+        "The role assignment recipient or follow-on use when request details are absent"
+      ],
+      "predicate_evidence": [
+        {
+          "start_uid": "evt_v2_ae9250e8480f002dc8404de9ad548f800ce79983bf050776b3fc0ab6bdf05e58",
+          "end_uid": "evt_v2_ab556ea18c014184ef9145298242571255293145711f0bd761ed502934664208",
+          "start_event_id": "d9179d73-8d14-5499-a3bb-f3a63ec35418",
+          "end_event_id": "08080bd5-9f4e-5eb8-9ac7-6499b276b950",
+          "started_at": "2026-01-06T12:00:00+00:00",
+          "ended_at": "2026-01-06T12:05:00+00:00",
+          "elapsed_seconds": 300.0,
+          "scope_type": "azure.subscription",
+          "scope_id": "10000000-0000-4000-8000-000000000001",
+          "tenant_id": "20000000-0000-4000-8000-000000000001",
+          "actor_id": "64955574-9068-5440-80fa-6a645792ee80",
+          "actor_tenant_id": "20000000-0000-4000-8000-000000000001",
+          "diagnostic_setting": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Insights/diagnosticSettings/export",
+          "role_assignment": "/subscriptions/10000000-0000-4000-8000-000000000001/providers/Microsoft.Authorization/roleAssignments/de773c22-deaa-5148-aaeb-e85f9885ff43",
+          "logging_action": "Microsoft.Insights/diagnosticSettings/delete",
+          "access_action": "Microsoft.Authorization/roleAssignments/write"
+        }
+      ]
+    }
+  ]
+}

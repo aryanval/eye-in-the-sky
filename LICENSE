@@ -20,5 +20,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Exception: fixtures/aws/official contains AWS documentation examples, which
-retain the separate terms described in THIRD_PARTY_NOTICES.md and their manifest.
+Exception: retained AWS, Microsoft and Google vendor examples and documentation
+excerpts retain the upstream terms described in THIRD_PARTY_NOTICES.md and their
+respective provenance manifests/notices. The project license does not replace them.

@@ -1,0 +1,339 @@
+{
+  "value": [
+    {
+      "id": "1be532b8-3d9a-5c91-90a5-a6c038f386e6",
+      "createdDateTime": "2025-04-01T12:00:00Z",
+      "userId": "a8dddea8-dc36-592e-a6e8-9d024adfc638",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.10",
+      "clientAppUsed": "Browser",
+      "correlationId": "730d7857-bc23-54af-90ad-d3c64c636117",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "331f3e34-d54f-5078-b9fa-0f12113ee9eb",
+      "createdDateTime": "2025-04-01T12:05:00Z",
+      "userId": "a8dddea8-dc36-592e-a6e8-9d024adfc638",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.11",
+      "clientAppUsed": "Browser",
+      "correlationId": "975078cf-934c-5c96-8ac7-d2e2ef9f2e5b",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "10e77f3b-d621-50ee-82ac-17f4029e6719",
+      "createdDateTime": "2025-04-01T12:10:00Z",
+      "userId": "a8dddea8-dc36-592e-a6e8-9d024adfc638",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.12",
+      "clientAppUsed": "Browser",
+      "correlationId": "342a90ec-eb00-5325-9541-2ccd0a6dae39",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "cce2be5f-b64b-5095-b159-6dfda8f448c9",
+      "createdDateTime": "2025-04-01T12:15:00Z",
+      "userId": "a8dddea8-dc36-592e-a6e8-9d024adfc638",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.13",
+      "clientAppUsed": "Browser",
+      "correlationId": "051d294c-2a5f-5994-b5da-caaa9fb91f05",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 0,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "high",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "2929b86d-d888-53f3-b225-e510cd12d480",
+      "createdDateTime": "2025-04-01T12:20:00Z",
+      "userId": "0a168cd9-b53e-5bce-875b-1f98fddb6fa3",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.10",
+      "clientAppUsed": "Browser",
+      "correlationId": "fa144ef1-cdc2-53c8-9cb2-0c445810d381",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "ecc73600-4505-56dc-9808-5d94991e6e3c",
+      "createdDateTime": "2025-04-01T12:25:00Z",
+      "userId": "0a168cd9-b53e-5bce-875b-1f98fddb6fa3",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.11",
+      "clientAppUsed": "Browser",
+      "correlationId": "a60afba7-b939-5c27-9540-2366d720fd84",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "48c66a42-4e47-527e-ad82-520e5014a269",
+      "createdDateTime": "2025-04-01T12:30:00Z",
+      "userId": "0a168cd9-b53e-5bce-875b-1f98fddb6fa3",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.12",
+      "clientAppUsed": "Browser",
+      "correlationId": "89af3d9e-91a7-5b8e-a29e-8436e5c31e06",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "34c0904d-a818-560f-85a7-9f21cb1bb58c",
+      "createdDateTime": "2025-04-01T12:35:00Z",
+      "userId": "0a168cd9-b53e-5bce-875b-1f98fddb6fa3",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.13",
+      "clientAppUsed": "Browser",
+      "correlationId": "f8e13d06-e227-56b6-8f13-1e7c53f7bd92",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 0,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "06bde352-287d-5aa8-bed7-d02d93360ecb",
+      "createdDateTime": "2025-04-01T12:40:00Z",
+      "userId": "3d6eac6c-92fb-54a8-b741-6018bb213968",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.10",
+      "clientAppUsed": "Browser",
+      "correlationId": "af94302a-286e-5929-9c68-f30ed0e1ddf7",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": null,
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "a429c239-1346-5942-9104-351d2f5bdc3f",
+      "createdDateTime": "2025-04-01T12:45:00Z",
+      "userId": null,
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.11",
+      "clientAppUsed": "Browser",
+      "correlationId": "3feb197c-9d0b-56ce-b282-688b1ed77c3e",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "cd584c16-7ac8-5a54-888d-f71c0c1b70f2",
+      "createdDateTime": null,
+      "userId": "3d6eac6c-92fb-54a8-b741-6018bb213968",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.12",
+      "clientAppUsed": "Browser",
+      "correlationId": "5075b2a5-e966-5101-b394-85bd649b7661",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": null,
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "50c992a1-2ec5-5e2f-8121-94de2f3a41ea",
+      "createdDateTime": "2025-04-01T12:55:00Z",
+      "userId": "3d6eac6c-92fb-54a8-b741-6018bb213968",
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.13",
+      "clientAppUsed": "Browser",
+      "correlationId": "4fc66391-78f5-50ad-8b5a-bb444604d0cc",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 0,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "57504a6e-0239-54ac-801a-d091c90ad298",
+      "createdDateTime": "2025-04-01T12:45:00Z",
+      "userId": null,
+      "userDisplayName": "Synthetic sign-in user",
+      "userPrincipalName": "user@example.invalid",
+      "appId": "8efed6b9-fd89-5966-8ba7-e372ed01346d",
+      "appDisplayName": "Synthetic application",
+      "resourceId": "37645045-79c7-5b26-8cc6-3a828612c1d2",
+      "resourceDisplayName": "Synthetic resource",
+      "ipAddress": "192.0.2.11",
+      "clientAppUsed": "Browser",
+      "correlationId": "3feb197c-9d0b-56ce-b282-688b1ed77c3e",
+      "isInteractive": true,
+      "conditionalAccessStatus": "notApplied",
+      "status": {
+        "errorCode": 50126,
+        "failureReason": null
+      },
+      "riskLevelDuringSignIn": "hidden",
+      "riskState": "none",
+      "deviceDetail": {
+        "deviceId": null
+      },
+      "appliedConditionalAccessPolicies": []
+    }
+  ]
+}

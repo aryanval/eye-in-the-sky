@@ -1,0 +1,23 @@
+{
+  "EITS-AZURE-001": {
+    "provider": "azure",
+    "source": "azure.activity",
+    "sql_path": "sql/EITS-AZURE-001.sql",
+    "evidence": {"columns": ["start_uid", "end_uid"]},
+    "version": "1.0.0",
+    "title": "Diagnostic setting deletion followed by role assignment",
+    "description": "Successful diagnostic-setting deletion followed by successful role-assignment creation in the same known subscription and resource tenant, by the same exact actor object and actor-tenant claims within 30 minutes.",
+    "severity": "high",
+    "attack": ["T1685.002", "T1098.003"],
+    "required_telemetry": ["Azure Monitor REST EventData", "eventTimestamp", "operationName.value", "status.value", "subscriptionId", "tenantId or validated collection tenant", "objectidentifier claim", "tenantid claim"],
+    "exact_logic": "sql/EITS-AZURE-001.sql; successful diagnosticSettings/delete then roleAssignments/write; exact nonnull subscription/resource tenant/actor object/actor tenant equality; 0 < elapsed <= 1800 seconds",
+    "evidence_fields": ["/eventDataId", "/eventTimestamp", "/operationName/value", "/status/value", "/subscriptionId", "/tenantId", "/claims/http:~1~1schemas.microsoft.com~1identity~1claims~1objectidentifier", "/claims/http:~1~1schemas.microsoft.com~1identity~1claims~1tenantid", "/resourceId"],
+    "why_it_matters": "A telemetry export configuration is removed shortly before an access-control assignment is created.",
+    "expected_false_positives": ["Authorized monitoring migration followed by provisioning", "Replacement diagnostic setting created before an approved role assignment"],
+    "tuning": "Inspect export configuration and change authorization, role definition and assignment recipient. Scope any future exception to subscription, resource tenant, actor object and actor tenant, target resources and expiry; measure missed attacks.",
+    "limitations": ["REST EventData representation only", "Requires exact actor object and actor-tenant claims; caller email and IP are not identity keys", "Requires known resource tenant context, which is not inferred from token tenant", "30-minute window misses delayed activity", "No correlation across actors or clouds", "Equal or missing timestamps cannot establish sequence", "A replacement export is contextual counterevidence and does not suppress the baseline"],
+    "cannot_establish": ["Malicious intent or absence of authorization", "All logging or export delivery stopped", "The deleted setting covered the later action", "The assigned role is privileged or grants effective access", "The role assignment recipient or follow-on use when request details are absent"],
+    "observed": "Two Activity Log records report Succeeded: deletion of a diagnostic setting and subsequent creation of a role assignment, with equal known subscription/resource tenant and exact actor object/actor-tenant claims within 30 minutes.",
+    "inferred": "The sequence warrants investigation for possible visibility reduction around access-control changes; intent and impact are unresolved."
+  }
+}

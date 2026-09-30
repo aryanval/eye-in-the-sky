@@ -1,0 +1,327 @@
+{
+  "version": 2,
+  "dataset_id": "entra-audit-synthetic-v1",
+  "scenarios": [
+    {
+      "scenario_id": "entra-01",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized service-principal credential and application-role changes.",
+      "anchor_event_uids": [
+        "evt_v2_192fdd74ff650fdc63a4ed10e55fe12b381b73a5c9138a96bc5d864b8bfed7ba",
+        "evt_v2_9f21ccc839aef4ec8b86f5e1560e1362401fc89124fb6b0aeaef07fe724c124f"
+      ],
+      "available_event_uids": [
+        "evt_v2_192fdd74ff650fdc63a4ed10e55fe12b381b73a5c9138a96bc5d864b8bfed7ba",
+        "evt_v2_9f21ccc839aef4ec8b86f5e1560e1362401fc89124fb6b0aeaef07fe724c124f",
+        "evt_v2_9aea04970948b6d82653a139814c03f0421532b8cc1da77695658968f74ed52c",
+        "evt_v2_550d9297738c476175f9e0b96cc812823af744370bd1f43290cd9ee7745ddc51"
+      ]
+    },
+    {
+      "scenario_id": "entra-02",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized sequence exactly at the inclusive thirty-minute boundary.",
+      "anchor_event_uids": [
+        "evt_v2_f86fcf3e225e0d97f97a180364f3ea278726aa1a17d8d3c67608c0ef2b33ff46",
+        "evt_v2_91d30ed4d09964287ec244722141b646644a01af26165eac143c041bf4b8a1b9"
+      ],
+      "available_event_uids": [
+        "evt_v2_f86fcf3e225e0d97f97a180364f3ea278726aa1a17d8d3c67608c0ef2b33ff46",
+        "evt_v2_91d30ed4d09964287ec244722141b646644a01af26165eac143c041bf4b8a1b9",
+        "evt_v2_35a381a638fc5d8c4769795e5799d8213bb94f704f15c89dedc460ffc26206d0",
+        "evt_v2_af0bdf0e10c8da8e8e18dd4a35ec0a7ad5f04344a20dc511f60032aec1946317"
+      ]
+    },
+    {
+      "scenario_id": "entra-03",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Approved application provisioning performs identical credential and role operations.",
+      "anchor_event_uids": [
+        "evt_v2_8f6060d2f82ef854dc5534516578213c29c9058eb89c6932daeef67e0cb7ff4e",
+        "evt_v2_da395bfd629f7efa77182e6e5da73e98a466d27b4d5e9b8b148af40c383e6cc2"
+      ],
+      "available_event_uids": [
+        "evt_v2_8f6060d2f82ef854dc5534516578213c29c9058eb89c6932daeef67e0cb7ff4e",
+        "evt_v2_da395bfd629f7efa77182e6e5da73e98a466d27b4d5e9b8b148af40c383e6cc2",
+        "evt_v2_f394474e8a467a16c88a45d8aa90d3d003777baad221cb7f7eafacc6ec2b9163",
+        "evt_v2_21cf5ff551d634f0e3d7d39c7deb209f1a9737c6a3497f3e1181f682a45b13f3"
+      ]
+    },
+    {
+      "scenario_id": "entra-04",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Authorized rotation and app-role maintenance share an administrator and target.",
+      "anchor_event_uids": [
+        "evt_v2_600b164288e69e0666fda9afc01ee691dd4c2a82e2f8f771c0ce2acb18d25d87",
+        "evt_v2_5c3feb5212d6f21f3ed5a1d7d36775280e2b6d3c7516b5a82215f491528e5da7"
+      ],
+      "available_event_uids": [
+        "evt_v2_600b164288e69e0666fda9afc01ee691dd4c2a82e2f8f771c0ce2acb18d25d87",
+        "evt_v2_5c3feb5212d6f21f3ed5a1d7d36775280e2b6d3c7516b5a82215f491528e5da7",
+        "evt_v2_40f2c56871be399a1d34793145ef19462fb6957a2de5726be412eca221c09876",
+        "evt_v2_7ed29df825fbd06813043a0cf2567e15a190952804e7eb982b82de0d91556ff5"
+      ]
+    },
+    {
+      "scenario_id": "entra-05",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "ambiguous",
+      "telemetry_complete": true,
+      "narrative": "Both operations are visible but approval and intent are unavailable.",
+      "anchor_event_uids": [
+        "evt_v2_b8aefc3c8575837e48bdd502b5b551b5e9e56d197fb2950ae4315c355bbb8826",
+        "evt_v2_bbf928b944ba3c6a24f7b6fa25267943582131218c237c327c99fbcaaa2e750f"
+      ],
+      "available_event_uids": [
+        "evt_v2_b8aefc3c8575837e48bdd502b5b551b5e9e56d197fb2950ae4315c355bbb8826",
+        "evt_v2_bbf928b944ba3c6a24f7b6fa25267943582131218c237c327c99fbcaaa2e750f",
+        "evt_v2_9e1e920733b465d4c4a8621bd56348fda3aaecfdb4827f3a384009deb06e74bd",
+        "evt_v2_8f54c6aed18b96916f748ab7d8a9f9618c6672adbadf525095412366facad5fa"
+      ]
+    },
+    {
+      "scenario_id": "entra-06",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Credential addition retained; subsequent unauthorized assignment event is absent.",
+      "anchor_event_uids": [
+        "evt_v2_2968fed2a91deb35aaed5c51c0630b94a7852bd866453b01751039e54c901e56",
+        "evt_v2_38e4aef5aa8d14e568fb508cb882e0ff365aacb19607874ba2020463e9c219e3"
+      ],
+      "available_event_uids": [
+        "evt_v2_2968fed2a91deb35aaed5c51c0630b94a7852bd866453b01751039e54c901e56",
+        "evt_v2_bffd9244d38fddfe1fc5b391726e67a1f0f8f6fb14bbdac286a8a9afda6c808a",
+        "evt_v2_0a5d616aa41780ed41fc7d7f04bf97418846fa6bff64f0baf03353419d6e7460"
+      ]
+    },
+    {
+      "scenario_id": "entra-07",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Unauthorized sequence has no usable target ID on the assignment.",
+      "anchor_event_uids": [
+        "evt_v2_f7171756aa6aa67580e3e4a78671ca4cd41b91bd7bd6d5580dc68d3394827af1",
+        "evt_v2_fd4f9ee264db27848edb3a33d25e2a8ff8d6e742302e3934839cf3f7a3966032"
+      ],
+      "available_event_uids": [
+        "evt_v2_f7171756aa6aa67580e3e4a78671ca4cd41b91bd7bd6d5580dc68d3394827af1",
+        "evt_v2_fd4f9ee264db27848edb3a33d25e2a8ff8d6e742302e3934839cf3f7a3966032",
+        "evt_v2_1548eba247b9ead9270a403ab9f85061a64a11ea923a64eed75f4f8d312d2aad",
+        "evt_v2_01afe5923769b48d357e43b0a4813a2c386d0b22f729a77ec5cfa5fc2382644f"
+      ]
+    },
+    {
+      "scenario_id": "entra-08",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized role assignment delayed beyond the correlation window.",
+      "anchor_event_uids": [
+        "evt_v2_0166f96f457921cb8a29d482235e53a8102736496a3b91993d3eff1a3f526fa5",
+        "evt_v2_dc9491c64186f013a2cecb5aaa13d15a6ad5ca10cdb187ab5b93ce0ffec8746e"
+      ],
+      "available_event_uids": [
+        "evt_v2_0166f96f457921cb8a29d482235e53a8102736496a3b91993d3eff1a3f526fa5",
+        "evt_v2_dc9491c64186f013a2cecb5aaa13d15a6ad5ca10cdb187ab5b93ce0ffec8746e",
+        "evt_v2_49faa111dca9e23511228e8dfc7d46f56fc0f46cab541b814770c336d61ad5f0",
+        "evt_v2_e34fef4ddc7c58fa923a41de3ac5211549c6157b5de053e8df2c3c05faab743f"
+      ]
+    },
+    {
+      "scenario_id": "entra-09",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Approved credential operation followed by a failed role assignment.",
+      "anchor_event_uids": [
+        "evt_v2_d92c8bf0e7a8f7f6d2083ebb434775ca0a1c73a14733066ff3a4a2fb49344b3d",
+        "evt_v2_651753f244b00e8a3e3a02ae43c9913fae6505448f4193ab8420b9c9c746b52d"
+      ],
+      "available_event_uids": [
+        "evt_v2_d92c8bf0e7a8f7f6d2083ebb434775ca0a1c73a14733066ff3a4a2fb49344b3d",
+        "evt_v2_651753f244b00e8a3e3a02ae43c9913fae6505448f4193ab8420b9c9c746b52d",
+        "evt_v2_b6eee71c14581dc7ce130ee2c066eda9f4930ab6cd39f698e5797636b86a7b51",
+        "evt_v2_7abd444100e6a0edffa2c81bfdbfd8fc52ba5e4acce794e7875678bb69941c82"
+      ]
+    },
+    {
+      "scenario_id": "entra-10",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Unrelated administrators make separate changes to the same target.",
+      "anchor_event_uids": [
+        "evt_v2_ab1c7c69e075a08276ec4e407ff5574717c56557fb157dbeff1573f7dc43928e",
+        "evt_v2_c25884260cefbc41c06b6529a96db1746d49e6e6cde1ec8d10469bfd2ce7b2d2"
+      ],
+      "available_event_uids": [
+        "evt_v2_ab1c7c69e075a08276ec4e407ff5574717c56557fb157dbeff1573f7dc43928e",
+        "evt_v2_c25884260cefbc41c06b6529a96db1746d49e6e6cde1ec8d10469bfd2ce7b2d2",
+        "evt_v2_7c45cc362e9e9d7775d31340abcc405bf020e40640fc758727f8f35ac152e8b6",
+        "evt_v2_a8b4ddc05b68b670bbd076cee747cb35da61324fbb5478da402678d84e253929"
+      ]
+    },
+    {
+      "scenario_id": "entra-11",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "One administrator changes different service principals.",
+      "anchor_event_uids": [
+        "evt_v2_ef2f3d18eeffae7e9634746cc7e470a4b255ea70ae75cf351685f50fa4f77d66",
+        "evt_v2_2346ed1bdda04fec58b5e21aa402a4b553f0435537e7fbb16a8c0576bb10ba32"
+      ],
+      "available_event_uids": [
+        "evt_v2_ef2f3d18eeffae7e9634746cc7e470a4b255ea70ae75cf351685f50fa4f77d66",
+        "evt_v2_2346ed1bdda04fec58b5e21aa402a4b553f0435537e7fbb16a8c0576bb10ba32",
+        "evt_v2_ca143a93a624b491daae8ce7217a06cd53e6a450847f3682d573df7d0267b915",
+        "evt_v2_9eb498746b290aef0431741f786a71ba4113002128873b466d7309ff378b2a75"
+      ]
+    },
+    {
+      "scenario_id": "entra-12",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "ambiguous",
+      "telemetry_complete": false,
+      "narrative": "Credential change alone; subsequent activity and approval are unavailable.",
+      "anchor_event_uids": [
+        "evt_v2_2d06d9227fe445962dcf37cf27cd45c04c8314959a01f0fd3c8efee0e595e46c",
+        "evt_v2_40510acfc1e2662c5da349ec54025c1bdcf7de2d19cc32b9c38afc9e785406b1"
+      ],
+      "available_event_uids": [
+        "evt_v2_2d06d9227fe445962dcf37cf27cd45c04c8314959a01f0fd3c8efee0e595e46c",
+        "evt_v2_4b618a04a0f76af52d9317f48cafb0511f9fea8dfc097cf5357e6cb0e9ffd4df",
+        "evt_v2_9de6b2dbfbe9170f5f86b9876f9e8a82a0cc74b03279a25ba52e936d7c0cbca1"
+      ]
+    },
+    {
+      "scenario_id": "entra-13",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Equal timestamps do not establish an ordered sequence.",
+      "anchor_event_uids": [
+        "evt_v2_b9e6d4924ea0ffee2df4f8111f9609d8eed4d1c10e9c0c0e28aeea03cd42b6f0",
+        "evt_v2_178e6924b9dff384593e38632ac717d439b8384e236db40ad028ffaf8a1f385c"
+      ],
+      "available_event_uids": [
+        "evt_v2_b9e6d4924ea0ffee2df4f8111f9609d8eed4d1c10e9c0c0e28aeea03cd42b6f0",
+        "evt_v2_178e6924b9dff384593e38632ac717d439b8384e236db40ad028ffaf8a1f385c",
+        "evt_v2_f27a566ab267d70d847683d1f7b159734505fd4a023e2b8b8d017b46fe425312",
+        "evt_v2_89774cec66a70c540d994a7f8d89bbd9dfd1a56e052a5377860f34e942fb4051"
+      ]
+    },
+    {
+      "scenario_id": "entra-14",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Unauthorized sequence lacks the initiating user object ID.",
+      "anchor_event_uids": [
+        "evt_v2_54340d2cb97473d80bb479ff00e05ff2c7408499ac9e4290b3b11bd4d00b7763",
+        "evt_v2_ee6593adf2abad0f1ba8ec21d6e3eee0616f5f5aba304d702bc0365e6a89fd2f"
+      ],
+      "available_event_uids": [
+        "evt_v2_54340d2cb97473d80bb479ff00e05ff2c7408499ac9e4290b3b11bd4d00b7763",
+        "evt_v2_ee6593adf2abad0f1ba8ec21d6e3eee0616f5f5aba304d702bc0365e6a89fd2f",
+        "evt_v2_d232793932dadfe67a4ec1ecb7f2dd95b7889c9a9f8bed3ca1897f357d6f2e44",
+        "evt_v2_8848be2a5fbc69fec7a5b0d5cba66f9cbd1c104577f27330137e9b8ffd07e3c2"
+      ]
+    },
+    {
+      "scenario_id": "entra-15",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Only the assignment is retained; credential addition is missing.",
+      "anchor_event_uids": [
+        "evt_v2_45f438325890f2a5b8e7ce63d85547fbb1b2a6fd081778cf1c871251c18324ba",
+        "evt_v2_92f004f3ad8a248a05d5ca0a20da60f850a7610a34e328319f47a25850ae1279"
+      ],
+      "available_event_uids": [
+        "evt_v2_92f004f3ad8a248a05d5ca0a20da60f850a7610a34e328319f47a25850ae1279",
+        "evt_v2_3d0373e4b74a2178c2ce840dbb62969731729810f4c727510b906fbd97e6dc31",
+        "evt_v2_c998600541eff50c06578fb686e2030fda952868851af133fadbd2bf72bb7a43"
+      ]
+    },
+    {
+      "scenario_id": "entra-16",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Unauthorized assignment timestamp is missing.",
+      "anchor_event_uids": [
+        "evt_v2_66e388ea30ce6484222559c3b749dae2dae3d7654a0cbf4a954a735754cfb675",
+        "evt_v2_c8c58a9bad64cc40ba1c3c6b8ea6a9d25f362b2ce14f4f7869c8aa0a0aac0554"
+      ],
+      "available_event_uids": [
+        "evt_v2_66e388ea30ce6484222559c3b749dae2dae3d7654a0cbf4a954a735754cfb675",
+        "evt_v2_c8c58a9bad64cc40ba1c3c6b8ea6a9d25f362b2ce14f4f7869c8aa0a0aac0554",
+        "evt_v2_78a146954be190f19d5200b390d3f2cc9cf0460777a2774372395cc3fdb660cc",
+        "evt_v2_8b272f5370f7b4b89b66c2066d48edbdf1399c1a80b902c1c81b7b93341e86bf"
+      ]
+    },
+    {
+      "scenario_id": "entra-17",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Approved role assignment precedes the credential addition.",
+      "anchor_event_uids": [
+        "evt_v2_f212be89d3e54fd0a9285921c4fa56694a95519da50bd6bd4c0028b1a4264086",
+        "evt_v2_88d671f93c52e710606437a5d24b474d587cd626dbea70bc0372f4954d67f0ad"
+      ],
+      "available_event_uids": [
+        "evt_v2_f212be89d3e54fd0a9285921c4fa56694a95519da50bd6bd4c0028b1a4264086",
+        "evt_v2_88d671f93c52e710606437a5d24b474d587cd626dbea70bc0372f4954d67f0ad",
+        "evt_v2_b2df6e83ab0b68df3aace03a513b8dd61d3c81251fcc2876dd1fcd0ae738dd29",
+        "evt_v2_861c66e3027d7bd9902b28685b05e98b375a1576d72a00d67ccbbb429ac9f555"
+      ]
+    },
+    {
+      "scenario_id": "entra-18",
+      "rule_id": "EITS-ENTRA-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized sequence has a one-second positive ordering interval.",
+      "anchor_event_uids": [
+        "evt_v2_52612643369e9e465276e0ea77c6ef0ac74e4eecb1d124b7ae1dc12a383d1e8c",
+        "evt_v2_013104af83bb4f24cc6a6fd3c81a7cb767b54c732f93f947923c7fca75ed617f"
+      ],
+      "available_event_uids": [
+        "evt_v2_52612643369e9e465276e0ea77c6ef0ac74e4eecb1d124b7ae1dc12a383d1e8c",
+        "evt_v2_013104af83bb4f24cc6a6fd3c81a7cb767b54c732f93f947923c7fca75ed617f",
+        "evt_v2_d1fefc548df0c3a9f589497498de9093180b1408eeae2f81dd9c40522cc5b540",
+        "evt_v2_a05d42a92a802cb9e7a0fc9dfc8f7bd02e495c6bdc738c35725e23413664203a"
+      ]
+    }
+  ]
+}

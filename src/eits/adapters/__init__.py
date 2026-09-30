@@ -1,10 +1,13 @@
-"""Source adapter registry. Reserved entries describe scope, not parser support."""
+"""Source adapters and their explicit provider scope namespaces."""
 
 from dataclasses import asdict, dataclass
 from typing import Iterable, Protocol
 
 from ..model import Event, NormalizationContext
 from .aws import CloudTrailAdapter
+from .azure_activity import AzureActivityAdapter
+from .entra import EntraAuditAdapter, EntraSignInAdapter
+from .gcp import GcpAuditAdapter
 
 
 class SourceAdapter(Protocol):
@@ -40,7 +43,14 @@ SOURCES = (
 class AdapterRegistry:
     def __init__(self, adapters=None):
         self._adapters = {}
-        for adapter in (CloudTrailAdapter(),) if adapters is None else adapters:
+        defaults = (
+            CloudTrailAdapter(),
+            AzureActivityAdapter(),
+            EntraSignInAdapter(),
+            EntraAuditAdapter(),
+            GcpAuditAdapter(),
+        )
+        for adapter in defaults if adapters is None else adapters:
             spec = self.spec(adapter.provider, adapter.source)
             if spec.source in self._adapters:
                 raise ValueError(f"duplicate source adapter: {spec.source}")

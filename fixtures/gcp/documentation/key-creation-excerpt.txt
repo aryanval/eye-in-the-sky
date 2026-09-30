@@ -1,0 +1,18 @@
+{
+  "logName": "projects/my-project/logs/cloudaudit.googleapis.com%2Factivity",
+  "protoPayload": {
+    "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+    "authenticationInfo": {
+      "principalEmail": "example-user@example.com",
+    },
+    "methodName": "google.iam.admin.v1.CreateServiceAccountKey",
+    "request": {
+      "@type": "type.googleapis.com/google.iam.admin.v1.CreateServiceAccountKeyRequest",
+      "name": "projects/-/serviceAccounts/my-service-account@my-project.iam.gserviceaccount.com"
+    },
+    "resourceName": "projects/-/serviceAccounts/123456789012345678901"
+  },
+  "resource": {
+    "type": "service_account"
+  }
+}

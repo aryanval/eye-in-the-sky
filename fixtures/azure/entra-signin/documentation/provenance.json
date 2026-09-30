@@ -1,0 +1,24 @@
+{
+  "category": "official documentation excerpt; not an ingest fixture",
+  "copyright": "Microsoft Corporation and Microsoft Graph documentation contributors",
+  "license": "CC-BY-4.0 documentation; MIT code examples",
+  "license_urls": [
+    "https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE",
+    "https://github.com/microsoftgraph/microsoft-graph-docs-contrib/blob/main/LICENSE-CODE"
+  ],
+  "source_urls": [
+    "https://learn.microsoft.com/en-us/graph/api/signin-list?view=graph-rest-1.0",
+    "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-docs-contrib/main/api-reference/v1.0/api/signin-list.md"
+  ],
+  "retrieved_date": "2026-09-30",
+  "source_document_sha256": "6f218c4e80abc1de565322d9a6c39c5d692c4a4f98de2a2670b32023bb48a071",
+  "file": "example-01.http",
+  "sha256": "d33d23aa8c85575e24074f3356029660bd7063dcc2afea4d58fbc23a98fa1c40",
+  "extraction": "First HTTP 200 response fenced block from the public Markdown source; fence removed, original response bytes preserved including terminal newline; no payload repair",
+  "modified": false,
+  "limitations": [
+    "Original source explicitly marks response truncated/shortened",
+    "Presentation evidence, not live telemetry or an executable validated official fixture",
+    "Original trailing comma makes response body invalid JSON"
+  ]
+}

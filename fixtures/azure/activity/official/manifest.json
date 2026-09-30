@@ -1,0 +1,31 @@
+{
+  "dataset_id": "azure-activity-official-examples-v1",
+  "provider": "azure",
+  "source": "azure.activity",
+  "category": "official sample",
+  "source_urls": [
+    "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2015-04-01/examples/GetActivityLogsFiltered.json",
+    "https://learn.microsoft.com/en-us/rest/api/monitor/activity-logs/list?view=rest-monitor-2015-04-01"
+  ],
+  "license": "MIT",
+  "license_url": "https://github.com/Azure/azure-rest-api-specs/blob/main/LICENSE",
+  "copyright": "Copyright (c) 2017 Microsoft",
+  "retrieved_at": "2026-09-30",
+  "modified": false,
+  "source_artifact": "GetActivityLogsFiltered.source.json",
+  "source_artifact_sha256": "a6e73245b24d7434c7eae5dd7e8a0c08edf5b70c032988c72243c6364b55f950",
+  "extraction": "Exact UTF-8 byte substring for /responses/200/body from the retained complete vendor example; no event values, whitespace within the body, or placeholder identifiers changed. The outer example metadata is retained separately. nextLink is retained and never fetched.",
+  "limitations": [
+    "Official illustrative REST example, not live telemetry",
+    "Placeholder claim identifiers are retained exactly, including non-UUID text",
+    "Resource tenantId is absent and remains unknown; token tenant claim is not a resource tenant assertion",
+    "Single documented REST EventData shape; no diagnostic export support"
+  ],
+  "files": [
+    {
+      "path": "sample-01.json",
+      "format": "azure-activity-rest-json",
+      "sha256": "ff0100334c5e177ffd5158b2c0973fab369b17b15099825a4cfcbc690e90362d"
+    }
+  ]
+}

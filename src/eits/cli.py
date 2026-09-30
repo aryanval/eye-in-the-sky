@@ -109,7 +109,7 @@ def main(argv=None):
         elif args.command == "status":
             sources = source_catalog()
             result = {
-                "phase": 1,
+                "phase": 2,
                 "schema_version": connection.execute(
                     "SELECT value FROM metadata WHERE key='schema_version'"
                 ).fetchone()[0],

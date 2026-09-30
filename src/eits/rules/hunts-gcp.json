@@ -1,0 +1,9 @@
+{
+  "HUNT-003": {
+    "provider": "gcp",
+    "source": "gcp.audit",
+    "sql_path": "sql/HUNT-003.sql",
+    "min_hours_exclusive": 0,
+    "max_hours_inclusive": 744
+  }
+}

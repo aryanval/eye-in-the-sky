@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "eye-in-the-sky"
-version = "0.1.0"
-description = "Local, evidence-backed AWS detection engineering; Phase 1 of a multicloud lab"
+version = "0.2.0"
+description = "Local multicloud detection and threat hunting with reproducible evidence-backed evaluation"
 requires-python = ">=3.11"
 dependencies = ["duckdb==1.5.6", "pytz==2026.4"]
 license = "MIT"

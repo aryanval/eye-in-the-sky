@@ -5,6 +5,9 @@ source adapters and arbitrary nonempty evidence sets. AWS CloudTrail remains the
 only implemented vendor parser. This milestone adds no Azure/Entra/GCP parser,
 security detection, hunt, live-account dependency or deployment infrastructure.
 
+This is the historical refactor report for commit `4a44570`. The subsequent
+provider implementations are documented in [PHASE2_REPORT.md](PHASE2_REPORT.md).
+
 ## Changes
 
 | Area | Files | Result |

@@ -1,4 +1,4 @@
-# Threat hunts — Phase 1
+# Threat hunts
 
 ## HUNT-001 — First 24 hours of newly created access keys
 
@@ -55,3 +55,34 @@ it. Open any returned `creation_uid` or `use_event_uids` using `eits event`.
 
 This is a hunt, not an alert rule or malicious classification. A useful result
 can be benign, ambiguous or incomplete.
+
+## HUNT-002 — Entra sign-in investigation
+
+[Design and interpretation](docs/hunts/HUNT-002.md) · [SQL](src/eits/sql/HUNT-002.sql)
+
+Explore sign-in success/failure, reported risk and missing authentication context
+per explicit collection tenant and immutable user ID. Unknown users remain
+separate leads. Risk/MFA gaps are not treated as benign or proof of compromise.
+The design defines the hypothesis, telemetry, suspicion/counterevidence and
+additional authorization/session evidence needed for a malicious conclusion.
+
+```sh
+.venv/bin/python -m eits hunt --hunt-id HUNT-002 --hours 24
+```
+
+## HUNT-003 — GCP service-account key creation and observed use
+
+[Design and interpretation](docs/hunts/HUNT-003.md) · [SQL](src/eits/sql/HUNT-003.sql)
+
+Explore newly recorded keys and directly attributed use within the same log-owning
+project, including failed/unknown actions, delayed policy administration and
+unused or unresolvable creations. No observation of use does not prove inactivity.
+The design defines the hypothesis, telemetry, suspicion/counterevidence and
+additional credential ownership, change authorization and downstream evidence.
+
+```sh
+.venv/bin/python -m eits hunt --hunt-id HUNT-003 --hours 24
+```
+
+All three hunts are exploratory. They emit exact event UIDs for inspection and
+do not contribute alerts or malicious labels to detection evaluation.

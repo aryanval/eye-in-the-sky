@@ -65,6 +65,20 @@ class RuleRegistry:
     def revisions(self):
         return tuple(self._catalogs)
 
+    def for_source(self, provider, source):
+        """Keep a single-source evaluation focused as the global catalog grows."""
+        return RuleRegistry(
+            {
+                revision: {
+                    rule_id: metadata
+                    for rule_id, metadata in rules.items()
+                    if (metadata["provider"], metadata["source"]) == (provider, source)
+                }
+                for revision, rules in self._catalogs.items()
+            },
+            resource_loader=self._resource_loader,
+        )
+
     def catalog(self, revision):
         try:
             return copy.deepcopy(self._catalogs[revision])

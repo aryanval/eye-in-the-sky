@@ -210,6 +210,7 @@ def evaluate(
     manifest_bytes, truth_bytes = Path(manifest_path).read_bytes(), Path(truth_path).read_bytes()
     truth = json.loads(truth_bytes)
     manifest = json.loads(manifest_bytes)
+    registry = registry.for_source(manifest["provider"], manifest["source"])
     if truth["dataset_id"] != manifest["dataset_id"]:
         raise ValueError("ground truth and fixture dataset IDs differ")
     if split not in {"all", "development", "holdout"}:

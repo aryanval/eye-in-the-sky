@@ -1,0 +1,1116 @@
+{
+  "report_version": 2,
+  "rule_revision": "baseline",
+  "split": "all",
+  "schema_version": 2,
+  "unit": "One rule/scenario alert opportunity; duplicate findings cannot increase TP. Wrong-evidence or unassigned findings are FP. Ambiguous cases are unscored.",
+  "limitation": "Metrics are specific to original synthetic fixtures. This is not a production-performance estimate or an independently blinded benchmark.",
+  "dataset_id": "gcp-synthetic-v1",
+  "manifest_sha256": "67b8a839c8bae86c46c43dfc179ddbb1bc2300b11118d2c7a40c8567fd370264",
+  "ground_truth_sha256": "1ddbd3307ee5807b25a183522de5c382c512292b9b2fa847eb7d6bee7bfb6013",
+  "ingestion": {
+    "dataset_id": "gcp-synthetic-v1",
+    "records_processed": 73,
+    "new_events": 73,
+    "total_events": 73
+  },
+  "python_version": "3.14.6",
+  "duckdb_version": "1.5.6",
+  "code_sha256": {
+    "__init__.py": "2720d571123e8bcc8d6dca7bac5c67841655f677bd1eb14ac32b41a79d5903d0",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "adapters/__init__.py": "7d7e1dd9c12720321d87678896fe59cd447e5cfa9261f897040d8f7c76f8bedf",
+    "adapters/aws.py": "80df907f4bec603653d8b1f7f203e565846801ae89d6e7bb1b12d3a00d7b2662",
+    "adapters/azure_activity.py": "e6c7bf9d8643a8fb12b82f9316cb5e1ddab3aaa48a417660cd51a470ea0c043f",
+    "adapters/entra.py": "c5f6eb73729854b200a3e54c79ff08ecb8cb43078e0b2d805c5ab76a58951857",
+    "adapters/gcp.py": "ed8341d498a7e511f11aa741ddc27b5fb828e6428b861b23c87ef79756d05cb2",
+    "cli.py": "d7c1af275967eb8ce9d0b089ac15fd987251a5678f2b7218a2f597e8cfba2d7a",
+    "db.py": "f2c1e1bc0f5dd15c62089e8d19e2166f969b6c936a859bd85cfbb97bfc745877",
+    "engine.py": "d911306dc4a09bc7e3ae1bfdb50c9a6414bf789e85af016220c2dfeb7d05695e",
+    "evaluation.py": "698d884c16d0a8e33f11de4cc19453c924023f6583307f9f7355a99468b1403d",
+    "model.py": "11717ee6004d2d73603ac05b4513a171f05aefb0bd1bcc38b0f1c634aefe7250",
+    "registry.py": "b0067b253fcccbc11905ca85d7bc28edb37a692d5ea5b061a6cbfdc86691ff11"
+  },
+  "resource_sha256": {
+    "rules/azure-activity.json": "608a8e80cd10f729c39a9c7df76b4fcd904c49113e8b50a1de54e8dedab28c58",
+    "rules/catalog.json": "6809b91f0c2133009a67a902dce466f88ec6ce7625a6b0935a11df06383987bc",
+    "rules/entra.json": "c2ee7d0b09656d237e2d22740ca30a1381cb5c609e1a908436c81a2b39e30dbf",
+    "rules/gcp.json": "5751b7a38ddc05cf9ff042cb746790d831ed58cb1dbb25f4880f85c74758eb62",
+    "rules/hunts-entra.json": "51bf7ca5733f3845c3cd27a287f7ddfb94e083877e7ab4da5c7c055b0d23c5bf",
+    "rules/hunts-gcp.json": "fa7b21e3fe8b3ac304c080bb233075cc949f1d2d02c494b68b2d4992a24c72fa",
+    "rules/hunts.json": "4fcb36a0b542eeca35ea064c50e86550ec5000b155a93c8e9274489b3975990f",
+    "rules/registry.json": "373eaefd2eb89e7bca18db63d88eb614cc2d4ab48539a32d3673058ad6926d74",
+    "rules/restart-aware.json": "011d3b261f7e96b0f97e70c89ce461ae480a5bee912bf69f902ad718d8850867",
+    "sql/EITS-AWS-001.sql": "db4f17fb86c51705755fb8926da0f65447c446733a0e64307a4bcbf655cdbb8e",
+    "sql/EITS-AWS-002-restart-aware.sql": "b6138042c736766cebba3e5f02ea837318cf833e4dc49c8a2970bf66a336d2b7",
+    "sql/EITS-AWS-002.sql": "8d0df93920f60d41e47eb63833a3f86460424ddcc5cb75f56be483882d03b596",
+    "sql/EITS-AZURE-001.sql": "acacc3496db1dece5cfc827cfdc617e51571f7338419fa32e471e3b8c0412a8d",
+    "sql/EITS-ENTRA-001.sql": "6356de0b187e336088ff9bf5c9ac80ccd3bbcd838aefedbd23de5a656eb3ce4c",
+    "sql/EITS-GCP-001.sql": "3a4e49b5763f263c1f7df919a9c64ce4e9b7a9783069554b8e77ac8f7f30a2d1",
+    "sql/EITS-GCP-002.sql": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e",
+    "sql/HUNT-001.sql": "2b108aab3a31d0accf4beb30b8d029e197f4dd27e65972e98b57187cb462cc6a",
+    "sql/HUNT-002.sql": "58da71ddefe6bd03d4954ae9cf1ab4753ffc261f2773ac2480dc5fb534636292",
+    "sql/HUNT-003.sql": "68e8632921a990d0f2baae97294c06305f6174d0c928891e80df75b723fa7e66",
+    "sql/schema-v1-to-v2.sql": "ee0976eeebf8dfa77ce862f6a92f67d8eb08a613e76d75a8486e2042bf379847",
+    "sql/schema.sql": "e0e3654f11d92db66dc840733afca47903bb53a5a1e4678a9a9b2e5b5a8c4c88"
+  },
+  "rule_catalog_sha256": "f23cc9467491a6ded4fd57b2b06490570d1851e76f44621f3da8084bae585e58",
+  "sql_sha256": {
+    "EITS-GCP-001": "3a4e49b5763f263c1f7df919a9c64ce4e9b7a9783069554b8e77ac8f7f30a2d1",
+    "EITS-GCP-002": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e"
+  },
+  "executed_query_sha256": {
+    "EITS-GCP-001": "52abe90ecb9330019cf38caffc5864b7a4a5224d0393834d1cc5528ea0a80ac6",
+    "EITS-GCP-002": "9b8ae98df76f7a7df503e8f4b4f068dea982f5b052bb2127b43ab5f122313c25"
+  },
+  "execution_scope": {
+    "EITS-GCP-001": {
+      "provider": "gcp",
+      "source": "gcp.audit"
+    },
+    "EITS-GCP-002": {
+      "provider": "gcp",
+      "source": "gcp.audit"
+    }
+  },
+  "evidence_events_verified": 13,
+  "rules": {
+    "EITS-GCP-001": {
+      "metrics": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 6,
+        "tn": 5,
+        "ambiguous": 1,
+        "ambiguous_alerted": 1,
+        "complete_telemetry_tp": 2,
+        "complete_telemetry_fn": 3,
+        "duplicate_findings": 0,
+        "precision": 0.666667,
+        "recall": 0.25,
+        "complete_telemetry_recall": 0.4
+      },
+      "scenario_coverage": {
+        "evaluated": 15,
+        "malicious_detected": 2,
+        "malicious_total": 8,
+        "ambiguous_excluded_from_precision_recall": 1
+      },
+      "scenarios": [
+        {
+          "scenario_id": "gcp-001",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Unauthorized new key used for project policy change",
+          "anchor_event_uids": [
+            "evt_v2_e892bf713c0763609367edff8006331c16a92f74eba697e4e721aeb3bc480192",
+            "evt_v2_849e3b3308dacde318a59764d3ab5f9d8f689d280fbb5c59112658b1886f4772"
+          ],
+          "available_event_uids": [
+            "evt_v2_e892bf713c0763609367edff8006331c16a92f74eba697e4e721aeb3bc480192",
+            "evt_v2_849e3b3308dacde318a59764d3ab5f9d8f689d280fbb5c59112658b1886f4772",
+            "evt_v2_ece50a754f388f7000bb309daa2c67548923d49e21946b5c595b9cbfbeae3959"
+          ],
+          "result": "tp",
+          "finding_ids": [
+            "finding_dd553fee564c2e93ec1dc474"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-002",
+          "rule_id": "EITS-GCP-001",
+          "label": "benign",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Approved credential rotation and deployment; identical detector-visible sequence",
+          "anchor_event_uids": [
+            "evt_v2_5160e9346624639f053a4dbbdaaa9599d6a43bd0a0c8f365c3d43d5ea7c88109",
+            "evt_v2_32a793eaeea6058d148c470104b6e01b36c9ca1c248a7b3027166e3af09888cf"
+          ],
+          "available_event_uids": [
+            "evt_v2_5160e9346624639f053a4dbbdaaa9599d6a43bd0a0c8f365c3d43d5ea7c88109",
+            "evt_v2_32a793eaeea6058d148c470104b6e01b36c9ca1c248a7b3027166e3af09888cf",
+            "evt_v2_5f674ab897592308dd375023248e49621cda66495dbf7528b0e5bad0c66bf095"
+          ],
+          "result": "fp",
+          "finding_ids": [
+            "finding_c502b1a8937d67b7a76503ab"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-003",
+          "rule_id": "EITS-GCP-001",
+          "label": "ambiguous",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "New key and policy change with unavailable authorization history",
+          "anchor_event_uids": [
+            "evt_v2_3922b56932295f1bf6bc4019d75550a0b90c5fcad38ebcb04b78ae9e19857e35",
+            "evt_v2_ba6d2f1822227095a8b09621acaf67b44f619d4eb9c727c9e503fa667d255fa9"
+          ],
+          "available_event_uids": [
+            "evt_v2_3922b56932295f1bf6bc4019d75550a0b90c5fcad38ebcb04b78ae9e19857e35",
+            "evt_v2_ba6d2f1822227095a8b09621acaf67b44f619d4eb9c727c9e503fa667d255fa9",
+            "evt_v2_46d63cd44d4247c4dc1237d5f7078c04db860c73b8cad58f365fd19429f4c4a0"
+          ],
+          "result": "unscored_alert",
+          "finding_ids": [
+            "finding_aa16a1b0befcf0cc460bf730"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-004",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": false,
+          "description": "Unauthorized sequence; creation response key name is absent",
+          "anchor_event_uids": [
+            "evt_v2_dc7733b4ac50d2fc8cf35ae673c37e898c130c09a15a55eaf3582eabae8816f3",
+            "evt_v2_e71967720918ed3a59dd6e42ac59ec7027e19cabce91923b3ecfc998a3493370"
+          ],
+          "available_event_uids": [
+            "evt_v2_dc7733b4ac50d2fc8cf35ae673c37e898c130c09a15a55eaf3582eabae8816f3",
+            "evt_v2_e71967720918ed3a59dd6e42ac59ec7027e19cabce91923b3ecfc998a3493370",
+            "evt_v2_3fc47e0a4ea27003bc78f83141388fa7291fe307013cdff41791d3fcedf5af41"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-005",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "development",
+          "telemetry_complete": false,
+          "description": "Unauthorized policy use; key-creation record is missing",
+          "anchor_event_uids": [
+            "evt_v2_a530543c131fd580111cacb5786ea38f1ebdfa02740af07254167223547c0051",
+            "evt_v2_3d81a4acae1b1dd2347df69baf84094008477e36e810bcfa1ae470b0d94cdf9e"
+          ],
+          "available_event_uids": [
+            "evt_v2_3d81a4acae1b1dd2347df69baf84094008477e36e810bcfa1ae470b0d94cdf9e",
+            "evt_v2_8c85a2921b22c51ca42cbd3bf345b99557aada324fd3b4665cf63b767014db19"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-006",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Unauthorized use delayed until 40 minutes; outside rule window",
+          "anchor_event_uids": [
+            "evt_v2_cf7b9196eee2c4e94be03fed98a592f05c17d69268efdbafc624830b79e4f63c",
+            "evt_v2_f2b8d355ec23738e651820c86f64f8e7abb979377a1eaf78960a1a1cb3bf74e0"
+          ],
+          "available_event_uids": [
+            "evt_v2_cf7b9196eee2c4e94be03fed98a592f05c17d69268efdbafc624830b79e4f63c",
+            "evt_v2_f2b8d355ec23738e651820c86f64f8e7abb979377a1eaf78960a1a1cb3bf74e0",
+            "evt_v2_c4de0f40238d4e4e3cad6f21bae286e9d96b718912a04253f0010393f2608887"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-007",
+          "rule_id": "EITS-GCP-001",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Denied policy update during a deployment test",
+          "anchor_event_uids": [
+            "evt_v2_c3d05378b91ed887d5ab66f087967733d3e94ddd3e51842e48fdbbbd63c97bf8",
+            "evt_v2_9d69a8b80d2cf113fd33fa984c38ec89b49700c64b6ecc696b680324e3d840e3"
+          ],
+          "available_event_uids": [
+            "evt_v2_c3d05378b91ed887d5ab66f087967733d3e94ddd3e51842e48fdbbbd63c97bf8",
+            "evt_v2_9d69a8b80d2cf113fd33fa984c38ec89b49700c64b6ecc696b680324e3d840e3",
+            "evt_v2_bfd1dc8610bcf69e740cf1afc5f54429d471c5c4c639aa82321ba14bbc29e3d5"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-008",
+          "rule_id": "EITS-GCP-001",
+          "label": "benign",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Independent existing key performs policy update",
+          "anchor_event_uids": [
+            "evt_v2_f23df49742004ca01a6c0203d2f440719a1a1d9fd67ce325cd0370cbad9dd260",
+            "evt_v2_cc44033b15f28d1525d92938300a77dd1a99601b2d1c801157d7dca2ead71470"
+          ],
+          "available_event_uids": [
+            "evt_v2_f23df49742004ca01a6c0203d2f440719a1a1d9fd67ce325cd0370cbad9dd260",
+            "evt_v2_cc44033b15f28d1525d92938300a77dd1a99601b2d1c801157d7dca2ead71470",
+            "evt_v2_ea4316420cf949f8dc0e07928c8deafca14596bbe86e8a748261f3eb45d342a1"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-009",
+          "rule_id": "EITS-GCP-001",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Approved cross-project administration is deliberately outside same-project rule",
+          "anchor_event_uids": [
+            "evt_v2_a2732a8abc8c7bad2b1a1983263f9e28b6897feab600d07c453063a439b7a24c",
+            "evt_v2_e9bef3611fc55179906d0c881d09b7fda198315417a7b5e75a208a4a574f4f98"
+          ],
+          "available_event_uids": [
+            "evt_v2_a2732a8abc8c7bad2b1a1983263f9e28b6897feab600d07c453063a439b7a24c",
+            "evt_v2_e9bef3611fc55179906d0c881d09b7fda198315417a7b5e75a208a4a574f4f98",
+            "evt_v2_b4d24606daa2aab5acf4f5244dd5b56ca77a45fefa24cc7e8f6d93596e0bfc00"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-010",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Unauthorized use exactly at the inclusive 30-minute boundary",
+          "anchor_event_uids": [
+            "evt_v2_d5e3ed399365f2caf7305f4771ab8b61d4e39e49ee5f782b5a810e7663e8e0d3",
+            "evt_v2_ae2a1e4aed71024c275412477ceeaa0deaea6d1d502fbfc45d41d5f9b634845d"
+          ],
+          "available_event_uids": [
+            "evt_v2_d5e3ed399365f2caf7305f4771ab8b61d4e39e49ee5f782b5a810e7663e8e0d3",
+            "evt_v2_ae2a1e4aed71024c275412477ceeaa0deaea6d1d502fbfc45d41d5f9b634845d",
+            "evt_v2_9799857a5195c773b8c5dabfed6e92235a51e0e299fe9a0658d4084baecd048a"
+          ],
+          "result": "tp",
+          "finding_ids": [
+            "finding_de71fe4b7d3fd10439410b67"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-011",
+          "rule_id": "EITS-GCP-001",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Coarse equal timestamps cannot establish sequence ordering",
+          "anchor_event_uids": [
+            "evt_v2_34cfea5aa175269e6f1818b4f5252e993ff88d40cbe2948e01cc741d64e9243e",
+            "evt_v2_f1a1199b478fc79f2a43f267c0b49fa6f700a002a9d900e0f519b26db5b077f5"
+          ],
+          "available_event_uids": [
+            "evt_v2_34cfea5aa175269e6f1818b4f5252e993ff88d40cbe2948e01cc741d64e9243e",
+            "evt_v2_f1a1199b478fc79f2a43f267c0b49fa6f700a002a9d900e0f519b26db5b077f5",
+            "evt_v2_d131afc0ff5694eac6adba68df7c0e42a1522d2e2561b2a68aa0341712dee54e"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-012",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": false,
+          "description": "Unauthorized sequence with absent operation status",
+          "anchor_event_uids": [
+            "evt_v2_4208495c418ce4bb78251de0cc2eded6d5db1d53962e4a0d8d2f2f041c3ce13f",
+            "evt_v2_e125d6c468f52a8018d3bb07cc78b156c7648e4194314eb3b282c6f8cb4a6ce0"
+          ],
+          "available_event_uids": [
+            "evt_v2_4208495c418ce4bb78251de0cc2eded6d5db1d53962e4a0d8d2f2f041c3ce13f",
+            "evt_v2_e125d6c468f52a8018d3bb07cc78b156c7648e4194314eb3b282c6f8cb4a6ce0",
+            "evt_v2_b212679537839749a6d08acc2110a0e5d2c4c079834f53bc02f8e92defad2bbc"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-013",
+          "rule_id": "EITS-GCP-001",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Approved key creation without observed subsequent use",
+          "anchor_event_uids": [
+            "evt_v2_6bd6ee1211b6983964c0300fa9bac183c42441ffc7fc6595360c3c868382ed88"
+          ],
+          "available_event_uids": [
+            "evt_v2_6bd6ee1211b6983964c0300fa9bac183c42441ffc7fc6595360c3c868382ed88",
+            "evt_v2_11ce424660c7e26ef2cafaa6e450a103e196d6a202f442d7d6ded9d8e6a9eef2"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-014",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Unauthorized use one second beyond the rule boundary",
+          "anchor_event_uids": [
+            "evt_v2_b1fdfde9a945b844b6ba16016b9f96abe9691b15482cf793bdb8920861140400",
+            "evt_v2_8f8def6f187e757628e8a28d7540181311793653ae564437f40c03f070428d91"
+          ],
+          "available_event_uids": [
+            "evt_v2_b1fdfde9a945b844b6ba16016b9f96abe9691b15482cf793bdb8920861140400",
+            "evt_v2_8f8def6f187e757628e8a28d7540181311793653ae564437f40c03f070428d91",
+            "evt_v2_171bd4d573419a6722c7c663d44180ee64d32b7d6b06556ea3a3493fde44d4af"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-015",
+          "rule_id": "EITS-GCP-001",
+          "label": "malicious",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Key path wildcard spelling differs; no unsupported alias inference",
+          "anchor_event_uids": [
+            "evt_v2_e787c0e5495206ad1a9c7b537114f49614a162f0f98807d407045a01197d7d91",
+            "evt_v2_88bf707e08dd3e61af8e7f260b40883287df83cb81134f6a2192d5cdf3f9fcd4"
+          ],
+          "available_event_uids": [
+            "evt_v2_e787c0e5495206ad1a9c7b537114f49614a162f0f98807d407045a01197d7d91",
+            "evt_v2_88bf707e08dd3e61af8e7f260b40883287df83cb81134f6a2192d5cdf3f9fcd4",
+            "evt_v2_8f7ac1161fc50421a3b16a3eb38a8b87ff4d79116646bcb19bdd007c1eaeae4e"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        }
+      ],
+      "unexpected_findings": []
+    },
+    "EITS-GCP-002": {
+      "metrics": {
+        "tp": 2,
+        "fp": 2,
+        "fn": 5,
+        "tn": 5,
+        "ambiguous": 1,
+        "ambiguous_alerted": 1,
+        "complete_telemetry_tp": 2,
+        "complete_telemetry_fn": 1,
+        "duplicate_findings": 0,
+        "precision": 0.5,
+        "recall": 0.285714,
+        "complete_telemetry_recall": 0.666667
+      },
+      "scenario_coverage": {
+        "evaluated": 15,
+        "malicious_detected": 2,
+        "malicious_total": 7,
+        "ambiguous_excluded_from_precision_recall": 1
+      },
+      "scenarios": [
+        {
+          "scenario_id": "gcp-101",
+          "rule_id": "EITS-GCP-002",
+          "label": "malicious",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Unauthorized anonymous object-read grant",
+          "anchor_event_uids": [
+            "evt_v2_34a84929796e2129f92b25ba242c712c8cff0144b2f8d14c8994ef58d6f0c57b"
+          ],
+          "available_event_uids": [
+            "evt_v2_34a84929796e2129f92b25ba242c712c8cff0144b2f8d14c8994ef58d6f0c57b",
+            "evt_v2_5ab16e23989836b6eb20387ebae861e661a00a7a49e03cbd2d80fa8bffaab439"
+          ],
+          "result": "tp",
+          "finding_ids": [
+            "finding_19be5a430aeef9f934ff7fee"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-102",
+          "rule_id": "EITS-GCP-002",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Unauthorized broad authenticated object-administration grant",
+          "anchor_event_uids": [
+            "evt_v2_4f3e0e945fd8fff0176d93526c29e4db67bc77c3765fb5bd6a37ee724ca43000"
+          ],
+          "available_event_uids": [
+            "evt_v2_4f3e0e945fd8fff0176d93526c29e4db67bc77c3765fb5bd6a37ee724ca43000",
+            "evt_v2_be5e17ff3b60806fc4631d7e3230169f52492a273e192ae294af484f0c40d82a"
+          ],
+          "result": "tp",
+          "finding_ids": [
+            "finding_2831cda75e86430e2579bb87"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-103",
+          "rule_id": "EITS-GCP-002",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Approved open-data publication; same visible grant as malicious case",
+          "anchor_event_uids": [
+            "evt_v2_f54b7eeb41d8c63983beac9296190a5da4456a8ce190878f8c53ac1bd2f58859"
+          ],
+          "available_event_uids": [
+            "evt_v2_f54b7eeb41d8c63983beac9296190a5da4456a8ce190878f8c53ac1bd2f58859",
+            "evt_v2_c223738db2a383b9efb3b334e97437df4fce03b95f4debd9241be73f1b1ddedf"
+          ],
+          "result": "fp",
+          "finding_ids": [
+            "finding_7f888cada4f752ab56663f89"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-104",
+          "rule_id": "EITS-GCP-002",
+          "label": "ambiguous",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Public grant with unknown dataset classification and approval",
+          "anchor_event_uids": [
+            "evt_v2_e18af988d8d7d280351ba0e14a9cbcecc1090d047fa262923ca4d490fd62ca76"
+          ],
+          "available_event_uids": [
+            "evt_v2_e18af988d8d7d280351ba0e14a9cbcecc1090d047fa262923ca4d490fd62ca76",
+            "evt_v2_641e5728c127019225f485e99aa364fd76487cd12084821900dc35ce16e2da57"
+          ],
+          "result": "unscored_alert",
+          "finding_ids": [
+            "finding_dce29f6d008fabc258d9354b"
+          ],
+          "correct_evidence_match": true
+        },
+        {
+          "scenario_id": "gcp-105",
+          "rule_id": "EITS-GCP-002",
+          "label": "malicious",
+          "split": "development",
+          "telemetry_complete": false,
+          "description": "Unauthorized grant; policy delta missing from retained event",
+          "anchor_event_uids": [
+            "evt_v2_3fe661d0b6fc1b738db1f99fd203aa223f9f26acdb7af80c6d4e7544234fa2db"
+          ],
+          "available_event_uids": [
+            "evt_v2_3fe661d0b6fc1b738db1f99fd203aa223f9f26acdb7af80c6d4e7544234fa2db",
+            "evt_v2_194ad6199cf26f5c884f7d2ced277e6cd55d4f38dd1ba61274edb72653604010"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-106",
+          "rule_id": "EITS-GCP-002",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": false,
+          "description": "Unauthorized grant; status null and success unresolvable",
+          "anchor_event_uids": [
+            "evt_v2_c245ee851ad266cc9913de47bd2385646ecca098066e814f3d5b21c078931619"
+          ],
+          "available_event_uids": [
+            "evt_v2_c245ee851ad266cc9913de47bd2385646ecca098066e814f3d5b21c078931619",
+            "evt_v2_f507b6bcfcc033e6c736c1d3968ba8d3259f156a467565184bbb620d3b8e6b5b"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-107",
+          "rule_id": "EITS-GCP-002",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Removal of an old public grant",
+          "anchor_event_uids": [
+            "evt_v2_4a47ddeeb4d3b6613e10a57d87a814feb269d378a8b535386d725b61011c6462"
+          ],
+          "available_event_uids": [
+            "evt_v2_4a47ddeeb4d3b6613e10a57d87a814feb269d378a8b535386d725b61011c6462",
+            "evt_v2_9ef72d64306f27aa8f7ba8006c364440c83d964ee878525a3d3987387079bf29"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-108",
+          "rule_id": "EITS-GCP-002",
+          "label": "benign",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Denied request cannot establish completed public grant",
+          "anchor_event_uids": [
+            "evt_v2_c7c3707d953699993c767908fb48c4d13ae24a7fee16b13101cfac000b5a0be9"
+          ],
+          "available_event_uids": [
+            "evt_v2_c7c3707d953699993c767908fb48c4d13ae24a7fee16b13101cfac000b5a0be9",
+            "evt_v2_e1fd45d3c398b590ab7327e4efc25488ec8ff14e042fe22aef5feef196a9d2ac"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-109",
+          "rule_id": "EITS-GCP-002",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Approved object access granted to a named service account",
+          "anchor_event_uids": [
+            "evt_v2_ffaf0f2ca86c978047566b14c6ab634b55b1f567ceb8af8bbf1c40c58e622f1c"
+          ],
+          "available_event_uids": [
+            "evt_v2_ffaf0f2ca86c978047566b14c6ab634b55b1f567ceb8af8bbf1c40c58e622f1c",
+            "evt_v2_a77d78c15c1f6ad95b0e19cb370dd6d4e2f4cff897f3eca44f1c91a00be4485d"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-110",
+          "rule_id": "EITS-GCP-002",
+          "label": "benign",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Public viewer removal and private viewer addition occur in separate deltas",
+          "anchor_event_uids": [
+            "evt_v2_53172b0a770384ae7598f2e9714f604ee9b09185332c9200f41a785de6d4bd61"
+          ],
+          "available_event_uids": [
+            "evt_v2_53172b0a770384ae7598f2e9714f604ee9b09185332c9200f41a785de6d4bd61",
+            "evt_v2_eb652260e6f3e06189d7ed891d21476ead4d71687089fd8a5703aaabce230979"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-111",
+          "rule_id": "EITS-GCP-002",
+          "label": "malicious",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Unauthorized public grant uses a custom object-access role outside fixed role list",
+          "anchor_event_uids": [
+            "evt_v2_38d59c2059c15f76db937535b924bc0af163af051aec9ce0a616f72144b435aa"
+          ],
+          "available_event_uids": [
+            "evt_v2_38d59c2059c15f76db937535b924bc0af163af051aec9ce0a616f72144b435aa",
+            "evt_v2_1fbf337aed7e5e8dbd2e4f1f1d4d2cafc844670be2972867854768047854bb53"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-112",
+          "rule_id": "EITS-GCP-002",
+          "label": "benign",
+          "split": "holdout",
+          "telemetry_complete": true,
+          "description": "Non-Storage service event must not trigger the bucket rule",
+          "anchor_event_uids": [
+            "evt_v2_4746eab13b76375d1fbf1eb898a68e95ceb4cbaf0484633b494b681bf68bd84f"
+          ],
+          "available_event_uids": [
+            "evt_v2_4746eab13b76375d1fbf1eb898a68e95ceb4cbaf0484633b494b681bf68bd84f",
+            "evt_v2_c81350ad90638d2d52f12eb77e37070d17761a72b820f8655cb1d3216240df5a"
+          ],
+          "result": "tn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-113",
+          "rule_id": "EITS-GCP-002",
+          "label": "malicious",
+          "split": "development",
+          "telemetry_complete": false,
+          "description": "Unauthorized grant; target resource name lost",
+          "anchor_event_uids": [
+            "evt_v2_09c1f74869694c5cd6bb3742e36ac306f8bf07d0dae0b2b1ab7f17da6e5e49a1"
+          ],
+          "available_event_uids": [
+            "evt_v2_09c1f74869694c5cd6bb3742e36ac306f8bf07d0dae0b2b1ab7f17da6e5e49a1",
+            "evt_v2_5359048ab82ec046b73d08e2bee55d45bf738ca15a041444e0d10852a50c3f22"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-114",
+          "rule_id": "EITS-GCP-002",
+          "label": "malicious",
+          "split": "holdout",
+          "telemetry_complete": false,
+          "description": "Unauthorized grant represented only in generic metadata, outside supported delta shape",
+          "anchor_event_uids": [
+            "evt_v2_8abd528793c7432711512cc03349336bab1035062bb297064488f96ae8ef410a"
+          ],
+          "available_event_uids": [
+            "evt_v2_8abd528793c7432711512cc03349336bab1035062bb297064488f96ae8ef410a",
+            "evt_v2_c99e7ef50123424d54854247301f2d8c1ab9d24eae9a29e85c5b5270293c1697"
+          ],
+          "result": "fn",
+          "finding_ids": [],
+          "correct_evidence_match": false
+        },
+        {
+          "scenario_id": "gcp-115",
+          "rule_id": "EITS-GCP-002",
+          "label": "benign",
+          "split": "development",
+          "telemetry_complete": true,
+          "description": "Approved publication to two broad principals; one finding retains both delta rows",
+          "anchor_event_uids": [
+            "evt_v2_110941a3b907a0eac3eee110ef8ceff98f3d7674471ee2ab3af1a7d888feb4ed"
+          ],
+          "available_event_uids": [
+            "evt_v2_110941a3b907a0eac3eee110ef8ceff98f3d7674471ee2ab3af1a7d888feb4ed",
+            "evt_v2_8a4b306417c4a4f6af67f01988aa499a553ef6721c1d96569a032cd42a289e59"
+          ],
+          "result": "fp",
+          "finding_ids": [
+            "finding_859cdb63e21fc7705f5f549c"
+          ],
+          "correct_evidence_match": true
+        }
+      ],
+      "unexpected_findings": []
+    }
+  },
+  "findings": [
+    {
+      "finding_id": "finding_aa16a1b0befcf0cc460bf730",
+      "rule_id": "EITS-GCP-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "3a4e49b5763f263c1f7df919a9c64ce4e9b7a9783069554b8e77ac8f7f30a2d1",
+      "title": "New service-account key used to set a project IAM policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.001"
+      ],
+      "event_uids": [
+        "evt_v2_3922b56932295f1bf6bc4019d75550a0b90c5fcad38ebcb04b78ae9e19857e35",
+        "evt_v2_ba6d2f1822227095a8b09621acaf67b44f619d4eb9c727c9e503fa667d255fa9"
+      ],
+      "source_event_ids": [
+        "[\"751a7f8363d15dd8bcb2de0f26508abc\",\"2025-04-05T12:00:00Z\"]",
+        "[\"d9d5ccfb72825612a862b82bb83fbdd7\",\"2025-04-05T12:05:00Z\"]"
+      ],
+      "observed": "A successful key-creation record and later successful project SetIamPolicy record share the exact reported key resource name and log-owning project within 30 minutes.",
+      "inferred": "Investigate possible credential misuse or unauthorized access-control administration; the API method alone does not establish a permission grant.",
+      "unresolved": [
+        "Malicious intent or key theft",
+        "The person operating the credential",
+        "Authorization of the change",
+        "A privilege grant or effective privilege increase",
+        "Persistence, lasting state or cross-cloud identity"
+      ],
+      "predicate_evidence": [
+        {
+          "creation_uid": "evt_v2_3922b56932295f1bf6bc4019d75550a0b90c5fcad38ebcb04b78ae9e19857e35",
+          "policy_uid": "evt_v2_ba6d2f1822227095a8b09621acaf67b44f619d4eb9c727c9e503fa667d255fa9",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-003",
+          "created_at": "2025-04-05T12:00:00+00:00",
+          "policy_at": "2025-04-05T12:05:00+00:00",
+          "elapsed_seconds": 300.0,
+          "created_key_name": "projects/eits-lab-003/serviceAccounts/workload@eits-lab-003.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000003",
+          "used_key_name": "//iam.googleapis.com/projects/eits-lab-003/serviceAccounts/workload@eits-lab-003.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000003",
+          "policy_resource": "projects/eits-lab-003",
+          "creator": "user:operator@example.invalid",
+          "policy_actor": "serviceAccount:workload@eits-lab-003.iam.gserviceaccount.com"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_c502b1a8937d67b7a76503ab",
+      "rule_id": "EITS-GCP-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "3a4e49b5763f263c1f7df919a9c64ce4e9b7a9783069554b8e77ac8f7f30a2d1",
+      "title": "New service-account key used to set a project IAM policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.001"
+      ],
+      "event_uids": [
+        "evt_v2_5160e9346624639f053a4dbbdaaa9599d6a43bd0a0c8f365c3d43d5ea7c88109",
+        "evt_v2_32a793eaeea6058d148c470104b6e01b36c9ca1c248a7b3027166e3af09888cf"
+      ],
+      "source_event_ids": [
+        "[\"01fc01a867925bafb1c8256e7470c5c1\",\"2025-04-05T12:00:00Z\"]",
+        "[\"700ae9cb5f615d70be0e9744a3554433\",\"2025-04-05T12:05:00Z\"]"
+      ],
+      "observed": "A successful key-creation record and later successful project SetIamPolicy record share the exact reported key resource name and log-owning project within 30 minutes.",
+      "inferred": "Investigate possible credential misuse or unauthorized access-control administration; the API method alone does not establish a permission grant.",
+      "unresolved": [
+        "Malicious intent or key theft",
+        "The person operating the credential",
+        "Authorization of the change",
+        "A privilege grant or effective privilege increase",
+        "Persistence, lasting state or cross-cloud identity"
+      ],
+      "predicate_evidence": [
+        {
+          "creation_uid": "evt_v2_5160e9346624639f053a4dbbdaaa9599d6a43bd0a0c8f365c3d43d5ea7c88109",
+          "policy_uid": "evt_v2_32a793eaeea6058d148c470104b6e01b36c9ca1c248a7b3027166e3af09888cf",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-002",
+          "created_at": "2025-04-05T12:00:00+00:00",
+          "policy_at": "2025-04-05T12:05:00+00:00",
+          "elapsed_seconds": 300.0,
+          "created_key_name": "projects/eits-lab-002/serviceAccounts/workload@eits-lab-002.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000002",
+          "used_key_name": "//iam.googleapis.com/projects/eits-lab-002/serviceAccounts/workload@eits-lab-002.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000002",
+          "policy_resource": "projects/eits-lab-002",
+          "creator": "user:operator@example.invalid",
+          "policy_actor": "serviceAccount:workload@eits-lab-002.iam.gserviceaccount.com"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_dd553fee564c2e93ec1dc474",
+      "rule_id": "EITS-GCP-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "3a4e49b5763f263c1f7df919a9c64ce4e9b7a9783069554b8e77ac8f7f30a2d1",
+      "title": "New service-account key used to set a project IAM policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.001"
+      ],
+      "event_uids": [
+        "evt_v2_e892bf713c0763609367edff8006331c16a92f74eba697e4e721aeb3bc480192",
+        "evt_v2_849e3b3308dacde318a59764d3ab5f9d8f689d280fbb5c59112658b1886f4772"
+      ],
+      "source_event_ids": [
+        "[\"ab6fa489a9e3543c8d6b5fd1ec79aed1\",\"2025-04-05T12:00:00Z\"]",
+        "[\"1f3dc5cf52e05d6ba6840563702c617d\",\"2025-04-05T12:05:00Z\"]"
+      ],
+      "observed": "A successful key-creation record and later successful project SetIamPolicy record share the exact reported key resource name and log-owning project within 30 minutes.",
+      "inferred": "Investigate possible credential misuse or unauthorized access-control administration; the API method alone does not establish a permission grant.",
+      "unresolved": [
+        "Malicious intent or key theft",
+        "The person operating the credential",
+        "Authorization of the change",
+        "A privilege grant or effective privilege increase",
+        "Persistence, lasting state or cross-cloud identity"
+      ],
+      "predicate_evidence": [
+        {
+          "creation_uid": "evt_v2_e892bf713c0763609367edff8006331c16a92f74eba697e4e721aeb3bc480192",
+          "policy_uid": "evt_v2_849e3b3308dacde318a59764d3ab5f9d8f689d280fbb5c59112658b1886f4772",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-001",
+          "created_at": "2025-04-05T12:00:00+00:00",
+          "policy_at": "2025-04-05T12:05:00+00:00",
+          "elapsed_seconds": 300.0,
+          "created_key_name": "projects/eits-lab-001/serviceAccounts/workload@eits-lab-001.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000001",
+          "used_key_name": "//iam.googleapis.com/projects/eits-lab-001/serviceAccounts/workload@eits-lab-001.iam.gserviceaccount.com/keys/0000000000000000000000000000000000000001",
+          "policy_resource": "projects/eits-lab-001",
+          "creator": "user:operator@example.invalid",
+          "policy_actor": "serviceAccount:workload@eits-lab-001.iam.gserviceaccount.com"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_de71fe4b7d3fd10439410b67",
+      "rule_id": "EITS-GCP-001",
+      "rule_version": "1.0.0",
+      "sql_sha256": "3a4e49b5763f263c1f7df919a9c64ce4e9b7a9783069554b8e77ac8f7f30a2d1",
+      "title": "New service-account key used to set a project IAM policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.001"
+      ],
+      "event_uids": [
+        "evt_v2_d5e3ed399365f2caf7305f4771ab8b61d4e39e49ee5f782b5a810e7663e8e0d3",
+        "evt_v2_ae2a1e4aed71024c275412477ceeaa0deaea6d1d502fbfc45d41d5f9b634845d"
+      ],
+      "source_event_ids": [
+        "[\"081c052a56795d459546af4cc887f6d9\",\"2025-04-05T12:00:00Z\"]",
+        "[\"ff6ab549eafd5a3ca2e069f28372bf9f\",\"2025-04-05T12:30:00Z\"]"
+      ],
+      "observed": "A successful key-creation record and later successful project SetIamPolicy record share the exact reported key resource name and log-owning project within 30 minutes.",
+      "inferred": "Investigate possible credential misuse or unauthorized access-control administration; the API method alone does not establish a permission grant.",
+      "unresolved": [
+        "Malicious intent or key theft",
+        "The person operating the credential",
+        "Authorization of the change",
+        "A privilege grant or effective privilege increase",
+        "Persistence, lasting state or cross-cloud identity"
+      ],
+      "predicate_evidence": [
+        {
+          "creation_uid": "evt_v2_d5e3ed399365f2caf7305f4771ab8b61d4e39e49ee5f782b5a810e7663e8e0d3",
+          "policy_uid": "evt_v2_ae2a1e4aed71024c275412477ceeaa0deaea6d1d502fbfc45d41d5f9b634845d",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-010",
+          "created_at": "2025-04-05T12:00:00+00:00",
+          "policy_at": "2025-04-05T12:30:00+00:00",
+          "elapsed_seconds": 1800.0,
+          "created_key_name": "projects/eits-lab-010/serviceAccounts/workload@eits-lab-010.iam.gserviceaccount.com/keys/000000000000000000000000000000000000000a",
+          "used_key_name": "//iam.googleapis.com/projects/eits-lab-010/serviceAccounts/workload@eits-lab-010.iam.gserviceaccount.com/keys/000000000000000000000000000000000000000a",
+          "policy_resource": "projects/eits-lab-010",
+          "creator": "user:operator@example.invalid",
+          "policy_actor": "serviceAccount:workload@eits-lab-010.iam.gserviceaccount.com"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_19be5a430aeef9f934ff7fee",
+      "rule_id": "EITS-GCP-002",
+      "rule_version": "1.0.0",
+      "sql_sha256": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e",
+      "title": "Public principal added to bucket object-access policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_34a84929796e2129f92b25ba242c712c8cff0144b2f8d14c8994ef58d6f0c57b"
+      ],
+      "source_event_ids": [
+        "[\"ffe2e851afa059e198a31dc95b2f015d\",\"2025-04-05T12:00:00Z\"]"
+      ],
+      "observed": "A successful bucket policy-setting record contains an ADD delta granting an explicit object-access role to allUsers or allAuthenticatedUsers.",
+      "inferred": "Investigate a potentially unauthorized broad-access grant; publication intent and effective access remain unresolved.",
+      "unresolved": [
+        "Malicious intent or lack of authorization",
+        "Object sensitivity",
+        "Effective public reachability",
+        "Actual object access or exfiltration",
+        "Duration of the policy change"
+      ],
+      "predicate_evidence": [
+        {
+          "policy_uid": "evt_v2_34a84929796e2129f92b25ba242c712c8cff0144b2f8d14c8994ef58d6f0c57b",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-101",
+          "timestamp": "2025-04-05T12:00:00+00:00",
+          "bucket_resource": "projects/_/buckets/eits-bucket-101",
+          "member": "allUsers",
+          "role": "roles/storage.objectViewer",
+          "delta_index": "0",
+          "actor_id": "user:operator@example.invalid"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_2831cda75e86430e2579bb87",
+      "rule_id": "EITS-GCP-002",
+      "rule_version": "1.0.0",
+      "sql_sha256": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e",
+      "title": "Public principal added to bucket object-access policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_4f3e0e945fd8fff0176d93526c29e4db67bc77c3765fb5bd6a37ee724ca43000"
+      ],
+      "source_event_ids": [
+        "[\"8bb495bb6ef251ad94ceb3c8591f7602\",\"2025-04-05T12:00:00Z\"]"
+      ],
+      "observed": "A successful bucket policy-setting record contains an ADD delta granting an explicit object-access role to allUsers or allAuthenticatedUsers.",
+      "inferred": "Investigate a potentially unauthorized broad-access grant; publication intent and effective access remain unresolved.",
+      "unresolved": [
+        "Malicious intent or lack of authorization",
+        "Object sensitivity",
+        "Effective public reachability",
+        "Actual object access or exfiltration",
+        "Duration of the policy change"
+      ],
+      "predicate_evidence": [
+        {
+          "policy_uid": "evt_v2_4f3e0e945fd8fff0176d93526c29e4db67bc77c3765fb5bd6a37ee724ca43000",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-102",
+          "timestamp": "2025-04-05T12:00:00+00:00",
+          "bucket_resource": "projects/_/buckets/eits-bucket-102",
+          "member": "allAuthenticatedUsers",
+          "role": "roles/storage.objectAdmin",
+          "delta_index": "0",
+          "actor_id": "user:operator@example.invalid"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_7f888cada4f752ab56663f89",
+      "rule_id": "EITS-GCP-002",
+      "rule_version": "1.0.0",
+      "sql_sha256": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e",
+      "title": "Public principal added to bucket object-access policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_f54b7eeb41d8c63983beac9296190a5da4456a8ce190878f8c53ac1bd2f58859"
+      ],
+      "source_event_ids": [
+        "[\"e40a449dc8a45c46adfb2678eafa3bb3\",\"2025-04-05T12:00:00Z\"]"
+      ],
+      "observed": "A successful bucket policy-setting record contains an ADD delta granting an explicit object-access role to allUsers or allAuthenticatedUsers.",
+      "inferred": "Investigate a potentially unauthorized broad-access grant; publication intent and effective access remain unresolved.",
+      "unresolved": [
+        "Malicious intent or lack of authorization",
+        "Object sensitivity",
+        "Effective public reachability",
+        "Actual object access or exfiltration",
+        "Duration of the policy change"
+      ],
+      "predicate_evidence": [
+        {
+          "policy_uid": "evt_v2_f54b7eeb41d8c63983beac9296190a5da4456a8ce190878f8c53ac1bd2f58859",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-103",
+          "timestamp": "2025-04-05T12:00:00+00:00",
+          "bucket_resource": "projects/_/buckets/eits-bucket-103",
+          "member": "allUsers",
+          "role": "roles/storage.objectViewer",
+          "delta_index": "0",
+          "actor_id": "user:operator@example.invalid"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_859cdb63e21fc7705f5f549c",
+      "rule_id": "EITS-GCP-002",
+      "rule_version": "1.0.0",
+      "sql_sha256": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e",
+      "title": "Public principal added to bucket object-access policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_110941a3b907a0eac3eee110ef8ceff98f3d7674471ee2ab3af1a7d888feb4ed"
+      ],
+      "source_event_ids": [
+        "[\"94fe8bb1f6bf59db811dc3a13e9116e5\",\"2025-04-05T12:00:00Z\"]"
+      ],
+      "observed": "A successful bucket policy-setting record contains an ADD delta granting an explicit object-access role to allUsers or allAuthenticatedUsers.",
+      "inferred": "Investigate a potentially unauthorized broad-access grant; publication intent and effective access remain unresolved.",
+      "unresolved": [
+        "Malicious intent or lack of authorization",
+        "Object sensitivity",
+        "Effective public reachability",
+        "Actual object access or exfiltration",
+        "Duration of the policy change"
+      ],
+      "predicate_evidence": [
+        {
+          "policy_uid": "evt_v2_110941a3b907a0eac3eee110ef8ceff98f3d7674471ee2ab3af1a7d888feb4ed",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-115",
+          "timestamp": "2025-04-05T12:00:00+00:00",
+          "bucket_resource": "projects/_/buckets/eits-bucket-115",
+          "member": "allUsers",
+          "role": "roles/storage.objectViewer",
+          "delta_index": "0",
+          "actor_id": "user:operator@example.invalid"
+        },
+        {
+          "policy_uid": "evt_v2_110941a3b907a0eac3eee110ef8ceff98f3d7674471ee2ab3af1a7d888feb4ed",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-115",
+          "timestamp": "2025-04-05T12:00:00+00:00",
+          "bucket_resource": "projects/_/buckets/eits-bucket-115",
+          "member": "allAuthenticatedUsers",
+          "role": "roles/storage.objectViewer",
+          "delta_index": "1",
+          "actor_id": "user:operator@example.invalid"
+        }
+      ]
+    },
+    {
+      "finding_id": "finding_dce29f6d008fabc258d9354b",
+      "rule_id": "EITS-GCP-002",
+      "rule_version": "1.0.0",
+      "sql_sha256": "89b33763844db5330787e7a2d5e4350c5760931b2901687463eb40e1f774f81e",
+      "title": "Public principal added to bucket object-access policy",
+      "severity": "high",
+      "provider": "gcp",
+      "source": "gcp.audit",
+      "attack": [
+        "T1098.003"
+      ],
+      "event_uids": [
+        "evt_v2_e18af988d8d7d280351ba0e14a9cbcecc1090d047fa262923ca4d490fd62ca76"
+      ],
+      "source_event_ids": [
+        "[\"48059df8ca23542fbaad46e9f2d7db7a\",\"2025-04-05T12:00:00Z\"]"
+      ],
+      "observed": "A successful bucket policy-setting record contains an ADD delta granting an explicit object-access role to allUsers or allAuthenticatedUsers.",
+      "inferred": "Investigate a potentially unauthorized broad-access grant; publication intent and effective access remain unresolved.",
+      "unresolved": [
+        "Malicious intent or lack of authorization",
+        "Object sensitivity",
+        "Effective public reachability",
+        "Actual object access or exfiltration",
+        "Duration of the policy change"
+      ],
+      "predicate_evidence": [
+        {
+          "policy_uid": "evt_v2_e18af988d8d7d280351ba0e14a9cbcecc1090d047fa262923ca4d490fd62ca76",
+          "scope_type": "gcp.project",
+          "scope_id": "eits-lab-104",
+          "timestamp": "2025-04-05T12:00:00+00:00",
+          "bucket_resource": "projects/_/buckets/eits-bucket-104",
+          "member": "allUsers",
+          "role": "roles/storage.objectViewer",
+          "delta_index": "0",
+          "actor_id": "user:operator@example.invalid"
+        }
+      ]
+    }
+  ]
+}
