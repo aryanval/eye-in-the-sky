@@ -8,7 +8,7 @@ from pathlib import Path
 import duckdb
 
 from .db import connect, evidence, ingest
-from .engine import catalog, detect, resource
+from .engine import catalog, detect, rule_sql
 from .model import canonical, digest
 
 
@@ -109,7 +109,7 @@ def evaluate(manifest_path, truth_path, revision="baseline", split="all"):
             "python_version": platform.python_version(), "duckdb_version": duckdb.__version__,
             "code_sha256": {name: digest(files("eits").joinpath(name).read_bytes())
                             for name in ("model.py", "db.py", "engine.py", "evaluation.py")},
-            "sql_sha256": {rule: digest(resource(f"sql/{rule}.sql").encode()) for rule in catalog()},
+            "sql_sha256": {rule: digest(rule_sql(rule, revision).encode()) for rule in catalog(revision)},
             "evidence_events_verified": len(verified),
             "rules": score(findings, truth["scenarios"], split), "findings": findings,
         }

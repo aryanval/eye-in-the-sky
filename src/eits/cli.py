@@ -39,7 +39,7 @@ def parser():
     command.add_argument("manifest")
     for name in ("detect", "explain"):
         command = commands.add_parser(name)
-        command.add_argument("--revision", choices=["baseline"], default="baseline")
+        command.add_argument("--revision", choices=["baseline", "restart-aware"], default="baseline")
         if name == "explain":
             command.add_argument("finding_id")
     command = commands.add_parser("event", help="inspect a source event ID or an internal event UID")
@@ -53,7 +53,7 @@ def parser():
     command = commands.add_parser("evaluate", help="isolated in-memory run with separate ground truth")
     command.add_argument("--manifest", default="fixtures/aws/synthetic/manifest.json")
     command.add_argument("--truth", default="evaluation/ground_truth.json")
-    command.add_argument("--revision", choices=["baseline"], default="baseline")
+    command.add_argument("--revision", choices=["baseline", "restart-aware"], default="baseline")
     command.add_argument("--split", choices=["all", "development", "holdout"], default="all")
     command.add_argument("--output", help="new report path; existing reports are never overwritten")
     return root

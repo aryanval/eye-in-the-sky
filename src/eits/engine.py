@@ -10,16 +10,25 @@ def resource(path):
     return files("eits").joinpath(path).read_text()
 
 
-def catalog():
-    return json.loads(resource("rules/catalog.json"))
+def catalog(revision="baseline"):
+    if revision not in {"baseline", "restart-aware"}:
+        raise ValueError("unknown rule revision")
+    result = json.loads(resource("rules/catalog.json"))
+    if revision == "restart-aware":
+        for rule_id, updates in json.loads(resource("rules/restart-aware.json")).items():
+            result[rule_id].update(updates)
+    return result
+
+
+def rule_sql(rule_id, revision="baseline"):
+    suffix = "-restart-aware" if rule_id == "EITS-AWS-002" and revision == "restart-aware" else ""
+    return resource(f"sql/{rule_id}{suffix}.sql")
 
 
 def detect(connection, revision="baseline"):
-    if revision != "baseline":
-        raise ValueError("unknown rule revision")
     findings = []
-    for rule_id, metadata in catalog().items():
-        sql = resource(f"sql/{rule_id}.sql")
+    for rule_id, metadata in catalog(revision).items():
+        sql = rule_sql(rule_id, revision)
         sql_sha = digest(sql.encode())
         grouped = {}
         for match in rows(connection, sql):
@@ -43,7 +52,13 @@ def explain(connection, finding_id, revision="baseline"):
     if finding is None:
         raise ValueError("finding not found in this database/revision; run detect first")
     finding["events"] = [evidence(connection, uid) for uid in finding["event_uids"]]
-    finding["rule"] = catalog()[finding["rule_id"]]
+    finding["rule"] = catalog(revision)[finding["rule_id"]]
+    match = finding["predicate_evidence"][0]
+    finding["context_timeline"] = rows(connection, """SELECT event_uid, source_event_id, timestamp,
+        service, action, actor_id, credential_id, outcome FROM events
+        WHERE account_id=? AND timestamp BETWEEN ? AND ? ORDER BY timestamp,event_uid""",
+        [match["account_id"], match["started_at"], match["ended_at"]])
+    finding["timeline_note"] = "Same-account time-window context. Inclusion does not establish causal connection; inspect an event UID for exact evidence."
     return finding
 
 

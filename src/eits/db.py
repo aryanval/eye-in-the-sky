@@ -38,7 +38,7 @@ def records(content, format_name):
             for index, record in enumerate(value["Records"]):
                 yield f"/Records/{index}", record
         elif isinstance(value, dict) and "Records" not in value:
-            yield "/", value
+            yield "", value  # RFC 6901: the empty pointer denotes the complete document.
         else:
             raise ValueError("expected a CloudTrail object or Records array")
     else:
@@ -48,6 +48,8 @@ def records(content, format_name):
 def ingest(connection, manifest_path):
     path = Path(manifest_path).resolve()
     manifest = json.loads(path.read_text())
+    if not isinstance(manifest, dict):
+        raise ValueError("manifest must be an object")
     required = ("dataset_id", "provider", "source", "category", "source_urls", "license", "modified", "limitations", "files")
     if any(key not in manifest for key in required):
         raise ValueError("manifest missing mandatory provenance fields")
@@ -55,8 +57,19 @@ def ingest(connection, manifest_path):
         raise ValueError("unknown provenance category")
     if manifest["provider"] != "aws" or manifest["source"] != "aws.cloudtrail":
         raise ValueError("Phase 1 supports only AWS CloudTrail")
-    if not manifest["source_urls"] or not manifest["license"] or not manifest["files"]:
+    if (not isinstance(manifest["source_urls"], list) or not manifest["source_urls"]
+            or not all(isinstance(url, str) and url.startswith("https://") for url in manifest["source_urls"])
+            or not isinstance(manifest["license"], str) or not manifest["license"]
+            or not isinstance(manifest["files"], list) or not manifest["files"]):
         raise ValueError("manifest must declare source URLs, license, and files")
+    if not isinstance(manifest["modified"], bool) or not isinstance(manifest["limitations"], list):
+        raise ValueError("modified must be boolean and limitations must be a list")
+    if not isinstance(manifest["dataset_id"], str) or not manifest["dataset_id"]:
+        raise ValueError("dataset_id must be a nonempty string")
+    for spec in manifest["files"]:
+        if (not isinstance(spec, dict) or not all(key in spec for key in ("path", "sha256", "format"))
+                or not isinstance(spec["path"], str) or not spec["path"]):
+            raise ValueError("each file requires path, sha256, and format")
     manifest_sha = digest(canonical(manifest).encode())
     existing = connection.execute("SELECT manifest_sha256 FROM datasets WHERE dataset_id=?", [manifest["dataset_id"]]).fetchone()
     if existing and existing[0] != manifest_sha:

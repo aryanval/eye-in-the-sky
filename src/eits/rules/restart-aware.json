@@ -1,0 +1,10 @@
+{
+  "EITS-AWS-002": {
+    "version": "1.1.0",
+    "description": "Experimental baseline variant suppressing pairs with an observed successful StartLogging for the exact same account and trail identifier strictly between stop and ingress.",
+    "exact_logic": "sql/EITS-AWS-002-restart-aware.sql; all baseline predicates, plus NOT EXISTS a successful matching-trail StartLogging with stop_time < restart_time < ingress_time",
+    "tuning": "Candidate only. A restart may be legitimate maintenance or attacker behavior. See preserved before/after evaluation; baseline remains the default.",
+    "candidate_status": "experimental; not the default",
+    "additional_limitations": ["Restoration is counterevidence, not proof of benign intent", "Exact recorded trail name/ARN equality only; aliases are not reconstructed", "A missing restart cannot establish logging stayed disabled", "Unknown or equal-time restart ordering is not used to suppress"]
+  }
+}

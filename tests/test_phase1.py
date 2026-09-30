@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
-from eits.db import connect, evidence, ingest, rows
+from eits.db import connect, evidence, ingest, records, rows
 from eits.engine import detect, hunt
 from eits.evaluation import score
 from eits.model import canonical, digest, normalize
@@ -45,6 +45,21 @@ def database(events):
 
 
 class ParserAndProvenanceTests(unittest.TestCase):
+    def test_standalone_record_pointer_and_missing_provenance(self):
+        raw = case(1)[0]
+        self.assertEqual(list(records(json.dumps(raw).encode(), "cloudtrail-json")), [("", raw)])
+        con = connect()
+        try:
+            with tempfile.TemporaryDirectory() as directory:
+                path = manifest_for(Path(directory), [raw])
+                manifest = json.loads(path.read_text())
+                manifest.pop("license")
+                path.write_text(json.dumps(manifest))
+                with self.assertRaisesRegex(ValueError, "provenance"):
+                    ingest(con, path)
+        finally:
+            con.close()
+
     def test_official_examples_and_independent_oracles(self):
         con = connect()
         try:
@@ -158,6 +173,14 @@ class ParserAndProvenanceTests(unittest.TestCase):
 
 
 class DetectionTests(unittest.TestCase):
+    def test_runtime_functions_work_without_python_network_access(self):
+        from unittest.mock import patch
+        with patch("socket.socket.connect", side_effect=AssertionError("runtime attempted network access")):
+            with database(case(1)) as con:
+                finding = detect(con)[0]
+                self.assertTrue(evidence(con, finding["event_uids"][0])["source_references"])
+                self.assertEqual(len(hunt(con)), 1)
+
     def test_required_pair_uses_distinct_creator_and_key_owner(self):
         with database(case(1)) as con:
             finding = detect(con)[0]
@@ -220,6 +243,25 @@ class DetectionTests(unittest.TestCase):
             first = detect(con)
         with database(list(reversed(events)) + events) as con:
             self.assertEqual(detect(con), first)
+
+    def test_restart_candidate_removes_benign_and_malicious_pairs(self):
+        for number in (16, 19):
+            with self.subTest(case=number), database(case(number)) as con:
+                self.assertEqual(len(detect(con, "baseline")), 1)
+                self.assertEqual(detect(con, "restart-aware"), [])
+
+    def test_unrelated_or_failed_restart_cannot_suppress(self):
+        for change in ("trail", "outcome", "equal-time"):
+            events = case(19)
+            restart = next(e for e in events if e["eventName"] == "StartLogging")
+            if change == "trail":
+                restart["requestParameters"]["name"] = "other-trail"
+            elif change == "outcome":
+                restart["errorCode"] = "AccessDenied"
+            else:
+                restart["eventTime"] = "2025-02-03T12:05:00Z"
+            with database(events) as con:
+                self.assertEqual(len(detect(con, "restart-aware")), 1)
 
     def test_hunt_keeps_unused_unresolvable_and_late_activity(self):
         con = connect()
