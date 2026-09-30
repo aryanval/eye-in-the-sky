@@ -1,12 +1,12 @@
 # Phase 1 completion report
 
-**Completed and published: 2026-09-30.** The approved scope is AWS CloudTrail
+**Completed and published: 2026-09-30.** The Phase 1 scope is AWS CloudTrail
 ingestion, two SQL detections, one hunt, raw evidence inspection, reproducible
-evaluation and a CLI walkthrough. This report does not authorize Phase 2.
+evaluation and a CLI walkthrough. Additional providers are deferred to the next phase.
 
-## Completion gates
+## Completion criteria
 
-| Gate | Result | Evidence and boundary |
+| Criterion | Result | Evidence and boundary |
 |---|---|---|
 | Local analysis without a cloud account | Passed | Python, DuckDB and SQL; installed runtime and walkthrough use local fixtures. Dependency installation needs a package source. |
 | Traceable inputs | Passed | Seven official AWS examples and 24 original synthetic scenarios; both manifests and all 31 source-file hashes verified. [Source inventory](DATA_SOURCES.md) and [notices](THIRD_PARTY_NOTICES.md) retain provenance and upstream terms. |
@@ -15,7 +15,7 @@ evaluation and a CLI walkthrough. This report does not authorize Phase 2.
 | One executable hunt | Passed | HUNT-001 returns 12 credential leads, retaining unused and unresolvable creations. It finds case-03's 45-minute attachment missed by rule 001. [Hunt](HUNTS.md). |
 | Findings resolve to source evidence | Passed | Baseline evaluation verifies 20 supporting events; the candidate verifies 16. The walkthrough resolves record pointers, inspects raw JSON and exports a source file whose SHA-256 matches the retained original. |
 | Measured failures and tuning tradeoffs | Passed | Separate labels, preserved baseline/candidate reports, explicit FP/FN counts and unscored ambiguous cases. No fixture label or allowlist enters detection predicates. [Evaluation](EVALUATION.md). |
-| Correctness checks | Passed | 25 tests passed before the resume handoff. No runtime code changed during closeout; the clean installed runtime matches the final workspace byte for byte. |
+| Correctness checks | Passed | 25 tests passed at the Phase 1 milestone. No runtime code changed during closeout; the clean installed runtime matches the final workspace byte for byte. |
 | Clean installation and walkthrough | Passed | A non-editable wheel installation ran the complete CLI walkthrough; `pip check` found no broken requirements. Packaged Python, SQL and rule metadata match the workspace. |
 | Documentation and review | Passed | README, architecture, catalog, hunt, evaluation, provenance, optional-lab boundaries and this report; local Markdown targets and the publication diff reviewed. |
 | Public repository | Passed | [aryanval/eye-in-the-sky](https://github.com/aryanval/eye-in-the-sky), branch `main`; implementation commit `3a6e5f5` pushed without force and GitHub visibility verified public. Baseline commit `8179dc1` remains in history. |
@@ -103,11 +103,11 @@ benchmark; the first development report also retained full-corpus findings.
 | Investigated Azure Activity and Entra | Documentation only | Public references in DATA_SOURCES.md | No executable parser validation |
 | Investigated GCP Audit Logs | Documentation only | Public references in DATA_SOURCES.md | No executable parser validation |
 | Hands-on AWS validation | No | No personal live events | Official samples and synthetic data only |
-| Hands-on Azure validation in this project | No | None | Professional experience is separate |
+| Hands-on Azure validation in this project | No | No personal live events | Documentation only |
 | Hands-on GCP validation | No | No personal live events | Documentation only |
 | Built local evidence inspection | Yes | CLI explanations, retained source bytes and verified export | No durable case-management UI |
-| Phase 1 complete and published | Yes | Gates, exact replay and public repository above | AWS scope only |
-| Full project resume-readiness bar met | No | Later gates remain unmet | Requires more providers, at least six detections, at least three hunts and later demo/documentation gates |
+| Phase 1 complete and published | Yes | Completion criteria, exact replay and public repository above | AWS scope only |
+| Multicloud milestone complete | No | Additional provider implementations remain deferred | Requires more providers, at least six detections, at least three hunts and an updated walkthrough and documentation |
 
 ## Remaining boundaries
 
@@ -125,6 +125,6 @@ Runtime analysis uses no network client and disables DuckDB external I/O. The
 Python network-blocking test is not an operating-system sandbox or a regulatory
 certification. The optional documentation fetcher is separate from normal use.
 
-**Stop after Phase 1.** Azure/Entra/GCP/endpoint ingestion, Sigma, UI, LLM/Ollama,
-infrastructure and optional live accounts require a later approved scope. The
+**Current scope is AWS CloudTrail.** Azure/Entra/GCP/endpoint ingestion, Sigma, UI,
+LLM/Ollama, infrastructure and optional live accounts remain deferred. The
 [optional live lab](OPTIONAL_LIVE_LAB.md) remains deferred and unexecuted.

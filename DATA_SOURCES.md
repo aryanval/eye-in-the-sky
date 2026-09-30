@@ -56,9 +56,9 @@ never silently updated to match new inputs.
 
 ## Researched references reserved for later phases
 
-These links were researched during the approved proposal. They are **not imported
+These links form the source inventory for the next phase. They are **not imported
 datasets, implemented parsers or validated telemetry** in Phase 1. Keeping a
-source inventory does not authorize Phase 2 implementation.
+source inventory does not establish implemented or validated provider support.
 
 | Planned source | Public schema/example | Usage status and limits |
 |---|---|---|

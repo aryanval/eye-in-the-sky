@@ -2,8 +2,8 @@
 
 Metrics below come from executable SQL against the committed synthetic corpus.
 They are not estimates of production detection performance. No precision/recall
-target was used as a completion gate; correct execution, defensible scoring and
-visible limitations are the gates.
+target was used as a completion criterion; correct execution, defensible scoring
+and visible limitations are the criteria.
 
 ## Corpus and independent labels
 

@@ -76,7 +76,8 @@ def main():
     print("   The restart-aware candidate removes one benign alert and misses one additional malicious scenario. Baseline stays the default.")
     summary = {"phase": 1, "official_events": official["new_events"], "synthetic_events": synthetic["new_events"],
                "baseline_findings": len(findings), "hunt_results": len(hunt["results"]),
-               "evidence_export_verified": True, "resume_ready": False}
+               "evidence_export_verified": True, "implemented_sources": ["aws.cloudtrail"],
+               "live_account_validated": False}
     save("summary.json", summary)
     print("\nWalkthrough artifacts:", workspace.relative_to(ROOT))
     print("Phase 1 only. Azure/Entra/GCP/endpoint parsers and personal live validation are not implemented.")

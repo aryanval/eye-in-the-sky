@@ -99,7 +99,7 @@ The original results, scenarios, code hashes and tuning rationale are retained i
 "Multicloud" will mean provider-specific parsers and rules sharing a local query,
 evidence and evaluation interface. It does not mean identical cloud permission
 semantics, or joining identities across providers using a shared email/IP alone.
-That implementation is deferred until Phase 2 is approved.
+Additional provider implementations are deferred to the next phase.
 
 | Provider/source | Parser | Fixture validated | Public security dataset validated | Personal live event validated |
 |---|---|---|---|---|
@@ -137,7 +137,7 @@ from the runtime. There is no local LLM integration in Phase 1.
   cloud collector or LLM. There is no personally generated live-cloud evidence.
 
 [PHASE1_REPORT.md](PHASE1_REPORT.md) records supported claims and completion
-evidence. The full multicloud resume-readiness bar is **not met**: it requires
-additional providers, at least six detections, at least three hunts and the later
-demo/documentation gates. [OPTIONAL_LIVE_LAB.md](OPTIONAL_LIVE_LAB.md) is a deferred
-plan, not a prerequisite. Work stops at the Phase 1 boundary.
+evidence. The multicloud milestone is **not complete**: its completion criteria
+include additional providers, at least six detections, at least three hunts and
+an updated walkthrough and documentation. [OPTIONAL_LIVE_LAB.md](OPTIONAL_LIVE_LAB.md)
+describes deferred work and is not a prerequisite. Current implemented scope is AWS.
