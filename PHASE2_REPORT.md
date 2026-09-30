@@ -1,4 +1,4 @@
-# Phase 2 implementation and validation report
+# Phase 2 completion report
 
 The implementation adds four source adapters, four detections and two hunts to
 the reviewed architecture at `4a44570`. The project now has **five telemetry
@@ -6,9 +6,13 @@ sources, six detections and three hunts**. Live account validation is **NO** for
 every source. Validation uses public vendor schemas/examples and independently
 generated synthetic fixtures, without cloud accounts, credentials or API access.
 
-**Validation status:** 108 tests, dependency checks, lint, formatting and the
-multicloud CLI walkthrough pass from a fresh non-editable Python 3.14.6
-installation. GitHub Actions results are pending before milestone completion.
+**Completed and published: 2026-09-30.** Implementation commit
+[`beacede`](https://github.com/aryanval/eye-in-the-sky/commit/beacededf3efb267a3baa4c5e6e3e15c81ff8c22)
+passes [GitHub Actions run 36754556215](https://github.com/aryanval/eye-in-the-sky/actions/runs/36754556215)
+on **Python 3.11 and 3.14**: dependency checks, lint, formatting, all **108 tests**
+and the multicloud CLI walkthrough. A fresh non-editable local Python 3.14.6
+installation passes the same checks. The subsequent completion-note commit changes
+Markdown only; the tested implementation and report resource hashes are unchanged.
 
 ## Provider and source coverage
 
