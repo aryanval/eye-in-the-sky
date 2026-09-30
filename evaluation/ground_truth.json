@@ -1,0 +1,582 @@
+{
+  "version": 1,
+  "dataset_id": "aws-synthetic-scenarios-v1",
+  "scenarios": [
+    {
+      "scenario_id": "case-01",
+      "rule_id": "EITS-AWS-001",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized new credential used to attach AdministratorAccess to a user.",
+      "anchor_event_ids": [
+        "403a21f0-7bd4-509e-9b23-27ca2720f39d",
+        "b286fd0d-c81d-587e-a510-89260e2b5d92"
+      ],
+      "available_event_ids": [
+        "403a21f0-7bd4-509e-9b23-27ca2720f39d",
+        "b286fd0d-c81d-587e-a510-89260e2b5d92",
+        "43d1dc9d-c89e-5da7-87e3-336dcc032de0",
+        "83172b6d-485b-53d0-877d-c2123b7a898d",
+        "7c530eaf-62e9-58ac-9c7a-7accbd18982b",
+        "008ebf7f-e7b2-5de8-877b-cd4f0a8780ad",
+        "7b9ef75a-8f70-5aae-9857-081ce592689a",
+        "7cb231ec-6364-5734-b9d5-d518eaec0cad",
+        "28eec57b-6157-524c-8dcb-ac0842282308",
+        "fd209ad3-5d85-5ed6-98a3-283bad73be30"
+      ]
+    },
+    {
+      "scenario_id": "case-02",
+      "rule_id": "EITS-AWS-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized new credential used for a role policy attachment.",
+      "anchor_event_ids": [
+        "5c4a84f2-b625-5058-87bd-d46fec57f196",
+        "e3057360-f30b-52eb-8aff-e6444eb7327b"
+      ],
+      "available_event_ids": [
+        "5c4a84f2-b625-5058-87bd-d46fec57f196",
+        "e3057360-f30b-52eb-8aff-e6444eb7327b",
+        "58ee2ced-3281-57f0-a827-c8eda3e8dc41",
+        "df91c2fe-18de-5baa-a486-2496c6d3fc37",
+        "7c677766-628b-5d8d-8b8a-bfb4589937fb",
+        "93dca152-ec4f-520e-a020-488506d44471",
+        "0712037e-67b7-50f2-bcc9-edbea55879ba",
+        "5dc18a9c-2f8a-502e-904c-9f5ff8d23e88",
+        "aec43fa5-139d-5eff-bbc9-cef211013e5f",
+        "84284318-cf1e-5573-a56c-a080d458151d"
+      ]
+    },
+    {
+      "scenario_id": "case-03",
+      "rule_id": "EITS-AWS-001",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Credential misuse delayed for 45 minutes; a window-related miss is possible.",
+      "anchor_event_ids": [
+        "8c4ae644-6a3e-538f-8e9d-7f84fde4e8f2",
+        "08f969e1-4ee5-59e3-94d2-e79620ecba1d"
+      ],
+      "available_event_ids": [
+        "8c4ae644-6a3e-538f-8e9d-7f84fde4e8f2",
+        "08f969e1-4ee5-59e3-94d2-e79620ecba1d",
+        "217852e4-1762-5303-8808-eeb5e0728622",
+        "b28b0eea-5243-596d-b27a-6708eb00ab9d",
+        "52738724-87e3-5d17-8d02-89f7015759a5",
+        "5905ebc3-7f34-55ab-a152-6b426a76aa77",
+        "2cc072c3-bc49-590a-af50-0258f2a6057a",
+        "f9afa26d-78d7-55a8-895a-a6ab19f0e73f",
+        "321284dd-7169-54b5-873b-25f7a6d60202",
+        "18cf2b4d-9455-5c7b-b9e3-3a7f25124bc3"
+      ]
+    },
+    {
+      "scenario_id": "case-04",
+      "rule_id": "EITS-AWS-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Credential used to assume a role; temporary credentials perform the attachment.",
+      "anchor_event_ids": [
+        "063bbbe9-7c3e-5396-bbcb-fda91343adcf",
+        "2e9355ce-0bbe-535a-ba6a-5ee7148f0a7f"
+      ],
+      "available_event_ids": [
+        "063bbbe9-7c3e-5396-bbcb-fda91343adcf",
+        "2e9355ce-0bbe-535a-ba6a-5ee7148f0a7f",
+        "7996a329-1d4f-57a3-a97b-dae46412633d",
+        "4fc69b4d-a9e7-5db1-acc7-f1207db0cdd4",
+        "4827e6b3-1bab-555a-a4b0-3f34bb3ce120",
+        "b67682be-b684-5f1e-9ecd-37cb83ebdda5",
+        "88375d93-ab62-5cfe-bf26-4c72b8f94a1b",
+        "b66a71bb-1f69-58d0-89d4-91998342af4f",
+        "3877ff66-d1b0-574d-b4d5-37000233f2e5",
+        "c6c6f075-4e11-54a9-a1d3-11c8083c4697",
+        "623cc6c5-7283-5b39-a282-282d977f9700"
+      ]
+    },
+    {
+      "scenario_id": "case-05",
+      "rule_id": "EITS-AWS-001",
+      "split": "holdout",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Approved key rotation followed only by instance inventory.",
+      "anchor_event_ids": [
+        "c9d824b3-18ae-5f25-ba17-c26f7cd1f7fa",
+        "9747c9f5-064a-5045-8658-cf011e65807b"
+      ],
+      "available_event_ids": [
+        "c9d824b3-18ae-5f25-ba17-c26f7cd1f7fa",
+        "9747c9f5-064a-5045-8658-cf011e65807b",
+        "77b23ea7-fd4b-5761-902d-3c44d7bd47e4",
+        "6a12939b-fc15-549b-9bb3-3a184723bf90",
+        "04265647-91aa-5680-8cef-ebe7e5b3be35",
+        "6c8f3435-60ff-551e-a6e2-561be39d8b40",
+        "db458b8c-e87e-5574-af36-06828fab8372",
+        "9668eb0f-1269-5d5e-8e5b-cd5547d96892",
+        "532d7697-b7f3-5d44-9197-95c7b0f44cdc",
+        "d1aecad8-7ddc-50a8-aba5-ec6f95e96041"
+      ]
+    },
+    {
+      "scenario_id": "case-06",
+      "rule_id": "EITS-AWS-001",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Approved bootstrap attaches AdministratorAccess using a new key; logs cannot reveal approval.",
+      "anchor_event_ids": [
+        "e11adec5-b71b-596c-99ee-e4f4e455ce62",
+        "b1c8f1fa-3464-511d-9e1e-799e431c20ce"
+      ],
+      "available_event_ids": [
+        "e11adec5-b71b-596c-99ee-e4f4e455ce62",
+        "b1c8f1fa-3464-511d-9e1e-799e431c20ce",
+        "0aa39824-d047-5b6f-8f1f-ac016cedc367",
+        "cb37dbfb-15d3-5367-ba89-708ac88c2a0e",
+        "2145965c-9fe7-5d41-937f-af1c1affe442",
+        "50da56c0-d994-5b80-aaf0-da0cdf518bb1",
+        "bafe3b1f-3bd4-57e2-a9f8-1503d84f2da0",
+        "49db7fc6-657a-571a-bba8-cc12c2447e87",
+        "48d77193-4217-5041-ba42-a170c5ba4a71",
+        "6a5efc71-6c2a-50cc-81b3-5d81f08b187d"
+      ]
+    },
+    {
+      "scenario_id": "case-07",
+      "rule_id": "EITS-AWS-001",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Authorized operator makes a denied policy-attachment request.",
+      "anchor_event_ids": [
+        "c67bff4b-64f8-58dc-8479-7af55da7d2b0",
+        "89d8bedd-7764-5f52-94bf-33b5a30c71b3"
+      ],
+      "available_event_ids": [
+        "c67bff4b-64f8-58dc-8479-7af55da7d2b0",
+        "89d8bedd-7764-5f52-94bf-33b5a30c71b3",
+        "49bb358f-7d00-57a9-be40-e4e98020f820",
+        "7ae3498f-7e28-5c2b-8613-0baa70e39be5",
+        "e735aadf-ad52-5971-aeef-45fbe2a1f567",
+        "426e4e93-dbbe-5544-9c5c-9c6f826f368b",
+        "0bbc1723-71a7-5dc6-9220-23796ad94638",
+        "0bae075a-5ebb-5fe0-b861-71b79b933892",
+        "62c30475-587a-53f8-93c2-a63f1964f1d5",
+        "008d28e8-0a21-5cb7-8c7b-92d4020e66a8"
+      ]
+    },
+    {
+      "scenario_id": "case-08",
+      "rule_id": "EITS-AWS-001",
+      "split": "holdout",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Unrelated authorized attachment uses an older credential, not the created key.",
+      "anchor_event_ids": [
+        "b2ab64ce-8665-5080-ad80-815ec5bc0209",
+        "3e460f32-0bff-599e-9cc9-eebfd479d314"
+      ],
+      "available_event_ids": [
+        "b2ab64ce-8665-5080-ad80-815ec5bc0209",
+        "3e460f32-0bff-599e-9cc9-eebfd479d314",
+        "f9dda21d-a7e5-5a1a-a2dc-e400cb0e2c73",
+        "0e5b46bf-c1b0-57df-b752-1663a33edf06",
+        "7aa66a11-346f-5872-9272-8a835d74e993",
+        "6cac5a12-3626-5b5d-9204-346c2d2e0dc1",
+        "38e8f249-9cf4-5929-902d-50ad4afc1fd5",
+        "62159885-eb0b-58de-82dc-89ec64ebe97c",
+        "a75b2977-e803-5caf-ade6-a802c62fc276",
+        "3d903ff8-91db-5f3a-9b0d-2bbf59f4e26f"
+      ]
+    },
+    {
+      "scenario_id": "case-09",
+      "rule_id": "EITS-AWS-001",
+      "split": "development",
+      "label": "ambiguous",
+      "telemetry_complete": true,
+      "narrative": "New-key policy attachment; authorization and intent are unavailable.",
+      "anchor_event_ids": [
+        "eb74c5e8-25d1-57a2-a008-2066c9d78db4",
+        "2f93479f-daed-5940-bf26-e43cb7b7517f"
+      ],
+      "available_event_ids": [
+        "eb74c5e8-25d1-57a2-a008-2066c9d78db4",
+        "2f93479f-daed-5940-bf26-e43cb7b7517f",
+        "663d4f22-4a2b-5c91-847f-44657ac67809",
+        "141dc635-b9bd-5ced-9c4c-c6ed1f38ee11",
+        "3fd947e4-881c-5bc7-8ee3-5bc62602df03",
+        "aecf784d-2fcf-57c8-9a71-5f0938d5f22f",
+        "85bfba25-934a-5c6c-95dc-5f4b639be5ab",
+        "f26dd883-8711-5f5d-a54c-0d5d6dbc0320",
+        "332f7725-a052-5b32-b26e-d27ba4a75e6a",
+        "de04497c-889a-55fc-91d6-708d9293bd39"
+      ]
+    },
+    {
+      "scenario_id": "case-10",
+      "rule_id": "EITS-AWS-001",
+      "split": "holdout",
+      "label": "ambiguous",
+      "telemetry_complete": true,
+      "narrative": "Created key has no subsequent use in the supplied observation window.",
+      "anchor_event_ids": [
+        "b4179592-be8c-5537-9a24-046b27de51d8",
+        "34c698fd-cee4-5ea4-ba82-ab24bbc14bd0"
+      ],
+      "available_event_ids": [
+        "b4179592-be8c-5537-9a24-046b27de51d8",
+        "136afcf5-9549-5b0c-afac-9eb7a6af63c0",
+        "4a490aa8-9214-5c82-b78b-0e7a016076f3",
+        "d7f611bc-d3d3-59c4-a233-4307fc2d725f",
+        "8cf2c64b-8aac-54f1-a7d9-1492d31bcc38",
+        "bbd764f0-7b31-5192-9676-a3f274ca9836",
+        "0426154e-ac16-5e97-bebf-9d03019f74b4",
+        "20026635-4d8b-5a04-861f-05be1c367579",
+        "e4bed7a2-7378-5d42-a67f-e06fe2c0e27b"
+      ]
+    },
+    {
+      "scenario_id": "case-11",
+      "rule_id": "EITS-AWS-001",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Unauthorized attachment follows key creation, but the issued-key response field is missing.",
+      "anchor_event_ids": [
+        "647c8480-aead-58bd-a93f-bd5916c9af8d",
+        "555ee6aa-b8b3-55a0-a9c8-b35aaeb870b9"
+      ],
+      "available_event_ids": [
+        "647c8480-aead-58bd-a93f-bd5916c9af8d",
+        "555ee6aa-b8b3-55a0-a9c8-b35aaeb870b9",
+        "7dee068f-cfdc-5ed7-b949-76695a254c75",
+        "7fb98821-1197-5e74-9c4f-0518143082e2",
+        "09a47deb-4e41-54fb-b82d-2b970d3f0845",
+        "12e1b22c-94f3-57d7-92cc-cc57edf642ca",
+        "fb16b9e0-f69e-5a4f-b0ce-264d4f137f81",
+        "cb129754-404a-5c19-af66-c9735fb0745d",
+        "30448eed-7b45-5889-9220-fe0e5c31c194",
+        "def18a62-bda3-53ac-9101-3c50bbe211e7"
+      ]
+    },
+    {
+      "scenario_id": "case-12",
+      "rule_id": "EITS-AWS-001",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Unauthorized attachment occurred in the fictional scenario but its event was dropped.",
+      "anchor_event_ids": [
+        "65dbf434-feb5-5859-8834-da39987902c9",
+        "3f59bdaa-3356-5508-9bd8-bb0b80e98d1e"
+      ],
+      "available_event_ids": [
+        "65dbf434-feb5-5859-8834-da39987902c9",
+        "3d391c36-6a90-5b9d-ade1-9c26ed6e03cc",
+        "294f5513-ef77-5e27-a710-94573c59a305",
+        "e41e5281-85cc-54cf-86df-5292a8c46318",
+        "8e187bc7-9c1d-5af4-8e15-fdc3c9bb6109",
+        "256e3ca8-963e-50de-856c-da1ad14e8d7c",
+        "a4e227e1-03ee-57c1-884d-1673b3b6a30a",
+        "8d9d2e8d-ad4c-5c5e-a68c-b3a2aae6f65f",
+        "daea78e3-619c-57e0-a548-04a31bc7f895"
+      ]
+    },
+    {
+      "scenario_id": "case-13",
+      "rule_id": "EITS-AWS-002",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized logging stop followed by public IPv4 SSH permission.",
+      "anchor_event_ids": [
+        "d883a02e-0136-5846-91e8-fd0b9751da00",
+        "e38d6cc3-645a-5fee-b980-eefbb84e6883"
+      ],
+      "available_event_ids": [
+        "d883a02e-0136-5846-91e8-fd0b9751da00",
+        "e38d6cc3-645a-5fee-b980-eefbb84e6883",
+        "d5a01366-601c-5fab-a573-ec460cb9a79c",
+        "727e0c90-e3e0-53af-9efe-33e561b69f0a",
+        "9020eebd-d758-551c-856e-6bd6b7be2811",
+        "485c1b1d-ca27-5029-b4b3-69cef6234053",
+        "7d7e23b0-8280-5e7d-98f2-92271816c122",
+        "0d9b7233-ead4-58bb-a61d-28dcdb5adc53",
+        "d39dafc3-8e12-5884-bb8c-7e4fdc0d7aae",
+        "38b9e1fb-d47b-59fd-8bee-bc9fe19fbc82"
+      ]
+    },
+    {
+      "scenario_id": "case-14",
+      "rule_id": "EITS-AWS-002",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized logging stop followed by public IPv6 all-protocol permission.",
+      "anchor_event_ids": [
+        "c996e017-a9df-5ed3-be75-21560cc5cad7",
+        "0445bcf3-02db-5fdc-bab8-dce883f95c8a"
+      ],
+      "available_event_ids": [
+        "c996e017-a9df-5ed3-be75-21560cc5cad7",
+        "0445bcf3-02db-5fdc-bab8-dce883f95c8a",
+        "0949ef4a-9481-5205-80eb-bf5513698d05",
+        "db4b4934-0e6a-56b2-ad4a-72f602c5eb41",
+        "c7d53fc0-469c-5eba-adab-d252520e714f",
+        "4e8b2d0e-7b74-59f0-b043-c667adc37058",
+        "12006bbe-1c31-5b3c-91e8-0b7900d96c07",
+        "5f550a03-87fd-5c97-93c2-8a5108e8049a",
+        "c7f36e97-5077-5a46-b32e-c0418f0fde6b",
+        "9b02606f-2844-5cd7-b315-935f859f5dd0"
+      ]
+    },
+    {
+      "scenario_id": "case-15",
+      "rule_id": "EITS-AWS-002",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Unauthorized public ingress occurs 45 minutes after logging stop.",
+      "anchor_event_ids": [
+        "038dfc76-0c59-585d-b848-b06549e79270",
+        "1770cbab-5b53-53d6-a90d-6f0165a481e1"
+      ],
+      "available_event_ids": [
+        "038dfc76-0c59-585d-b848-b06549e79270",
+        "1770cbab-5b53-53d6-a90d-6f0165a481e1",
+        "f6d0288d-885b-5a78-bdf7-2beb4d76e96a",
+        "59df61fc-1716-5c10-984f-e9ad0ecd10e3",
+        "23b51dfa-2b1c-57cc-8ffe-72a3b05f316c",
+        "39c29f05-6ef4-52cf-ac7e-faca5dc96314",
+        "4ef06e72-8393-5ad2-8b83-944b262f1fa3",
+        "4fd3d6ad-e222-5e2d-86fe-72a65bc9dfaa",
+        "df03540d-e293-596e-8373-7778bd0ff768",
+        "2d02d235-c39b-58fc-ab10-dc72baadd04e"
+      ]
+    },
+    {
+      "scenario_id": "case-16",
+      "rule_id": "EITS-AWS-002",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": true,
+      "narrative": "Attacker restores the trail after a brief stop, then makes an unauthorized public ingress change.",
+      "anchor_event_ids": [
+        "9bfe3343-278d-5a6f-adbe-538c91f484ef",
+        "acbdfe66-68a9-5dff-b967-9437b716a116"
+      ],
+      "available_event_ids": [
+        "9bfe3343-278d-5a6f-adbe-538c91f484ef",
+        "acbdfe66-68a9-5dff-b967-9437b716a116",
+        "425ac96c-7bf1-5962-b135-8dd7b86e516e",
+        "a30d922a-3fd0-527f-acd5-8984c3d828c6",
+        "752c8dbf-1126-58cc-8101-d34ebeb3cc8c",
+        "a1bd3683-8075-5b3b-b4f8-0583e355fc2c",
+        "75f57b17-8fd2-58a5-a1c9-4aa9a81db92d",
+        "e485a170-0081-5462-be17-62c62e78c7e7",
+        "789adfde-eaa2-5fa8-9c20-553b946b7775",
+        "c0ff83a7-ea50-528f-83fb-9e8bd3d40b5b",
+        "6d9ad35e-e072-5701-a7e1-f968cbcf8ed9"
+      ]
+    },
+    {
+      "scenario_id": "case-17",
+      "rule_id": "EITS-AWS-002",
+      "split": "holdout",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Approved trail migration accompanies public HTTP service provisioning.",
+      "anchor_event_ids": [
+        "203c9fa6-eb93-594d-99f2-ecd4d081b47d",
+        "f472f953-ede8-572f-aa02-2da4e3eb254a"
+      ],
+      "available_event_ids": [
+        "203c9fa6-eb93-594d-99f2-ecd4d081b47d",
+        "f472f953-ede8-572f-aa02-2da4e3eb254a",
+        "d0c3909f-7496-5518-b015-80e2ca9a3980",
+        "d2d6391e-9abf-5d4b-9702-df83f33e5555",
+        "057569b6-2953-50e9-8bf6-3d918f0a5ff6",
+        "492cd766-3859-541f-ae9e-32ef781d28fe",
+        "b3ddead3-03c2-5bef-8bb4-57f1362cce9b",
+        "268afd2e-655e-59db-9c6b-c435edc65cee",
+        "a9d8e6e6-3941-5348-84b7-738f5499df19",
+        "75ba564c-8295-506d-ac42-2adba0ffedf3"
+      ]
+    },
+    {
+      "scenario_id": "case-18",
+      "rule_id": "EITS-AWS-002",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Authorized emergency public SSH during trail maintenance; permission context is absent from logs.",
+      "anchor_event_ids": [
+        "e1ebdf47-d86e-5239-88a9-9c9d83df5e72",
+        "4abf41ac-49b0-569d-a793-20bb3de6566b"
+      ],
+      "available_event_ids": [
+        "e1ebdf47-d86e-5239-88a9-9c9d83df5e72",
+        "4abf41ac-49b0-569d-a793-20bb3de6566b",
+        "c27d30c8-1be8-5206-b72d-da323a33a10e",
+        "58dff0ac-50a8-5424-9bf7-722070b01473",
+        "98224bc9-d767-5ae2-8348-53d1f1957ef5",
+        "32e9cf81-68ee-5645-9c92-90a61998a9b7",
+        "b019df96-244f-5c75-8b81-b2b36aea7fb3",
+        "0ca1fb6b-f484-5eb1-8c37-4a36c338f385",
+        "38729d8e-b0eb-5c56-b7d3-3905d1adcf72",
+        "167e9023-0eba-5e02-94cc-bc571596e4be"
+      ]
+    },
+    {
+      "scenario_id": "case-19",
+      "rule_id": "EITS-AWS-002",
+      "split": "development",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Approved maintenance restores logging before an approved public RDP change.",
+      "anchor_event_ids": [
+        "9140779c-1167-508d-9c0a-8344da34c118",
+        "473d7f0d-c710-5698-a8de-aedcf111a23a"
+      ],
+      "available_event_ids": [
+        "9140779c-1167-508d-9c0a-8344da34c118",
+        "473d7f0d-c710-5698-a8de-aedcf111a23a",
+        "7ed031c9-42d3-549f-84ac-fc0c2a8994f5",
+        "15148bef-1807-517e-9809-fee55b647ef6",
+        "327fd4ba-27c5-5a44-b614-58a2838ca5b9",
+        "ec0d1aca-a990-5aa4-b77a-ac627ea2ef9e",
+        "c8d93370-f8f1-5f90-985f-616fcfd0a68b",
+        "24ec44d6-f91d-5721-8dbf-09204aa4ca76",
+        "25743cb3-eee0-5904-aa5d-d5bb36429c41",
+        "8542fd67-8ff6-5451-823e-e7d0333865f0",
+        "c43991b9-9e91-501c-84d7-22f26824d2cc"
+      ]
+    },
+    {
+      "scenario_id": "case-20",
+      "rule_id": "EITS-AWS-002",
+      "split": "holdout",
+      "label": "benign",
+      "telemetry_complete": true,
+      "narrative": "Public HTTP and private SSH are different permission entries; SSH is not public.",
+      "anchor_event_ids": [
+        "4fe2d313-2b75-5c1a-8253-858df6e85672",
+        "99442716-e7f6-5e95-8996-14eefccdbf17"
+      ],
+      "available_event_ids": [
+        "4fe2d313-2b75-5c1a-8253-858df6e85672",
+        "99442716-e7f6-5e95-8996-14eefccdbf17",
+        "aeafc2be-daa7-5690-8ed2-5b054bca5a6b",
+        "4109ef6f-dff5-5b53-aea7-f2834e8873c9",
+        "8dc2f6bc-d1ee-56b8-81ab-d66f0b0b62d4",
+        "9e6873f3-46ae-5585-93b4-169bdafd4ea5",
+        "8e412560-fed2-545b-a3bc-996ef944a054",
+        "ae7b3721-29b7-5222-b9b5-202ee8b1aaca",
+        "e2b41f15-c7fc-53e4-819c-7feb067e3d52",
+        "3bf849d7-81ad-5f58-89de-973c66cbfd8c"
+      ]
+    },
+    {
+      "scenario_id": "case-21",
+      "rule_id": "EITS-AWS-002",
+      "split": "development",
+      "label": "ambiguous",
+      "telemetry_complete": true,
+      "narrative": "Public RDP after a trail stop; change authorization unavailable.",
+      "anchor_event_ids": [
+        "acee3b69-ae29-55b8-a950-35738a5826fd",
+        "4dc0fdae-d8ad-555a-84eb-1857a1484e33"
+      ],
+      "available_event_ids": [
+        "acee3b69-ae29-55b8-a950-35738a5826fd",
+        "4dc0fdae-d8ad-555a-84eb-1857a1484e33",
+        "f4753ceb-40e7-51a1-a92a-eb280e14009d",
+        "c4b15521-1137-57ad-9e8b-1ba26ff9fa16",
+        "b7ba0a8c-52ac-58f0-a0c0-8e4afcf02a2f",
+        "c8d53db2-9c0d-5b59-a10e-61ed18021c66",
+        "1466d54c-17b2-584c-8cec-f462397dc8df",
+        "366728bb-f05f-5e78-8d37-cedc88fb5a22",
+        "3596fa30-611c-529b-a6bd-8030b3e4eab9",
+        "9d945ce6-e74f-5112-915c-11c99519b954"
+      ]
+    },
+    {
+      "scenario_id": "case-22",
+      "rule_id": "EITS-AWS-002",
+      "split": "holdout",
+      "label": "ambiguous",
+      "telemetry_complete": false,
+      "narrative": "Caller credential is unavailable, preventing a defensible session join.",
+      "anchor_event_ids": [
+        "f0c4b242-1d37-5960-b638-ea1cc363e06d",
+        "7b6b14ab-2305-5fc2-a63a-6e601d6c0121"
+      ],
+      "available_event_ids": [
+        "f0c4b242-1d37-5960-b638-ea1cc363e06d",
+        "7b6b14ab-2305-5fc2-a63a-6e601d6c0121",
+        "008f1fdd-6a4e-5841-9278-70fa1cc7b99e",
+        "4cbca362-ead9-5ebc-8cf3-f39c2dea0b72",
+        "c24ad027-08c9-5b80-9ea2-300bf5fc5e56",
+        "b3531270-d7be-5e9e-9bc1-c314ae93275d",
+        "0c0dc7b4-87be-5ea9-a8de-765cab813510",
+        "2067a59d-c1f2-575a-ab96-25d7e700b864",
+        "5065e66e-9341-5cb3-8483-b2d05f5437e6",
+        "832f10dc-2f8b-5fe8-8fe3-bc07df0c46e1"
+      ]
+    },
+    {
+      "scenario_id": "case-23",
+      "rule_id": "EITS-AWS-002",
+      "split": "development",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Unauthorized logging stop occurred but its source event was dropped.",
+      "anchor_event_ids": [
+        "033e8cdb-43eb-5285-9857-0ef34508513c",
+        "27e9d856-6019-5d12-b10a-5704fb43d69d"
+      ],
+      "available_event_ids": [
+        "27e9d856-6019-5d12-b10a-5704fb43d69d",
+        "d095d4fc-e662-5bb2-9f8d-706a800631b5",
+        "b0c4ea57-cc8e-590a-b185-bc26fb65e32d",
+        "bfa6cf34-37c2-5e5f-b850-24307f7b89ea",
+        "8f0529bf-7dd8-5923-bb8b-17ca2f9ef3e7",
+        "08f1bb3a-15f8-5490-81fc-f88ca98f0795",
+        "10cedb28-f560-5d07-bc58-2d472bd9c606",
+        "c26a023e-26af-58ec-b44c-a0cbd7d4e891",
+        "324b523c-2b4c-54fc-afd3-06dd62677651"
+      ]
+    },
+    {
+      "scenario_id": "case-24",
+      "rule_id": "EITS-AWS-002",
+      "split": "holdout",
+      "label": "malicious",
+      "telemetry_complete": false,
+      "narrative": "Unauthorized public SSH change is recorded without ingress permission details.",
+      "anchor_event_ids": [
+        "db86a4d5-187c-57c7-a04c-7d6afccd7263",
+        "a42a61fc-7fe3-5860-bf06-522825804501"
+      ],
+      "available_event_ids": [
+        "db86a4d5-187c-57c7-a04c-7d6afccd7263",
+        "a42a61fc-7fe3-5860-bf06-522825804501",
+        "4452888d-aa6b-533d-8910-086132e99f62",
+        "5ce2357b-d425-5d0f-a81e-f93ea44b1618",
+        "f60150f0-59a0-5461-b3e5-d7c4009c0272",
+        "859fec58-48e6-5150-8042-9e5ff979ade1",
+        "023d8cb8-f0a3-562e-8fce-7330637da228",
+        "44d50843-c76f-514b-b00b-dcb23d461fb8",
+        "034185b1-dabb-56b7-a64d-4f6f6bbc3d52",
+        "40d1b40d-8331-5abc-a358-bb0ef3f34880"
+      ]
+    }
+  ]
+}

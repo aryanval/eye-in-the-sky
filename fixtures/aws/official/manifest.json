@@ -1,0 +1,79 @@
+{
+  "dataset_id": "aws-official-examples-v1",
+  "provider": "aws",
+  "source": "aws.cloudtrail",
+  "category": "official sample",
+  "source_urls": [
+    "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html"
+  ],
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://aws.amazon.com/terms/",
+  "copyright": "Amazon.com, Inc. or its affiliates",
+  "retrieved_at": "2026-09-30T04:45:04.857768+00:00",
+  "source_page_sha256": "d2cce8a35cb2f160a1660f5e6c9253bf27e51ea83be08c27847b55cb011e5d2a",
+  "modified": false,
+  "extraction": "Text from complete JSON preformatted blocks, HTML markup removed; no event values altered. Only AwsApiCall examples selected.",
+  "limitations": [
+    "Illustrative vendor documentation, not personal live telemetry",
+    "Small sample of API events; not representative of AWS production traffic",
+    "Examples may contain placeholder identifiers"
+  ],
+  "files": [
+    {
+      "path": "sample-01.json",
+      "format": "cloudtrail-json",
+      "sha256": "490fa72f2f79eaf90e99ad8521eb21853a012662cfed805aca9af0d94f35c550",
+      "events": [
+        "StartInstances"
+      ]
+    },
+    {
+      "path": "sample-02.json",
+      "format": "cloudtrail-json",
+      "sha256": "2a5b97e91c34d119a94ea4a8e7af20b77d210f560d56921928b75c1dcdb2ce0b",
+      "events": [
+        "StopInstances"
+      ]
+    },
+    {
+      "path": "sample-03.json",
+      "format": "cloudtrail-json",
+      "sha256": "7a766b1e12da75ccd52790626087edd574d587b238b7541c75d09cdfca4bda6a",
+      "events": [
+        "CreateKeyPair"
+      ]
+    },
+    {
+      "path": "sample-04.json",
+      "format": "cloudtrail-json",
+      "sha256": "0778750a36d046cb8b4698d2f5403bffa518885b553f9a5bca70a96c8ac9f105",
+      "events": [
+        "CreateUser"
+      ]
+    },
+    {
+      "path": "sample-05.json",
+      "format": "cloudtrail-json",
+      "sha256": "726ba2be9ca9ef17da4c9d6bb4708551ea9c1b0b8340ad1cf5a2e459649e522d",
+      "events": [
+        "AddUserToGroup"
+      ]
+    },
+    {
+      "path": "sample-06.json",
+      "format": "cloudtrail-json",
+      "sha256": "3bcef02292783a5c99ddfc32b5fa0b9acd84d974f0bd3a048860c81653ae12c1",
+      "events": [
+        "CreateRole"
+      ]
+    },
+    {
+      "path": "sample-07.json",
+      "format": "cloudtrail-json",
+      "sha256": "828ffb02f1303d02a8d0ef1fc6104dc036f5b09f87ac62cc24f1b1704a13cb6d",
+      "events": [
+        "UpdateTrail"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "dataset_id": "aws-synthetic-scenarios-v1",
+  "provider": "aws",
+  "source": "aws.cloudtrail",
+  "category": "synthetic",
+  "source_urls": [
+    "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html",
+    "https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateAccessKey.html",
+    "https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachUserPolicy.html",
+    "https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachRolePolicy.html",
+    "https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StopLogging.html",
+    "https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html",
+    "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeSecurityGroupIngress.html"
+  ],
+  "license": "MIT",
+  "modified": false,
+  "generation": "Independently authored fictional events, deterministic generator scripts/generate_synthetic.py; never derived from employer incidents.",
+  "limitations": [
+    "Author-defined scenarios and labels; not empirical production prevalence",
+    "No actual AWS actions were executed",
+    "Some records deliberately omit telemetry to measure misses",
+    "Identifiers and documentation-range IPs are fictional"
+  ],
+  "files": [
+    {
+      "path": "case-01.json",
+      "format": "cloudtrail-json",
+      "sha256": "2be997c3088f22d10e89b3dd15319d94379e059cd0e2094f7d0fd2a2504183a2"
+    },
+    {
+      "path": "case-02.json",
+      "format": "cloudtrail-json",
+      "sha256": "e9ef49e196684058e77844b923521742c448b11c7c142a6873ae3ae529650ab9"
+    },
+    {
+      "path": "case-03.json",
+      "format": "cloudtrail-json",
+      "sha256": "6ff902d0feaa4a61fcc307e6722b13571b02d21cf44626842079a98a2175aeb9"
+    },
+    {
+      "path": "case-04.json",
+      "format": "cloudtrail-json",
+      "sha256": "94678efd86ce0274a29e9681557edde35d0dfe719210e347dd87c062125a4df0"
+    },
+    {
+      "path": "case-05.json",
+      "format": "cloudtrail-json",
+      "sha256": "751c4a9956d366fec20d845d16b8f6e58cb4da48b9775aeea9b78f99171497ad"
+    },
+    {
+      "path": "case-06.json",
+      "format": "cloudtrail-json",
+      "sha256": "e45fccbb2b145d524699c8159e5c948d380dbfd003ee60cc4aaf7a25aa127803"
+    },
+    {
+      "path": "case-07.json",
+      "format": "cloudtrail-json",
+      "sha256": "08a5bb5a902510dd443fab2f4d128c05c0bb34492099bf5b2bef92527fbcafbf"
+    },
+    {
+      "path": "case-08.json",
+      "format": "cloudtrail-json",
+      "sha256": "9253672146e51a1629d5f096382d02eccc5531ce5cb540e6f06523b184e4e029"
+    },
+    {
+      "path": "case-09.json",
+      "format": "cloudtrail-json",
+      "sha256": "b9ac65493e8416c42b08efc21a188072fbfe90e511bfc1f35652a056d43d52e7"
+    },
+    {
+      "path": "case-10.json",
+      "format": "cloudtrail-json",
+      "sha256": "5afbcbcb8019fc6d7b7fe78ade13c974fa942b0ccb615bd09d07b18968a1d4b1"
+    },
+    {
+      "path": "case-11.json",
+      "format": "cloudtrail-json",
+      "sha256": "b7f29e422d54bbdcd27a903bb49c9a3e0c78da0920aa4a0001107a1901084fb3"
+    },
+    {
+      "path": "case-12.json",
+      "format": "cloudtrail-json",
+      "sha256": "6212d3b72eeea5674b7d5d2be3b0a890e5dd929baced9e83937e3b189e55e40e"
+    },
+    {
+      "path": "case-13.json",
+      "format": "cloudtrail-json",
+      "sha256": "716fc263550abb4c762eb99bd6d67c5348a8a44e578aa34d10f886febff930a0"
+    },
+    {
+      "path": "case-14.json",
+      "format": "cloudtrail-json",
+      "sha256": "36e482713a50f0a4e72ac79d689bedefbab0df4d56c372a5e008a4af530652f1"
+    },
+    {
+      "path": "case-15.json",
+      "format": "cloudtrail-json",
+      "sha256": "dc5b8ffabe35098a73da604b32d2682a22d9a19dc094f798f52cc4f9a8dccd14"
+    },
+    {
+      "path": "case-16.json",
+      "format": "cloudtrail-json",
+      "sha256": "38ab62a210d853e70a10afe5d28d194e447a83b9b0b568a38802d7199ed84bb1"
+    },
+    {
+      "path": "case-17.json",
+      "format": "cloudtrail-json",
+      "sha256": "4f1b088bec1df259289861883ac659b3697f171dd9b155937c6f1b803dba9a81"
+    },
+    {
+      "path": "case-18.json",
+      "format": "cloudtrail-json",
+      "sha256": "16d53a669e36735e87d9e64f56c8ec92861c740e26142ade6c2ce4a300ca1aea"
+    },
+    {
+      "path": "case-19.json",
+      "format": "cloudtrail-json",
+      "sha256": "b8e679bfce3ba2a4797d7568b0c83128dbfd428d11c32584b004cb04367d3e84"
+    },
+    {
+      "path": "case-20.json",
+      "format": "cloudtrail-json",
+      "sha256": "0b20c0d7ef0223f80c7822420de2198b248e55ba4bbe84c3a7fd6159372efd65"
+    },
+    {
+      "path": "case-21.json",
+      "format": "cloudtrail-json",
+      "sha256": "ac5fd5cfba72bb8461ff408aa4c45ce40926073ee05129d0ad3f3f03fd6b4af3"
+    },
+    {
+      "path": "case-22.json",
+      "format": "cloudtrail-json",
+      "sha256": "ebcb9f7cf9a9248f060390f9630372d5623ae1fb82b347e95d5426fd71c67003"
+    },
+    {
+      "path": "case-23.json",
+      "format": "cloudtrail-json",
+      "sha256": "2d9d902a0fa00c85fa7a7d7bf6cb38d0d6a769319153c2cc3f6cd9fee516db0c"
+    },
+    {
+      "path": "case-24.json",
+      "format": "cloudtrail-json",
+      "sha256": "edd9e4a585c213e0b2e9a114ef924be192b718d9da42515abd87bda3261d83cb"
+    }
+  ]
+}

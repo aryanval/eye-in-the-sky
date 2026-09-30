@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eye-in-the-sky"
+version = "0.1.0"
+description = "Local, evidence-backed AWS detection engineering; Phase 1 of a multicloud lab"
+requires-python = ">=3.11"
+dependencies = ["duckdb==1.5.6", "pytz==2026.4"]
+license = "MIT"
+
+[project.scripts]
+eits = "eits.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+eits = ["sql/*.sql", "rules/*.json"]

@@ -1,0 +1,36 @@
+{
+  "EITS-AWS-001": {
+    "version": "1.0.0",
+    "title": "New access key used for AdministratorAccess policy attachment",
+    "description": "Correlate a successful key creation with use of that exact key for a successful administrative managed-policy attachment within 30 minutes.",
+    "severity": "high",
+    "attack": ["T1098.001", "T1098.003"],
+    "required_telemetry": ["CloudTrail IAM management events", "created access-key ID", "subsequent caller access-key ID", "account", "timestamp", "policy ARN"],
+    "exact_logic": "sql/EITS-AWS-001.sql; same account and created key = caller credential; 0 < elapsed <= 1800 seconds; successful AttachUserPolicy or AttachRolePolicy for arn:aws:iam::aws:policy/AdministratorAccess",
+    "evidence_fields": ["/eventID", "/eventTime", "/recipientAccountId", "/userIdentity", "/responseElements/accessKey/accessKeyId", "/responseElements/accessKey/userName", "/requestParameters/policyArn", "/requestParameters/userName", "/requestParameters/roleName", "/errorCode"],
+    "why_it_matters": "A new persistent credential immediately changes a powerful identity permission assignment.",
+    "expected_false_positives": ["Authorized bootstrap automation", "Administrative credential rotation followed by approved provisioning"],
+    "tuning": "Review actor, credential owner, policy recipient, and change authorization. Any future exception must specify account, actor, target, expiry, and rationale. No suppressions ship in Phase 1.",
+    "limitations": ["Requires the issued key ID; no fallback to IP or username", "Direct long-lived-key use only; no STS role-chain reconstruction", "Commercial AWS partition and exact AdministratorAccess policy only", "A 30-minute window misses delayed use", "Missing or equal timestamps cannot establish the required ordering"],
+    "cannot_establish": ["Malicious intent or credential compromise", "A net privilege increase or effective administrator access", "Policy use, persistence duration, or actor authorization"],
+    "observed": "A completed CreateAccessKey record and later policy attachment report no error; the issued key ID equals the later caller credential.",
+    "inferred": "The sequence warrants investigation for credential misuse or unauthorized permission changes; intent is unresolved."
+  },
+  "EITS-AWS-002": {
+    "version": "1.0.0",
+    "title": "Logging stop followed by public administrative-port ingress",
+    "description": "Correlate a successful StopLogging with successful public SSH/RDP-capable security-group ingress by the same account, principal and credential within 30 minutes.",
+    "severity": "high",
+    "attack": ["T1685.002", "T1686.001"],
+    "required_telemetry": ["CloudTrail and EC2 management events", "account", "principal ID", "caller access-key ID", "timestamp", "ipPermissions with CIDR/protocol/ports"],
+    "exact_logic": "sql/EITS-AWS-002.sql; same account/principal/credential; 0 < elapsed <= 1800 seconds; same permission contains public IPv4/IPv6 and all protocols or TCP range including 22 or 3389",
+    "evidence_fields": ["/eventID", "/eventTime", "/recipientAccountId", "/userIdentity/principalId", "/userIdentity/accessKeyId", "/requestParameters/name", "/requestParameters/groupId", "/requestParameters/ipPermissions/items", "/errorCode", "/responseElements/_return"],
+    "why_it_matters": "The actor requests a logging stop followed by broader administrative network permissions.",
+    "expected_false_positives": ["Approved trail maintenance and emergency network access", "A logging restart between the two events"],
+    "tuning": "Review intervening StartLogging events and explicit change authorization. Scope any future suppression to account, trail, group, actor and expiry; measure lost coverage.",
+    "limitations": ["No trail-selector or effective routing snapshot", "Missing principal/credential IDs cannot be correlated", "No identity joins based on source IP", "Only AuthorizeSecurityGroupIngress with ipPermissions.items", "Delayed activity and other sessions are outside the window/join"],
+    "cannot_establish": ["All cloud logging stopped; Event History is independent", "The changed trail covered the EC2 event", "Internet reachability, a listening service, connection or exploitation", "Malicious intent or lack of authorization"],
+    "observed": "Completed StopLogging and public administrative-port ingress authorization records report no error and match on account, principal and credential.",
+    "inferred": "The temporal sequence warrants investigation; logging coverage and effective network reachability remain unresolved."
+  }
+}

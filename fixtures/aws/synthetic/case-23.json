@@ -1,0 +1,284 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:05:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "08f1bb3a-15f8-5490-81fc-f88ca98f0795",
+      "requestID": "81947062-4e32-565b-8817-b4a2db3fd6f2",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:07:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "10cedb28-f560-5d07-bc58-2d472bd9c606",
+      "requestID": "cfb3b412-92ba-54e6-845b-259f170b9510",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:03:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "8f0529bf-7dd8-5923-bb8b-17ca2f9ef3e7",
+      "requestID": "8c701f16-f3ae-555e-9839-f6760e3b5e0d",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:05:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "AuthorizeSecurityGroupIngress",
+      "awsRegion": "us-east-1",
+      "eventID": "27e9d856-6019-5d12-b10a-5704fb43d69d",
+      "requestID": "bbf29e27-5901-519c-be27-c63d7ee227f6",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {
+        "groupId": "sg-00000000000000017",
+        "ipPermissions": {
+          "items": [
+            {
+              "ipProtocol": "tcp",
+              "fromPort": 22,
+              "toPort": 22,
+              "ipRanges": {
+                "items": [
+                  {
+                    "cidrIp": "0.0.0.0/0"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "responseElements": {
+        "_return": true
+      },
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": false,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T11:59:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "b0c4ea57-cc8e-590a-b185-bc26fb65e32d",
+      "requestID": "76a3f079-761a-5b63-ad6c-0a0f4d98484c",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:01:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "bfa6cf34-37c2-5e5f-b850-24307f7b89ea",
+      "requestID": "230f1d61-cc3b-5bcc-b202-05dde40f1976",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T11:57:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "d095d4fc-e662-5bb2-9f8d-706a800631b5",
+      "requestID": "f53a2fb8-758e-5ff1-b014-86d5d99ccf6a",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:11:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "324b523c-2b4c-54fc-afd3-06dd62677651",
+      "requestID": "67ad481d-c974-5f2e-a64d-fa0298bfcc91",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:11:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "324b523c-2b4c-54fc-afd3-06dd62677651",
+      "requestID": "67ad481d-c974-5f2e-a64d-fa0298bfcc91",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    },
+    {
+      "eventVersion": "1.09",
+      "eventTime": "2025-02-03T12:09:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "eventID": "c26a023e-26af-58ec-b44c-a0cbd7d4e891",
+      "requestID": "acb28823-70dc-5383-a69b-e138789825dd",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA75FEDB71955220436",
+        "accountId": "900000000023",
+        "arn": "arn:aws:iam::900000000023:user/operator-23",
+        "userName": "operator-23",
+        "accessKeyId": "AKIAF600CDC704F67F25"
+      },
+      "sourceIPAddress": "192.0.2.10",
+      "userAgent": "eye-in-the-sky/synthetic-fixture",
+      "requestParameters": {},
+      "responseElements": null,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "readOnly": true,
+      "recipientAccountId": "900000000023"
+    }
+  ]
+}
