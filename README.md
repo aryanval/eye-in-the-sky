@@ -8,6 +8,13 @@ direction; Azure, Entra, GCP and endpoint parsers are not implemented. This phas
 has two AWS detections, one hunt, seven official AWS examples and 24 original
 synthetic scenarios. No cloud account is required.
 
+The shared architecture has source adapters, typed cloud scopes, a data-driven
+rule registry and findings with one or more supporting events. Azure/Entra/GCP
+source names are reserved in the registry; their parsers are not implemented.
+[ARCHITECTURE.md](ARCHITECTURE.md) documents the interfaces and database migration.
+[REFACTOR_REPORT.md](REFACTOR_REPORT.md) records regression results and exact
+compatibility effects.
+
 This is an independent public learning project. No employer/customer code, data,
 prompts, schemas, architecture, detection rules or incident sequences were used.
 Synthetic scenarios are fictional and are not reconstructions of work incidents.
@@ -23,8 +30,8 @@ python3 -m venv .venv
 .venv/bin/python scripts/demo.py
 ```
 
-Tested locally with Python 3.14.6, DuckDB 1.5.6 and pytz 2026.4. Dependency
-installation needs a package source; the installed runtime, tests and walkthrough
+Tested locally with Python 3.14.6, DuckDB 1.5.6 and pytz 2026.4. CI checks Python
+3.11 and 3.14. Dependency installation needs a package source; the runtime, tests and walkthrough
 use committed files and run offline. No Docker, cloud SDK or credentials needed.
 
 The walkthrough ingests 7 official sample events and 240 unique synthetic events,
@@ -70,10 +77,10 @@ identity/credential joins and time windows. [DETECTION_CATALOG.md](DETECTION_CAT
 states exact predicates, evidence fields, ATT&CK mappings, false positives and
 limits. [HUNTS.md](HUNTS.md) explains the separate 24-hour credential-use query.
 
-Each finding includes rule/version/query hash, both event IDs, matching field
+Each finding includes rule/version/query hash, supporting event IDs, matching field
 values, observed facts, an explicitly marked inference and unresolved questions.
 `explain` verifies stored source hashes and record references, and includes a
-same-account context timeline. A timeline entry is context, not proof of causality.
+provider/source/scope context timeline. A timeline entry is context, not proof of causality.
 
 ## Measured behavior
 
@@ -121,6 +128,20 @@ design choice for sensitive environments, not a regulatory certification. A
 Python-level network-blocking test supplements the architecture; it is not an OS
 network sandbox. The optional public-documentation acquisition script is separate
 from the runtime. There is no local LLM integration in Phase 1.
+
+## Development checks
+
+```sh
+.venv/bin/python -m pip install -e '.[dev]'
+.venv/bin/python -m ruff check src tests scripts
+.venv/bin/python -m ruff format --check src tests scripts
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+GitHub Actions runs these checks and the CLI walkthrough against a non-editable
+installation on Python 3.11 and 3.14. Regression tests compare current AWS results
+with the preserved Phase 1 findings and scenario scores, and verify that the
+generator still reproduces the original corpus byte for byte.
 
 ## Limitations and project status
 

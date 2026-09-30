@@ -1,5 +1,6 @@
 {
   "EITS-AWS-002": {
+    "sql_path": "sql/EITS-AWS-002-restart-aware.sql",
     "version": "1.1.0",
     "description": "Experimental baseline variant suppressing pairs with an observed successful StartLogging for the exact same account and trail identifier strictly between stop and ingress.",
     "exact_logic": "sql/EITS-AWS-002-restart-aware.sql; all baseline predicates, plus NOT EXISTS a successful matching-trail StartLogging with stop_time < restart_time < ingress_time",

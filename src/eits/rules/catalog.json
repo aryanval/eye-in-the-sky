@@ -1,5 +1,9 @@
 {
   "EITS-AWS-001": {
+    "provider": "aws",
+    "source": "aws.cloudtrail",
+    "sql_path": "sql/EITS-AWS-001.sql",
+    "evidence": {"columns": ["start_uid", "end_uid"]},
     "version": "1.0.0",
     "title": "New access key used for AdministratorAccess policy attachment",
     "description": "Correlate a successful key creation with use of that exact key for a successful administrative managed-policy attachment within 30 minutes.",
@@ -17,6 +21,10 @@
     "inferred": "The sequence warrants investigation for credential misuse or unauthorized permission changes; intent is unresolved."
   },
   "EITS-AWS-002": {
+    "provider": "aws",
+    "source": "aws.cloudtrail",
+    "sql_path": "sql/EITS-AWS-002.sql",
+    "evidence": {"columns": ["start_uid", "end_uid"]},
     "version": "1.0.0",
     "title": "Logging stop followed by public administrative-port ingress",
     "description": "Correlate a successful StopLogging with successful public SSH/RDP-capable security-group ingress by the same account, principal and credential within 30 minutes.",

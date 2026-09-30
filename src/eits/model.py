@@ -1,8 +1,9 @@
-"""CloudTrail mappings derived solely from linked public AWS documentation."""
+"""Shared event contract, with opaque provider-qualified identity and scope."""
+
 import hashlib
-import ipaddress
 import json
-from datetime import datetime, timezone
+from dataclasses import asdict, dataclass
+from datetime import datetime
 
 
 def canonical(value):
@@ -23,66 +24,129 @@ def text_at(value, key):
     return result if isinstance(result, str) and result else None
 
 
+def event_uid(provider, source, raw, *, scope_type=None, scope_id=None, tenant_id=None):
+    """Keep published AWS IDs; all other source domains use a disjoint v2 ID."""
+    if (provider, source) == ("aws", "aws.cloudtrail"):
+        return "evt_" + digest(canonical(raw).encode())
+    return "evt_v2_" + digest(
+        canonical(
+            ["eits.event.v2", provider, source, scope_type, scope_id, tenant_id, raw]
+        ).encode()
+    )
+
+
+@dataclass(frozen=True)
+class Scope:
+    scope_type: str | None = None
+    scope_id: str | None = None
+    tenant_id: str | None = None
+
+    def validate(self, *, scope_types, has_tenant):
+        if any(
+            value is not None and (not isinstance(value, str) or not value)
+            for value in asdict(self).values()
+        ):
+            raise ValueError("scope values must be nonempty strings or null")
+        if self.scope_type is not None and self.scope_type not in scope_types:
+            raise ValueError("scope_type is not valid for its source")
+        if self.scope_id is not None and self.scope_type is None:
+            raise ValueError("scope_id requires scope_type")
+        if not has_tenant and self.tenant_id is not None:
+            raise ValueError("tenant_id is not meaningful for this source")
+
+
+@dataclass(frozen=True)
+class NormalizationContext:
+    provider: str
+    source: str
+    dataset_id: str
+    collection_scope: Scope | None = None
+
+
+@dataclass(frozen=True)
+class Event:
+    event_uid: str
+    provider: str
+    source: str
+    service: str
+    action: str
+    raw: str
+    source_event_id: str | None = None
+    timestamp: datetime | None = None
+    scope_type: str | None = None
+    scope_id: str | None = None
+    tenant_id: str | None = None
+    account_id: str | None = None
+    region: str | None = None
+    actor_id: str | None = None
+    actor_type: str | None = None
+    actor_arn: str | None = None
+    credential_id: str | None = None
+    source_address: str | None = None
+    source_ip: str | None = None
+    outcome: str = "unknown"
+    error_code: str | None = None
+    resources: str = "[]"
+    authentication: str = "{}"
+    privilege_context: str = "{}"
+    extensions: str = "{}"
+    quality: str = "[]"
+
+    def as_record(self):
+        return asdict(self)
+
+    def validate(self, *, provider, source, raw, scope_types, has_tenant):
+        if not isinstance(raw, dict):
+            raise ValueError("source record must be an object")
+        if (self.provider, self.source) != (provider, source):
+            raise ValueError("adapter event provider/source differs from manifest")
+        if self.event_uid != event_uid(
+            provider,
+            source,
+            raw,
+            scope_type=self.scope_type,
+            scope_id=self.scope_id,
+            tenant_id=self.tenant_id,
+        ):
+            raise ValueError("adapter event UID violates source identity scheme")
+        for name, value in self.as_record().items():
+            if name == "timestamp":
+                if value is not None and (
+                    not isinstance(value, datetime)
+                    or value.tzinfo is None
+                    or value.utcoffset() is None
+                ):
+                    raise ValueError("event timestamp must contain a timezone")
+            elif value is not None and (not isinstance(value, str) or not value):
+                raise ValueError(f"event {name} must be a nonempty string or null")
+        for name in ("provider", "source", "service", "action", "raw"):
+            if not getattr(self, name):
+                raise ValueError(f"event requires {name}")
+        Scope(self.scope_type, self.scope_id, self.tenant_id).validate(
+            scope_types=scope_types, has_tenant=has_tenant
+        )
+        if self.outcome not in {"success", "failure", "unknown"}:
+            raise ValueError("unknown event outcome")
+        for name, shape in (
+            ("raw", dict),
+            ("resources", list),
+            ("authentication", dict),
+            ("privilege_context", dict),
+            ("extensions", dict),
+            ("quality", list),
+        ):
+            try:
+                value = json.loads(getattr(self, name))
+            except (TypeError, ValueError) as exc:
+                raise ValueError(f"event {name} must be valid JSON") from exc
+            if not isinstance(value, shape):
+                raise ValueError(f"event {name} has invalid JSON shape")
+        if canonical(json.loads(self.raw)) != canonical(raw):
+            raise ValueError("adapter raw record differs from source artifact")
+
+
 def normalize(raw):
-    if not isinstance(raw, dict):
-        raise ValueError("CloudTrail record must be an object")
-    if not text_at(raw, "eventSource") or not text_at(raw, "eventName"):
-        raise ValueError("CloudTrail record requires eventSource and eventName")
-    identity = object_at(raw, "userIdentity")
-    session = object_at(identity, "sessionContext")
-    attributes = object_at(session, "attributes")
-    request, response = object_at(raw, "requestParameters"), object_at(raw, "responseElements")
-    quality, timestamp = [], None
-    stamp = text_at(raw, "eventTime")
-    if stamp:
-        try:
-            timestamp = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
-        except ValueError as exc:
-            raise ValueError("invalid eventTime") from exc
-        if timestamp.tzinfo is None:
-            raise ValueError("eventTime must contain a timezone")
-        timestamp = timestamp.astimezone(timezone.utc)
-    else:
-        quality.append("missing_event_time")
-    event_id = text_at(raw, "eventID")
-    if not event_id:
-        quality.append("missing_source_event_id")
-    account = text_at(raw, "recipientAccountId") or text_at(identity, "accountId")
-    if not account:
-        quality.append("missing_account")
-    address, source_ip = text_at(raw, "sourceIPAddress"), None
-    if address:
-        try:
-            source_ip = str(ipaddress.ip_address(address))
-        except ValueError:
-            quality.append("source_address_is_not_ip")
-    error = text_at(raw, "errorCode") or text_at(response, "errorCode")
-    error_message = text_at(raw, "errorMessage") or text_at(response, "errorMessage")
-    if error or error_message or response.get("_return") is False:
-        outcome = "failure"
-    elif raw.get("eventType") == "AwsApiCall":
-        outcome = "success"  # Completed API record reporting no error; not proof of lasting state.
-    else:
-        outcome = "unknown"
-    mfa = attributes.get("mfaAuthenticated")
-    mfa_observed = {"true": True, "false": False}.get(mfa) if isinstance(mfa, str) else None
-    resources = list(raw["resources"]) if isinstance(raw.get("resources"), list) else []
-    for name in ("groupId", "userName", "roleName", "name", "policyArn"):
-        if text_at(request, name):
-            resources.append({"type": name, "value": request[name], "field": f"/requestParameters/{name}"})
-    return {
-        "event_uid": "evt_" + digest(canonical(raw).encode()), "source_event_id": event_id,
-        "timestamp": timestamp, "provider": "aws", "source": "aws.cloudtrail",
-        "account_id": account, "region": text_at(raw, "awsRegion"),
-        "actor_id": text_at(identity, "principalId"), "actor_type": text_at(identity, "type"),
-        "actor_arn": text_at(identity, "arn"), "credential_id": text_at(identity, "accessKeyId"),
-        "source_address": address, "source_ip": source_ip, "service": raw["eventSource"],
-        "action": raw["eventName"], "outcome": outcome, "error_code": error,
-        "resources": canonical(resources),
-        "authentication": canonical({"mfa_authenticated": mfa_observed, "session_context": session}),
-        "privilege_context": canonical({"session_issuer": object_at(session, "sessionIssuer")}),
-        "extensions": canonical({"eventVersion": raw.get("eventVersion"), "userIdentity": identity,
-                                  "requestParameters": raw.get("requestParameters"),
-                                  "responseElements": raw.get("responseElements")}),
-        "raw": canonical(raw), "quality": canonical(quality),
-    }
+    """Compatibility entry point for the published Phase-1 CloudTrail mapping."""
+    from .adapters.aws import normalize_cloudtrail
+
+    return normalize_cloudtrail(raw).as_record()

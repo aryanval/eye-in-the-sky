@@ -1,0 +1,4 @@
+{
+  "baseline": ["rules/catalog.json"],
+  "restart-aware": ["rules/catalog.json", "rules/restart-aware.json"]
+}

@@ -108,6 +108,20 @@ references of every emitted finding before returning the report.
 
 ## Correctness checks and limits
 
+The architecture refactor emits report version 2. It preserves the authored SQL
+file hashes, findings and scenario scores, and adds the database schema version,
+executed query-wrapper hashes, provider/source execution parameters, resolved
+rule-catalog hash and hashes of all packaged Python/SQL/rule metadata. Current
+code hashes therefore differ from the original Phase 1 report. Historical reports
+are never rewritten to hide this change.
+
+Expected evidence may contain any positive number of events. Future corpora can
+use `anchor_event_uids`/`available_event_uids`; these identify exact evidence even
+when provider source IDs repeat. The legacy AWS anchor format remains supported
+only when source IDs are unambiguous in the evaluation database. Shared evidence
+can support separate rules, and an incomplete or incorrect anchor set remains a
+miss rather than a partial true positive.
+
 The test suite validates official sample projections, missing/unknown values,
 timezone handling, ingestion rollback, provenance hashes, path confinement,
 conflicting event IDs, raw-byte survival, duplicate delivery, ordering and time

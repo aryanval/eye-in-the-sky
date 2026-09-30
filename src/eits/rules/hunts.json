@@ -1,0 +1,10 @@
+{
+  "HUNT-001": {
+    "default": true,
+    "provider": "aws",
+    "source": "aws.cloudtrail",
+    "sql_path": "sql/HUNT-001.sql",
+    "min_hours_exclusive": 0,
+    "max_hours_inclusive": 744
+  }
+}

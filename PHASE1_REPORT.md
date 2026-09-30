@@ -4,6 +4,11 @@
 ingestion, two SQL detections, one hunt, raw evidence inspection, reproducible
 evaluation and a CLI walkthrough. Additional providers are deferred to the next phase.
 
+This report records the original implementation milestone at commit `3a6e5f5`.
+Its validation environment and byte-identical replay claims refer to that
+milestone. Subsequent architecture changes preserve these result files and AWS
+behavior while recording their own code hashes and schema version.
+
 ## Completion criteria
 
 | Criterion | Result | Evidence and boundary |

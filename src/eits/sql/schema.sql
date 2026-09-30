@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS metadata (key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL);
-INSERT INTO metadata VALUES ('schema_version', '1') ON CONFLICT DO NOTHING;
+INSERT INTO metadata VALUES ('schema_version', '2') ON CONFLICT DO NOTHING;
 CREATE TABLE IF NOT EXISTS datasets (
     dataset_id VARCHAR PRIMARY KEY, manifest JSON NOT NULL, manifest_sha256 VARCHAR NOT NULL
 );
@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS events (
     source_address VARCHAR, source_ip VARCHAR, service VARCHAR NOT NULL, action VARCHAR NOT NULL,
     outcome VARCHAR NOT NULL, error_code VARCHAR, resources JSON NOT NULL,
     authentication JSON NOT NULL, privilege_context JSON NOT NULL, extensions JSON NOT NULL,
-    raw JSON NOT NULL, quality JSON NOT NULL
+    raw JSON NOT NULL, quality JSON NOT NULL,
+    scope_type VARCHAR, scope_id VARCHAR, tenant_id VARCHAR
 );
 CREATE TABLE IF NOT EXISTS occurrences (
     dataset_id VARCHAR NOT NULL, artifact_sha256 VARCHAR NOT NULL, source_path VARCHAR NOT NULL,

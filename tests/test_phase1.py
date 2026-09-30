@@ -15,19 +15,32 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def case(number):
-    events = json.loads((ROOT / f"fixtures/aws/synthetic/case-{number:02d}.json").read_text())["Records"]
+    events = json.loads((ROOT / f"fixtures/aws/synthetic/case-{number:02d}.json").read_text())[
+        "Records"
+    ]
     return [e for e in events if e["eventName"] != "DescribeInstances"]
 
 
 def manifest_for(directory, events, filename="events.json", format_name="cloudtrail-json"):
-    content = (json.dumps({"Records": events}) if format_name == "cloudtrail-json"
-               else "\n".join(json.dumps(e) for e in events)).encode()
+    content = (
+        json.dumps({"Records": events})
+        if format_name == "cloudtrail-json"
+        else "\n".join(json.dumps(e) for e in events)
+    ).encode()
     (directory / filename).write_bytes(content)
-    manifest = {"dataset_id": "unit-fixture", "provider": "aws", "source": "aws.cloudtrail",
-                "category": "synthetic", "license": "MIT", "modified": True,
-                "source_urls": ["https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html"],
-                "limitations": ["Synthetic test variant of project fixtures"],
-                "files": [{"path": filename, "format": format_name, "sha256": digest(content)}]}
+    manifest = {
+        "dataset_id": "unit-fixture",
+        "provider": "aws",
+        "source": "aws.cloudtrail",
+        "category": "synthetic",
+        "license": "MIT",
+        "modified": True,
+        "source_urls": [
+            "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html"
+        ],
+        "limitations": ["Synthetic test variant of project fixtures"],
+        "files": [{"path": filename, "format": format_name, "sha256": digest(content)}],
+    }
     path = directory / "manifest.json"
     path.write_text(json.dumps(manifest))
     return path
@@ -67,7 +80,9 @@ class ParserAndProvenanceTests(unittest.TestCase):
             self.assertEqual(result["new_events"], 7)
             start = rows(con, "SELECT * FROM events WHERE action='StartInstances'")[0]
             self.assertEqual(start["source_event_id"], "e755e09c-42f9-4c5c-9064-EXAMPLE228c7")
-            self.assertEqual(start["timestamp"], datetime(2023, 7, 19, 21, 17, 28, tzinfo=timezone.utc))
+            self.assertEqual(
+                start["timestamp"], datetime(2023, 7, 19, 21, 17, 28, tzinfo=timezone.utc)
+            )
             self.assertEqual(start["account_id"], "123456789012")
             self.assertEqual(start["source_ip"], "192.0.2.0")
             self.assertEqual(start["actor_arn"], "arn:aws:iam::123456789012:user/Mateo")
@@ -76,7 +91,7 @@ class ParserAndProvenanceTests(unittest.TestCase):
             self.assertEqual(failed["outcome"], "failure")
             self.assertEqual(failed["error_code"], "TrailNotFoundException")
             self.assertEqual(detect(con), [])
-            for uid, in con.execute("SELECT event_uid FROM events").fetchall():
+            for (uid,) in con.execute("SELECT event_uid FROM events").fetchall():
                 self.assertTrue(evidence(con, uid)["source_references"][0]["integrity_verified"])
         finally:
             con.close()
@@ -166,7 +181,9 @@ class ParserAndProvenanceTests(unittest.TestCase):
 
     def test_duckdb_external_io_disabled(self):
         with database(case(1)) as con:
-            self.assertFalse(con.execute("SELECT current_setting('enable_external_access')").fetchone()[0])
+            self.assertFalse(
+                con.execute("SELECT current_setting('enable_external_access')").fetchone()[0]
+            )
             columns = [r[1] for r in con.execute("PRAGMA table_info('events')").fetchall()]
             self.assertNotIn("label", columns)
             self.assertNotIn("scenario_id", columns)
@@ -175,7 +192,10 @@ class ParserAndProvenanceTests(unittest.TestCase):
 class DetectionTests(unittest.TestCase):
     def test_runtime_functions_work_without_python_network_access(self):
         from unittest.mock import patch
-        with patch("socket.socket.connect", side_effect=AssertionError("runtime attempted network access")):
+
+        with patch(
+            "socket.socket.connect", side_effect=AssertionError("runtime attempted network access")
+        ):
             with database(case(1)) as con:
                 finding = detect(con)[0]
                 self.assertTrue(evidence(con, finding["event_uids"][0])["source_references"])
@@ -190,10 +210,18 @@ class DetectionTests(unittest.TestCase):
             self.assertEqual(values["elapsed_seconds"], 300)
 
     def test_direct_key_window_boundaries(self):
-        for when, expected in [("12:00:00", 0), ("12:00:01", 1), ("12:30:00", 1), ("12:30:01", 0), ("11:59:59", 0)]:
+        for when, expected in [
+            ("12:00:00", 0),
+            ("12:00:01", 1),
+            ("12:30:00", 1),
+            ("12:30:01", 0),
+            ("11:59:59", 0),
+        ]:
             with self.subTest(when=when):
                 events = case(1)
-                next(e for e in events if e["eventName"] == "AttachUserPolicy")["eventTime"] = f"2025-02-03T{when}Z"
+                next(e for e in events if e["eventName"] == "AttachUserPolicy")["eventTime"] = (
+                    f"2025-02-03T{when}Z"
+                )
                 with database(events) as con:
                     self.assertEqual(len(detect(con)), expected)
 
@@ -282,23 +310,52 @@ class DetectionTests(unittest.TestCase):
 class ScoringTests(unittest.TestCase):
     def test_ambiguous_and_missing_evidence_handling(self):
         cases = [
-            {"scenario_id": "positive", "rule_id": "EITS-AWS-001", "split": "development", "label": "malicious", "telemetry_complete": False,
-             "anchor_event_ids": ["a", "b"], "available_event_ids": ["a", "c"]},
-            {"scenario_id": "uncertain", "rule_id": "EITS-AWS-001", "split": "development", "label": "ambiguous", "telemetry_complete": True,
-             "anchor_event_ids": ["x", "y"], "available_event_ids": ["x", "y"]},
+            {
+                "scenario_id": "positive",
+                "rule_id": "EITS-AWS-001",
+                "split": "development",
+                "label": "malicious",
+                "telemetry_complete": False,
+                "anchor_event_ids": ["a", "b"],
+                "available_event_ids": ["a", "c"],
+            },
+            {
+                "scenario_id": "uncertain",
+                "rule_id": "EITS-AWS-001",
+                "split": "development",
+                "label": "ambiguous",
+                "telemetry_complete": True,
+                "anchor_event_ids": ["x", "y"],
+                "available_event_ids": ["x", "y"],
+            },
         ]
-        findings = [{"rule_id": "EITS-AWS-001", "finding_id": "wrong-evidence", "source_event_ids": ["a", "c"]},
-                    {"rule_id": "EITS-AWS-001", "finding_id": "uncertain", "source_event_ids": ["x", "y"]}]
+        findings = [
+            {
+                "rule_id": "EITS-AWS-001",
+                "finding_id": "wrong-evidence",
+                "source_event_ids": ["a", "c"],
+            },
+            {"rule_id": "EITS-AWS-001", "finding_id": "uncertain", "source_event_ids": ["x", "y"]},
+        ]
         metrics = score(findings, cases)["EITS-AWS-001"]["metrics"]
         self.assertEqual((metrics["tp"], metrics["fp"], metrics["fn"]), (0, 1, 1))
         self.assertEqual(metrics["ambiguous_alerted"], 1)
         self.assertIsNone(metrics["complete_telemetry_recall"])
 
     def test_duplicate_findings_cannot_inflate_true_positives(self):
-        scenario = {"scenario_id": "case", "rule_id": "EITS-AWS-001", "split": "development", "label": "malicious", "telemetry_complete": True,
-                    "anchor_event_ids": ["a", "b"], "available_event_ids": ["a", "b"]}
+        scenario = {
+            "scenario_id": "case",
+            "rule_id": "EITS-AWS-001",
+            "split": "development",
+            "label": "malicious",
+            "telemetry_complete": True,
+            "anchor_event_ids": ["a", "b"],
+            "available_event_ids": ["a", "b"],
+        }
         finding = {"rule_id": "EITS-AWS-001", "finding_id": "one", "source_event_ids": ["a", "b"]}
-        metrics = score([finding, {**finding, "finding_id": "two"}], [scenario])["EITS-AWS-001"]["metrics"]
+        metrics = score([finding, {**finding, "finding_id": "two"}], [scenario])["EITS-AWS-001"][
+            "metrics"
+        ]
         self.assertEqual(metrics["tp"], 1)
         self.assertEqual(metrics["duplicate_findings"], 1)
 

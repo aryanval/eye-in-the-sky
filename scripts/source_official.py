@@ -3,6 +3,7 @@
 Extract only AWS's JSON examples. Re-running is a deliberate source update;
 review the fixture diff and source notices before committing.
 """
+
 import hashlib
 import json
 from datetime import datetime, timezone
@@ -52,19 +53,34 @@ def main():
         name = f"sample-{len(entries) + 1:02d}.json"
         content = block.encode()
         (destination / name).write_bytes(content)
-        entries.append({"path": name, "format": "cloudtrail-json",
-                        "sha256": hashlib.sha256(content).hexdigest(),
-                        "events": [e.get("eventName") for e in value["Records"]]})
+        entries.append(
+            {
+                "path": name,
+                "format": "cloudtrail-json",
+                "sha256": hashlib.sha256(content).hexdigest(),
+                "events": [e.get("eventName") for e in value["Records"]],
+            }
+        )
     if len(entries) < 3:
         raise SystemExit("Too few complete public API samples; review the source page")
     manifest = {
-        "dataset_id": "aws-official-examples-v1", "provider": "aws", "source": "aws.cloudtrail",
-        "category": "official sample", "source_urls": [URL], "license": "CC-BY-SA-4.0",
-        "license_url": "https://aws.amazon.com/terms/", "copyright": "Amazon.com, Inc. or its affiliates",
-        "retrieved_at": datetime.now(timezone.utc).isoformat(), "source_page_sha256": hashlib.sha256(page).hexdigest(),
+        "dataset_id": "aws-official-examples-v1",
+        "provider": "aws",
+        "source": "aws.cloudtrail",
+        "category": "official sample",
+        "source_urls": [URL],
+        "license": "CC-BY-SA-4.0",
+        "license_url": "https://aws.amazon.com/terms/",
+        "copyright": "Amazon.com, Inc. or its affiliates",
+        "retrieved_at": datetime.now(timezone.utc).isoformat(),
+        "source_page_sha256": hashlib.sha256(page).hexdigest(),
         "modified": False,
         "extraction": "Text from complete JSON preformatted blocks, HTML markup removed; no event values altered. Only AwsApiCall examples selected.",
-        "limitations": ["Illustrative vendor documentation, not personal live telemetry", "Small sample of API events; not representative of AWS production traffic", "Examples may contain placeholder identifiers"],
+        "limitations": [
+            "Illustrative vendor documentation, not personal live telemetry",
+            "Small sample of API events; not representative of AWS production traffic",
+            "Examples may contain placeholder identifiers",
+        ],
         "files": entries,
     }
     (destination / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
