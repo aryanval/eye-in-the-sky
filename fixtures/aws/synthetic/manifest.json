@@ -12,7 +12,7 @@
     "https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html",
     "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeSecurityGroupIngress.html"
   ],
-  "license": "MIT",
+  "license": "LicenseRef-Proprietary",
   "modified": false,
   "generation": "Independently authored fictional events, deterministic generator scripts/generate_synthetic.py; never derived from employer incidents.",
   "limitations": [

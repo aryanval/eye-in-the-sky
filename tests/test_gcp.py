@@ -46,7 +46,7 @@ class GcpTests(unittest.TestCase):
             "source_urls": [
                 "https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry"
             ],
-            "license": "MIT",
+            "license": "LicenseRef-Proprietary",
             "modified": True,
             "limitations": ["Test-only synthetic input"],
             "files": [

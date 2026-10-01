@@ -33,7 +33,7 @@ def manifest_for(directory, events, filename="events.json", format_name="cloudtr
         "provider": "aws",
         "source": "aws.cloudtrail",
         "category": "synthetic",
-        "license": "MIT",
+        "license": "LicenseRef-Proprietary",
         "modified": True,
         "source_urls": [
             "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html"

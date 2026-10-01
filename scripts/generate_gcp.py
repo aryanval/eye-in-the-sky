@@ -260,7 +260,7 @@ def generate():
         "source": "gcp.audit",
         "category": "synthetic",
         "source_urls": SOURCES,
-        "license": "MIT; original independently generated fixtures based on public Google schemas",
+        "license": "LicenseRef-Proprietary; original independently generated fixtures based on public Google schemas",
         "modified": True,
         "limitations": [
             "Fictional offline scenarios; no live cloud validation",

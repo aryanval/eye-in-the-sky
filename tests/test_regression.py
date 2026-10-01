@@ -19,11 +19,18 @@ class PhaseOneRegressionTests(unittest.TestCase):
     def test_saved_findings_scores_and_input_hashes_are_reproduced(self):
         # Runtime hashes/versions must describe the refactor, not impersonate the
         # original implementation. All observable detection results stay exact.
+        manifest_path = ROOT / "fixtures/aws/synthetic/manifest.json"
+        manifest_bytes = manifest_path.read_bytes()
+        self.assertEqual(json.loads(manifest_bytes)["license"], "LicenseRef-Proprietary")
+        # Only the license label changed since Phase 1. Reconstruct the historical
+        # bytes in memory so the frozen report still guards every other field.
+        historical_manifest_bytes = manifest_bytes.replace(
+            b'"license": "LicenseRef-Proprietary"', b'"license": "MIT"', 1
+        )
         preserved_fields = (
             "rule_revision",
             "split",
             "dataset_id",
-            "manifest_sha256",
             "ground_truth_sha256",
             "ingestion",
             "sql_sha256",
@@ -35,11 +42,13 @@ class PhaseOneRegressionTests(unittest.TestCase):
             with self.subTest(revision=revision):
                 expected = json.loads((ROOT / f"evaluation/phase1-{revision}.json").read_text())
                 result = evaluate(
-                    ROOT / "fixtures/aws/synthetic/manifest.json",
+                    manifest_path,
                     ROOT / "evaluation/ground_truth.json",
                     revision=revision,
                 )
                 actual = json.loads(json.dumps(result, default=serialize))
+                self.assertEqual(actual["manifest_sha256"], digest(manifest_bytes))
+                self.assertEqual(expected["manifest_sha256"], digest(historical_manifest_bytes))
                 for field in preserved_fields:
                     with self.subTest(field=field):
                         self.assertEqual(actual[field], expected[field])

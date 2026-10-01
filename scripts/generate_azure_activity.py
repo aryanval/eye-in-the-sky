@@ -213,7 +213,7 @@ def generate(root=ROOT):
                 "https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/monitor",
                 "https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/management-and-governance",
             ],
-            "license": "MIT",
+            "license": "LicenseRef-Proprietary",
             "modified": False,
             "generation": "Independently generated fictional EventData using scripts/generate_azure_activity.py and the public REST schema; identifiers, times, scopes, actors and operations were authored locally. No official sample values were repaired or relabeled.",
             "limitations": [

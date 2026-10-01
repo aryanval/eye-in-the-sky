@@ -38,7 +38,7 @@ def manifest(directory, records, name="test", collection_scope=None):
         "source": "azure.activity",
         "category": "synthetic",
         "source_urls": ["https://learn.microsoft.com/en-us/rest/api/monitor/activity-logs/list"],
-        "license": "MIT",
+        "license": "LicenseRef-Proprietary",
         "modified": False,
         "limitations": ["Synthetic parser test"],
         "files": [

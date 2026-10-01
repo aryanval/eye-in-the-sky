@@ -10,6 +10,16 @@ schemas, retained vendor examples and independently generated synthetic scenario
 **Live cloud validation: NO.** No cloud account, tenant, billing or credentials
 are required.
 
+## License
+
+Copyright (c) 2026 aryanval. **All rights reserved.** Original project code,
+documentation and synthetic fixtures are proprietary. Use, copying, modification
+or redistribution requires prior written permission, subject to the exceptions
+in [LICENSE](LICENSE). Public availability does not grant additional rights.
+Third-party material retains its own terms; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This notice does not revoke
+rights validly granted for earlier copies under a prior license.
+
 ## Run the complete local loop
 
 From the repository root, using Python 3.11 or newer:

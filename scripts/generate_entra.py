@@ -86,7 +86,7 @@ def manifest(directory, source, dataset, files):
             "collection_scope": SCOPE,
             "category": "synthetic",
             "source_urls": SOURCES,
-            "license": "MIT",
+            "license": "LicenseRef-Proprietary",
             "modified": True,
             "generation": "scripts/generate_entra.py; independently generated values using public Graph v1.0 resource properties and audit activity names, not repaired vendor examples",
             "limitations": [

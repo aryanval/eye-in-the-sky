@@ -58,7 +58,7 @@ class EntraTests(unittest.TestCase):
                 "scope_id": tenant,
                 "tenant_id": tenant,
             },
-            "license": "MIT",
+            "license": "LicenseRef-Proprietary",
             "modified": True,
             "source_urls": [
                 "https://learn.microsoft.com/en-us/graph/api/resources/directoryaudit?view=graph-rest-1.0"

@@ -119,9 +119,10 @@ benchmark; the first development report also retained full-corpus findings.
 
 ## Remaining boundaries
 
-Official samples retain their vendor
-attribution and license terms; original implementation and synthetic fixtures
-use the project's MIT license. Source categories distinguish vendor examples
+Official samples retain their vendor attribution and license terms. At this
+historical milestone, the original implementation and synthetic fixtures were
+distributed under MIT. Current project terms are in [LICENSE](LICENSE).
+Source categories distinguish vendor examples
 from fictional sequences, public datasets and personally generated events.
 
 Successful API records cannot establish effective privilege, lasting state,

@@ -1,25 +1,28 @@
-MIT License
+Proprietary - All Rights Reserved
 
-Copyright (c) 2026 aryanval
+Copyright (c) 2026 aryanval. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+The original source code, documentation, and independently generated synthetic
+fixtures in this repository (the "Project Material") are proprietary.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+No permission is granted to use, copy, modify, merge, publish, distribute,
+sublicense, or sell the Project Material without prior written permission from
+the copyright holder, except as permitted by applicable law or the terms of the
+platform hosting this repository. Public availability does not grant any
+additional rights.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+Third-party material, including retained AWS, Microsoft, and Google examples
+and documentation excerpts, remains subject to its own upstream terms as
+described in THIRD_PARTY_NOTICES.md and the accompanying provenance and license
+notices. These terms do not replace or restrict those third-party licenses.
+
+This notice applies to Project Material distributed with it. It does not revoke
+rights validly granted for earlier copies under a prior license.
+
+THE PROJECT MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-Exception: retained AWS, Microsoft and Google vendor examples and documentation
-excerpts retain the upstream terms described in THIRD_PARTY_NOTICES.md and their
-respective provenance manifests/notices. The project license does not replace them.
+OUT OF OR IN CONNECTION WITH THE PROJECT MATERIAL OR THE USE OR OTHER DEALINGS IN THE
+PROJECT MATERIAL.

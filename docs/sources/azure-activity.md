@@ -71,9 +71,10 @@ and the documented [Monitor](https://learn.microsoft.com/en-us/azure/role-based-
 and [Management and governance](https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/management-and-governance)
 operation names. It generates fictional UUIDs, dates, actor claims, scopes,
 operation/status fields, resource IDs and documentation-range IP addresses.
-These records are independently authored synthetic examples under this project's
-MIT license; none is a repaired official event. Seventeen scenarios contain
-malicious, benign, ambiguous, missing-telemetry and background events. Separate
+These records are independently authored synthetic examples subject to this
+project's [proprietary terms](../../LICENSE); none is a repaired official event.
+Seventeen scenarios contain malicious, benign, ambiguous, missing-telemetry and
+background events. Separate
 ground truth identifies exact UID anchor sets, including an uncollected record.
 No label, scenario name or authorization verdict enters detector input.
 

@@ -346,7 +346,7 @@ def main():
         "source": "aws.cloudtrail",
         "category": "synthetic",
         "source_urls": SOURCES,
-        "license": "MIT",
+        "license": "LicenseRef-Proprietary",
         "modified": False,
         "generation": "Independently authored fictional events, deterministic generator scripts/generate_synthetic.py; never derived from employer incidents.",
         "limitations": [
